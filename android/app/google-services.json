@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "881513089171",
+    "project_id": "cairo-clinics-finder",
+    "storage_bucket": "cairo-clinics-finder.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881513089171:android:06dca5029221498c38e566",
+        "android_client_info": {
+          "package_name": "com.example.cairo_clinics_finder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx9w7M1fR2WOulQ4AOaq7QQqXRvpqCWNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
