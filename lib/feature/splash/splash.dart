@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/utils/app_assets.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,7 +57,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
           opacity: _logoAnimation,
           child: ScaleTransition(
             scale: _logoAnimation,
-            child: Image.asset("assets/app_logo.png", width: 300.w),
+            child: Image.asset(AppAssets.appLogo, width: 300.w),
           ),
         ),
       ),
