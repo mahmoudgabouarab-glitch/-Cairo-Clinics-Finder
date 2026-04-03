@@ -6,18 +6,17 @@ class ListOfClinic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-        shrinkWrap: true,
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return OneItemOfClinicList(
-            name: 'Clinic ${index + 1}',
-            category: 'clinic',
-          );
-        },
-      ),
+    return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.zero,
+      shrinkWrap: true,
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return OneItemOfClinicList(
+          name: 'Clinic ${index + 1}',
+          category: 'clinic',
+        );
+      },
     );
   }
 }
