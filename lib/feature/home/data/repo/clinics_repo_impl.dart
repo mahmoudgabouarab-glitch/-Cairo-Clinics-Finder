@@ -6,16 +6,16 @@ import 'clinics_repo.dart';
 
 class ClinicsRepoImpl implements ClinicsRepo {
   final _firestore = FirebaseFirestore.instance;
+
   @override
   Future<Either<Failure, List<ClinicModel>>> getClinics() async {
     try {
-      final snapshot = await _firestore.collection('clinics').get();
+      var snapshot = await _firestore.collection('clinics').get();
       final clinics = snapshot.docs
           .map((doc) => ClinicModel.fromJson(doc.data()))
           .toList();
-
       return Right(clinics);
-    } catch (e) {
+    } on FirebaseException catch (e) {
       return Left(ServerFailure(e.toString()));
     }
   }
