@@ -32,7 +32,8 @@ class MapSuccess extends MapState {
     this.selectedClinic,
   });
 
-  List<ClinicModel> get filteredClinics => selectedCategory == 'all'
+  List<ClinicModel> get 
+  filteredClinics => selectedCategory == 'all'
       ? clinics
       : clinics.where((c) => c.category == selectedCategory).toList();
 

@@ -11,10 +11,10 @@ class ClinicsRepoImpl implements ClinicsRepo {
   Future<Either<Failure, List<ClinicModel>>> getClinics() async {
     try {
       var snapshot = await _firestore.collection('clinics').get();
-      final clinics = snapshot.docs
-          .map((doc) => ClinicModel.fromJson(doc.data()))
-          .toList();
-      return Right(clinics);
+      final clinics = snapshot.docs;
+      final result = clinics.map((e) => ClinicModel.fromJson(e)).toList();
+
+      return Right(result);
     } on FirebaseException catch (e) {
       return Left(ServerFailure(e.toString()));
     }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -30,8 +31,10 @@ class ClinicModel extends Equatable {
 
   LatLng get latLng => LatLng(lat, lng);
 
-  factory ClinicModel.fromJson(Map<String, dynamic> json) => ClinicModel(
-    id: json['id'] as String? ?? '',
+  factory ClinicModel.fromJson(
+    QueryDocumentSnapshot<Map<String, dynamic>> json,
+  ) => ClinicModel(
+    id: json.id,
     name: json['name'] as String? ?? '',
     category: json['category'] as String? ?? 'clinic',
     lat: (json['lat'] as num?)?.toDouble() ?? 0.0,
