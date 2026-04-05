@@ -1,24 +1,15 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
+import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OneItemOfClinicList extends StatelessWidget {
-  final String name;
-  final String category;
-  const OneItemOfClinicList({
-    super.key,
-    required this.name,
-    required this.category,
-  });
+  final ClinicModel clinic;
+  const OneItemOfClinicList({super.key, required this.clinic});
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, Color> bgColors = {
-      'clinic': AppColor.background,
-      'pharmacy': AppColor.background,
-      'hospital': AppColor.background,
-    };
     final Map<String, Color> textColors = {
       'clinic': AppColor.clinicRed,
       'pharmacy': AppColor.pharmacyGreen,
@@ -43,16 +34,16 @@ class OneItemOfClinicList extends StatelessWidget {
             width: 40.w,
             height: 40.h,
             decoration: BoxDecoration(
-              color: bgColors[category],
+              color: AppColor.background,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Center(
               child: Text(
-                labels[category]!,
+                labels[clinic.category]!,
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
-                  color: textColors[category],
+                  color: textColors[clinic.category]!,
                 ),
               ),
             ),
@@ -63,16 +54,16 @@ class OneItemOfClinicList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  name,
+                  clinic.name,
                   style: TextStyle(
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w500,
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 2),
+                spaceH(2),
                 Text(
-                  'category · 0.0 km',
+                  "${clinic.category} | ${clinic.address}",
                   style: TextStyle(fontSize: 11.sp, color: Colors.grey),
                 ),
               ],
@@ -85,7 +76,10 @@ class OneItemOfClinicList extends StatelessWidget {
                 children: [
                   Icon(Icons.star, size: 11.sp, color: Colors.amber),
                   spaceW(2),
-                  Text('0.0', style: TextStyle(fontSize: 11.sp)),
+                  Text(
+                    clinic.rating.toString(),
+                    style: TextStyle(fontSize: 11.sp),
+                  ),
                 ],
               ),
               spaceH(4),
@@ -96,8 +90,13 @@ class OneItemOfClinicList extends StatelessWidget {
                   borderRadius: BorderRadius.circular(6.r),
                 ),
                 child: Text(
-                  'Open',
-                  style: TextStyle(fontSize: 10.sp, color: AppColor.openGreen),
+                  clinic.isOpen ? 'Open' : 'Closed',
+                  style: TextStyle(
+                    fontSize: 10.sp,
+                    color: clinic.isOpen
+                        ? AppColor.openGreen
+                        : AppColor.clinicRed,
+                ),
                 ),
               ),
             ],
