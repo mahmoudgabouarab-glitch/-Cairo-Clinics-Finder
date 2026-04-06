@@ -1,5 +1,7 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuildSearchBar extends StatelessWidget {
@@ -9,6 +11,7 @@ class BuildSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+      onChanged: context.read<MapCubit>().onSearchChanged,
       decoration: InputDecoration(
         hintText: 'Search clinics, pharmacies...',
         hintStyle: TextStyle(color: AppColor.textSecondary, fontSize: 13.sp),

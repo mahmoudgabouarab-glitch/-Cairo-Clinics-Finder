@@ -43,6 +43,10 @@ class MapCubit extends Cubit<MapState> {
     );
   }
 
+  void onSearchChanged(String query) {
+    emit(state.copyWith(searchQuery: query));
+  }
+
   void selectCategory(String category) {
     emit(state.copyWith(selectedCategory: category, clearSelected: true));
   }
