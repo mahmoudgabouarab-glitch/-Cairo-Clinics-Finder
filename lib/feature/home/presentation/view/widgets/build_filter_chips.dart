@@ -1,72 +1,69 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BuildFilterChips extends StatefulWidget {
+class BuildFilterChips extends StatelessWidget {
   const BuildFilterChips({super.key});
 
   @override
-  State<BuildFilterChips> createState() => _BuildFilterChipsState();
-}
-
-class _BuildFilterChipsState extends State<BuildFilterChips> {
-  int isSelected = 0;
-  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 28.h,
-      child: ListView.builder(
-        itemCount: categories.length,
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          final label = categories[index];
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-                isSelected = index;
-              });
-            },
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              height: 28.h,
-              margin: EdgeInsets.only(right: 6.w),
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-              decoration: BoxDecoration(
-                color: isSelected == index ? AppColor.primary : Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.06),
-                    blurRadius: 4,
-                    offset: const Offset(0, 1),
+    return BlocBuilder<MapCubit, MapState>(
+      buildWhen: (previous, current) {
+        return previous.selectedCategory != current.selectedCategory;
+      },
+      builder: (context, state) {
+        return SizedBox(
+          height: 36.h,
+          child: ListView.builder(
+            itemCount: categories.length,
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              final label = categories[index];
+              final isSelected = state.selectedCategory == categoryKeys[index];
+              return GestureDetector(
+                onTap: () {
+                  context.read<MapCubit>().selectCategory(categoryKeys[index]);
+                },
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 100),
+                  margin: EdgeInsets.only(right: 6.w),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 14.w,
+                    vertical: 7.h,
                   ),
-                ],
-              ),
-              child: Center(
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: isSelected == index ? Colors.white : Colors.black87,
+                  decoration: BoxDecoration(
+                    color: isSelected ? AppColor.primary : Colors.white,
+                    borderRadius: BorderRadius.circular(20.r),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.06),
+                        blurRadius: 4,
+                        offset: const Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Text(
+                      label,
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w500,
+                        color: isSelected ? Colors.white : Colors.black87,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          );
-        },
-      ),
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }
 
-final categories = [
-  'All',
-  '+ Clinics',
-  'Rx Pharmacy',
-  'H Hospital',
-  'Pharmacy',
-  'Clinic',
-  'Hospital',
-];
+final categories = ['All', '+ Clinics', 'Rx Pharmacy', 'H Hospital'];
+final categoryKeys = ['all', 'clinic', 'pharmacy', 'hospital'];

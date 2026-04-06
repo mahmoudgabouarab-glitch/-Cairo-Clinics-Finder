@@ -7,46 +7,52 @@ import 'package:latlong2/latlong.dart';
 part 'map_state.dart';
 
 class MapCubit extends Cubit<MapState> {
-  MapCubit(this._repo) : super(MapInitial());
+  MapCubit(this._repo) : super(MapState());
   final ClinicsRepo _repo;
   static const _cairo = LatLng(30.0444, 31.2357);
 
   Future<LatLng> _getUserLocation() async {
-    final permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied ||
-        permission == LocationPermission.deniedForever) {
+    try {
+      final permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied ||
+          permission == LocationPermission.deniedForever) {
+        return _cairo;
+      }
+      final position = await Geolocator.getCurrentPosition();
+      return LatLng(position.latitude, position.longitude);
+    } catch (_) {
       return _cairo;
     }
-    final position = await Geolocator.getCurrentPosition();
-    return LatLng(position.latitude, position.longitude);
   }
 
   Future<void> getMap() async {
-    emit(MapLoading());
+    if (state.clinics.isNotEmpty) return;
+    emit(state.copyWith(isLoading: true));
     final result = await _repo.getClinics();
     final userLocation = await _getUserLocation();
     result.fold(
-      (failure) => emit(MapFailure(failure.message)),
-      (success) =>
-          emit(MapSuccess(userLocation: userLocation, clinics: success)),
+      (failure) =>
+          emit(state.copyWith(isLoading: false, error: failure.message)),
+      (success) => emit(
+        state.copyWith(
+          isLoading: false,
+          clinics: success,
+          userLocation: userLocation,
+        ),
+      ),
     );
   }
 
   void selectCategory(String category) {
-    if (state is! MapSuccess) return;
-    final current = state as MapSuccess;
-    emit(current.copyWith(selectedCategory: category, clearSelected: true));
+    emit(state.copyWith(selectedCategory: category, clearSelected: true));
   }
 
+  String get selectedCategory => state.selectedCategory;
   void selectClinic(ClinicModel clinic) {
-    if (state is! MapSuccess) return;
-    final current = state as MapSuccess;
-    emit(current.copyWith(selectedClinic: clinic));
+    emit(state.copyWith(selectedClinic: clinic));
   }
 
   void clearSelectedClinic() {
-    if (state is! MapSuccess) return;
-    final current = state as MapSuccess;
-    emit(current.copyWith(clearSelected: true));
+    emit(state.copyWith(clearSelected: true));
   }
 }

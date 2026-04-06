@@ -9,19 +9,22 @@ class ListOfClinic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MapCubit, MapState>(
+      buildWhen: (previous, current) {
+        return previous.filteredClinics != current.filteredClinics;
+      },
       builder: (context, state) {
-        if (state is MapSuccess) {
-          return ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            itemCount: state.clinics.length,
-            itemBuilder: (context, index) {
-              return OneItemOfClinicList(clinic: state.filteredClinics[index]);
-            },
-          );
+        if (state.isLoading) {
+          return const Center(child: CircularProgressIndicator());
         }
-        return const SizedBox.shrink();
+        return ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          padding: EdgeInsets.zero,
+          shrinkWrap: true,
+          itemCount: state.filteredClinics.length,
+          itemBuilder: (context, index) {
+            return OneItemOfClinicList(clinic: state.filteredClinics[index]);
+          },
+        );
       },
     );
   }
