@@ -9,7 +9,7 @@ class BottomPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-      initialChildSize: 0.4.h,
+      initialChildSize: 0.15.h,
       minChildSize: 0.15.h,
       maxChildSize: 0.8.h,
       builder: (context, scrollController) {

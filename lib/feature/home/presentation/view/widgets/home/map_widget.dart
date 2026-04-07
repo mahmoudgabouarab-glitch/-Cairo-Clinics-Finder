@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart' show Lottie;
 
 class MapWidget extends StatelessWidget {
   const MapWidget({super.key});
@@ -22,9 +23,17 @@ class MapWidget extends StatelessWidget {
       },
       builder: (context, state) {
         if (state.isLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+            child: Lottie.asset(
+              "assets/loading.json",
+              width: 250.w,
+              height: 250.h,
+              repeat: true,
+            ),
+          );
         }
         return FlutterMap(
+          mapController: context.read<MapCubit>().controller,
           options: MapOptions(
             initialCenter: state.userLocation!,
             initialZoom: 14.5,

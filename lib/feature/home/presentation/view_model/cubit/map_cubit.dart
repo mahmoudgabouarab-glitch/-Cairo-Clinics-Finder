@@ -2,6 +2,7 @@ import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:cairo_clinics_finder/feature/home/data/repo/clinics_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 part 'map_state.dart';
@@ -10,6 +11,7 @@ class MapCubit extends Cubit<MapState> {
   MapCubit(this._repo) : super(MapState());
   final ClinicsRepo _repo;
   static const _cairo = LatLng(30.0444, 31.2357);
+  final MapController controller = MapController();
 
   Future<LatLng> _getUserLocation() async {
     try {
@@ -51,7 +53,10 @@ class MapCubit extends Cubit<MapState> {
     emit(state.copyWith(selectedCategory: category, clearSelected: true));
   }
 
-  String get selectedCategory => state.selectedCategory;
+  void goToMyLocation() {
+    controller.move(state.userLocation!, 14);
+  }
+
   void selectClinic(ClinicModel clinic) {
     emit(state.copyWith(selectedClinic: clinic));
   }
