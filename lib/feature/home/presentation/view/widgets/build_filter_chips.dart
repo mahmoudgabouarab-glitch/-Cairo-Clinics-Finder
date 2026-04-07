@@ -21,7 +21,7 @@ class BuildFilterChips extends StatelessWidget {
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              final label = categories[index];
+              final label = categories[index].toLowerCase();
               final isSelected = state.selectedCategory == categoryKeys[index];
               return GestureDetector(
                 onTap: () {
@@ -65,5 +65,29 @@ class BuildFilterChips extends StatelessWidget {
   }
 }
 
-final categories = ['All', '+ Clinics', 'Rx Pharmacy', 'H Hospital'];
-final categoryKeys = ['all', 'clinic', 'pharmacy', 'hospital'];
+final categories = [
+  'All',
+  'Dentist',
+  'Dermatology',
+  'Ophthalmology',
+  'Pediatrics',
+  'Cardiology',
+  'Orthopedics',
+  'Neurology',
+  'Gynecology',
+  'Urology',
+  'ENT',
+];
+final categoryKeys = [
+  'all',
+  'dentist',
+  'dermatology',
+  'ophthalmology',
+  'pediatrics',
+  'cardiology',
+  'orthopedics',
+  'neurology',
+  'gynecology',
+  'urology',
+  'ent',
+];

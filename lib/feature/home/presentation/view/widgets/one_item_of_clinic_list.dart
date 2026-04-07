@@ -1,8 +1,10 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class OneItemOfClinicList extends StatelessWidget {
   final ClinicModel clinic;
@@ -10,16 +12,6 @@ class OneItemOfClinicList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, Color> textColors = {
-      'clinic': AppColor.clinicRed,
-      'pharmacy': AppColor.pharmacyGreen,
-      'hospital': AppColor.hospitalBlue,
-    };
-    final Map<String, String> labels = {
-      'clinic': '+',
-      'pharmacy': 'Rx',
-      'hospital': 'H',
-    };
     return Container(
       margin: EdgeInsets.only(bottom: 8.h),
       padding: EdgeInsets.all(10.r),
@@ -38,13 +30,10 @@ class OneItemOfClinicList extends StatelessWidget {
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Center(
-              child: Text(
-                labels[clinic.category]!,
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.bold,
-                  color: textColors[clinic.category]!,
-                ),
+              child: FaIcon(
+                ClinicTheme.markerIcon(clinic.category),
+                size: 24.sp,
+                color: ClinicTheme.markerColor(clinic.category),
               ),
             ),
           ),
@@ -65,6 +54,8 @@ class OneItemOfClinicList extends StatelessWidget {
                 Text(
                   "${clinic.category} | ${clinic.address}",
                   style: TextStyle(fontSize: 11.sp, color: Colors.grey),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 ),
               ],
             ),
@@ -96,7 +87,7 @@ class OneItemOfClinicList extends StatelessWidget {
                     color: clinic.isOpen
                         ? AppColor.openGreen
                         : AppColor.clinicRed,
-                ),
+                  ),
                 ),
               ),
             ],
@@ -106,3 +97,28 @@ class OneItemOfClinicList extends StatelessWidget {
     );
   }
 }
+
+// final Map<String, Color> _iconColors = {
+//   'dentist': const Color(0xFF1E88E5),
+//   'dermatology': const Color(0xFFE91E63),
+//   'ophthalmology': const Color(0xFF00ACC1),
+//   'pediatrics': const Color(0xFFFF7043),
+//   'cardiology': const Color(0xFFE53935),
+//   'orthopedics': const Color(0xFF6D4C41),
+//   'neurology': const Color(0xFF5E35B1),
+//   'gynecology': const Color(0xFFD81B60),
+//   'urology': const Color(0xFF039BE5),
+//   'ent': const Color(0xFF43A047),
+// };
+// final Map<String, FaIconData> _icons = {
+//   'dentist': FontAwesomeIcons.tooth,
+//   'dermatology': FontAwesomeIcons.handSparkles,
+//   'ophthalmology': FontAwesomeIcons.eye,
+//   'pediatrics': FontAwesomeIcons.child,
+//   'cardiology': FontAwesomeIcons.heartPulse,
+//   'orthopedics': FontAwesomeIcons.bone,
+//   'neurology': FontAwesomeIcons.brain,
+//   'gynecology': FontAwesomeIcons.venus,
+//   'urology': FontAwesomeIcons.droplet,
+//   'ent': FontAwesomeIcons.earListen,
+// };

@@ -1,9 +1,11 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MapWidget extends StatelessWidget {
   const MapWidget({super.key});
@@ -14,7 +16,8 @@ class MapWidget extends StatelessWidget {
       buildWhen: (previous, current) {
         return previous.userLocation != current.userLocation ||
             previous.clinics != current.clinics ||
-            previous.selectedClinic != current.selectedClinic;
+            previous.selectedClinic != current.selectedClinic ||
+            previous.isLoading != current.isLoading;
       },
       builder: (context, state) {
         if (state.isLoading) {
@@ -58,8 +61,8 @@ class MapWidget extends StatelessWidget {
                 ...state.clinics.map((clinic) {
                   return Marker(
                     point: clinic.latLng,
-                    width: 56.w,
-                    height: 56.h,
+                    width: 45.w,
+                    height: 45.h,
                     child: GestureDetector(
                       onTap: () =>
                           context.read<MapCubit>().selectClinic(clinic),
@@ -69,16 +72,17 @@ class MapWidget extends StatelessWidget {
                           shape: BoxShape.circle,
                           color: Colors.white,
                           border: Border.all(
-                            color: _markerColor(clinic.category),
+                            color: ClinicTheme.markerColor(clinic.category),
                             width: state.selectedClinic?.id == clinic.id
                                 ? 3.w
                                 : 1.5.w,
                           ),
                         ),
                         child: Center(
-                          child: Icon(
-                            _markerLabel(clinic.category),
-                            color: _markerColor(clinic.category),
+                          child: FaIcon(
+                            ClinicTheme.markerIcon(clinic.category),
+                            color: ClinicTheme.markerColor(clinic.category),
+                            size: 18.sp,
                           ),
                         ),
                       ),
@@ -91,27 +95,5 @@ class MapWidget extends StatelessWidget {
         );
       },
     );
-  }
-}
-
-Color _markerColor(String category) {
-  switch (category) {
-    case 'pharmacy':
-      return const Color(0xFF43A047);
-    case 'hospital':
-      return const Color(0xFF1565C0);
-    default:
-      return const Color(0xFFE53935);
-  }
-}
-
-IconData _markerLabel(String category) {
-  switch (category) {
-    case 'pharmacy':
-      return Icons.local_pharmacy;
-    case 'hospital':
-      return Icons.local_hospital;
-    default:
-      return Icons.sick;
   }
 }
