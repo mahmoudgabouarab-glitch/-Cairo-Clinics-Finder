@@ -1,6 +1,6 @@
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
-import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/build_filter_chips.dart';
-import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/build_search_bar.dart';
+import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/home/build_filter_chips.dart';
+import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/home/build_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

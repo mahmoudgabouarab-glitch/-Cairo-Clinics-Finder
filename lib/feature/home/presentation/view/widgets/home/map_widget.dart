@@ -1,5 +1,6 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
+import 'package:cairo_clinics_finder/feature/home/presentation/view/details_view.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,18 +65,21 @@ class MapWidget extends StatelessWidget {
                     width: 45.w,
                     height: 45.h,
                     child: GestureDetector(
-                      onTap: () =>
-                          context.read<MapCubit>().selectClinic(clinic),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => DetailsView(clinic: clinic),
+                          ),
+                        );
+                      },
+                      child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.white,
                           border: Border.all(
                             color: ClinicTheme.markerColor(clinic.category),
-                            width: state.selectedClinic?.id == clinic.id
-                                ? 3.w
-                                : 1.5.w,
+                            width: 1.5.w,
                           ),
                         ),
                         child: Center(

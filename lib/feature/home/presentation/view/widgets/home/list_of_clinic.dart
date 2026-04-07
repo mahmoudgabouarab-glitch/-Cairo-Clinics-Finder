@@ -1,4 +1,4 @@
-import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/one_item_of_clinic_list.dart';
+import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/home/one_item_of_clinic_list.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
