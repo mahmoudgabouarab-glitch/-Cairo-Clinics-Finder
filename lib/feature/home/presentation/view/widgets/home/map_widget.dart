@@ -18,7 +18,6 @@ class MapWidget extends StatelessWidget {
       buildWhen: (previous, current) {
         return previous.userLocation != current.userLocation ||
             previous.clinics != current.clinics ||
-            previous.selectedClinic != current.selectedClinic ||
             previous.isLoading != current.isLoading;
       },
       builder: (context, state) {
@@ -37,7 +36,6 @@ class MapWidget extends StatelessWidget {
           options: MapOptions(
             initialCenter: state.userLocation!,
             initialZoom: 14.5,
-            onTap: (_, _) => context.read<MapCubit>().clearSelectedClinic(),
           ),
           children: [
             TileLayer(

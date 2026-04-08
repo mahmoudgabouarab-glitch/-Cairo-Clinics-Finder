@@ -4,8 +4,8 @@ class MapState extends Equatable {
   final LatLng? userLocation;
   final List<ClinicModel> clinics;
   final String selectedCategory;
-  final ClinicModel? selectedClinic;
   final String searchQuery;
+  final SortBy sortBy;
   final bool isLoading;
   final String? error;
 
@@ -13,8 +13,8 @@ class MapState extends Equatable {
     this.userLocation,
     this.clinics = const [],
     this.selectedCategory = 'all',
-    this.selectedClinic,
     this.searchQuery = '',
+    this.sortBy = SortBy.normal,
     this.isLoading = false,
     this.error,
   });
@@ -40,23 +40,19 @@ class MapState extends Equatable {
     LatLng? userLocation,
     List<ClinicModel>? clinics,
     String? selectedCategory,
-    ClinicModel? selectedClinic,
     String? searchQuery,
+    SortBy? sortBy,
     bool? isLoading,
     String? error,
-    bool clearSelected = false,
-    bool clearError = false,
   }) {
     return MapState(
       userLocation: userLocation ?? this.userLocation,
       clinics: clinics ?? this.clinics,
       selectedCategory: selectedCategory ?? this.selectedCategory,
-      selectedClinic: clearSelected
-          ? null
-          : selectedClinic ?? this.selectedClinic,
       searchQuery: searchQuery ?? this.searchQuery,
+      sortBy: sortBy ?? this.sortBy,
       isLoading: isLoading ?? this.isLoading,
-      error: clearError ? null : error ?? this.error,
+      error: error ?? this.error,
     );
   }
 
@@ -65,9 +61,11 @@ class MapState extends Equatable {
     userLocation,
     clinics,
     selectedCategory,
-    selectedClinic,
     searchQuery,
+    sortBy,
     isLoading,
     error,
   ];
 }
+
+enum SortBy { normal, rating, reviewCount, name, nearest, isOpen }

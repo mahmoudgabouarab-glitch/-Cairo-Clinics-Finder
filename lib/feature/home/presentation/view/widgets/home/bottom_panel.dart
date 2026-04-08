@@ -1,5 +1,7 @@
+import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/home/list_of_clinic.dart';
+import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/home/sort_clinics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,9 +11,9 @@ class BottomPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-      initialChildSize: 0.15.h,
-      minChildSize: 0.15.h,
-      maxChildSize: 0.8.h,
+      initialChildSize: 0.15,
+      minChildSize: 0.15,
+      maxChildSize: 0.8,
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
@@ -30,19 +32,13 @@ class BottomPanel extends StatelessWidget {
                     width: 36.w,
                     height: 4.h,
                     decoration: BoxDecoration(
-                      color: Colors.grey[300],
+                      color: AppColor.primary.shade200,
                       borderRadius: BorderRadius.circular(2.r),
                     ),
                   ),
                 ),
                 spaceH(12),
-                Text(
-                  'Nearby places',
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                const SortClinics(),
                 spaceH(10),
                 const ListOfClinic(),
               ],

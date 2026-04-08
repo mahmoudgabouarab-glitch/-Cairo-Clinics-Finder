@@ -17,11 +17,11 @@ class BuildFilterChips extends StatelessWidget {
         return SizedBox(
           height: 36.h,
           child: ListView.builder(
-            itemCount: categories.length,
+            itemCount: categoryKeys.length,
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              final label = categories[index].toLowerCase();
+              final label = _getCategoryLabel(categoryKeys[index]);
               final isSelected = state.selectedCategory == categoryKeys[index];
               return GestureDetector(
                 onTap: () {
@@ -65,19 +65,6 @@ class BuildFilterChips extends StatelessWidget {
   }
 }
 
-final categories = [
-  'All',
-  'Dentist',
-  'Dermatology',
-  'Ophthalmology',
-  'Pediatrics',
-  'Cardiology',
-  'Orthopedics',
-  'Neurology',
-  'Gynecology',
-  'Urology',
-  'ENT',
-];
 final categoryKeys = [
   'all',
   'dentist',
@@ -91,3 +78,6 @@ final categoryKeys = [
   'urology',
   'ent',
 ];
+String _getCategoryLabel(String key) {
+  return key.replaceFirst(key[0], key[0].toUpperCase());
+}
