@@ -12,6 +12,8 @@ class SignUpFiled extends StatelessWidget {
         spaceH(40),
         CustomTextFormFiled(hint: "Name", prefixIcon: Icons.person),
         spaceH(16),
+        CustomTextFormFiled(hint: "Phone", prefixIcon: Icons.phone),
+        spaceH(16),
         CustomTextFormFiled(hint: "Email", prefixIcon: Icons.email_outlined),
         spaceH(16),
         CustomTextFormFiled(

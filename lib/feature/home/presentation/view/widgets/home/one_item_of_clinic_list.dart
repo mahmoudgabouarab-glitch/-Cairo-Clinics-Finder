@@ -1,11 +1,12 @@
+import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
-import 'package:cairo_clinics_finder/feature/home/presentation/view/details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class OneItemOfClinicList extends StatelessWidget {
   final ClinicModel clinic;
@@ -14,12 +15,7 @@ class OneItemOfClinicList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => DetailsView(clinic: clinic)),
-        );
-      },
+      onTap: () => context.push(Go.details, extra: clinic),
       child: Container(
         margin: EdgeInsets.only(bottom: 8.h),
         padding: EdgeInsets.all(10.r),

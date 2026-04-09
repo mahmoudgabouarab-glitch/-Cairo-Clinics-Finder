@@ -1,12 +1,13 @@
+import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
-import 'package:cairo_clinics_finder/feature/home/presentation/view/details_view.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart' show Lottie;
 
 class MapWidget extends StatelessWidget {
@@ -72,14 +73,7 @@ class MapWidget extends StatelessWidget {
                     width: 45.w,
                     height: 45.h,
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => DetailsView(clinic: clinic),
-                          ),
-                        );
-                      },
+                      onTap: () => context.push(Go.details, extra: clinic),
                       child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,

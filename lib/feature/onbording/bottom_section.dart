@@ -1,10 +1,9 @@
+import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
-import 'package:cairo_clinics_finder/core/utils/extension.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
-import 'package:cairo_clinics_finder/feature/auth/presentation/view/sign_in_view.dart';
-import 'package:cairo_clinics_finder/feature/auth/presentation/view/sign_up_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class BottomSection extends StatelessWidget {
   const BottomSection({super.key});
@@ -26,9 +25,7 @@ class BottomSection extends StatelessWidget {
               title: 'Login',
               subtitle: 'Welcome back! Sign in to your account',
               filled: false,
-              onTap: () {
-                context.pushAndRemoveUntil(const SignInView());
-              },
+              onTap: () => context.push(Go.signIn),
             ),
             spaceH(12),
             _OnboardingCard(
@@ -36,9 +33,7 @@ class BottomSection extends StatelessWidget {
               title: 'Create an account',
               subtitle: 'New here? Join and find clinics near you',
               filled: true,
-              onTap: () {
-                context.pushAndRemoveUntil(const SignUpView());
-              },
+              onTap: () => context.push(Go.signUp),
             ),
             const Spacer(),
             Text(

@@ -4,6 +4,7 @@ import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class DetailsAppBar extends StatelessWidget {
   final ClinicModel clinic;
@@ -17,7 +18,7 @@ class DetailsAppBar extends StatelessWidget {
       pinned: true,
       backgroundColor: Colors.teal,
       leading: GestureDetector(
-        onTap: () => Navigator.pop(context),
+        onTap: () => context.pop(),
         child: Icon(Icons.arrow_back_ios, color: Colors.white),
       ),
       flexibleSpace: FlexibleSpaceBar(
