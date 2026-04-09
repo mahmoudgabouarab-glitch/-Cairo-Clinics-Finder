@@ -12,6 +12,7 @@ class HeaderAuth extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        spaceH(48),
         Text(
           title,
           style: TextStyle(
