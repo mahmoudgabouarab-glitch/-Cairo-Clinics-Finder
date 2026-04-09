@@ -12,4 +12,9 @@ class AppColor {
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
+  static const onBordingBar = LinearGradient(
+    colors: [Colors.teal, Color(0xFFF0F4F8)],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
 }

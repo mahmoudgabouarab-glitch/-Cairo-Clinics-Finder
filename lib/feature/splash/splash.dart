@@ -1,5 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_assets.dart';
-import 'package:cairo_clinics_finder/feature/home/presentation/view/home_view.dart';
+import 'package:cairo_clinics_finder/feature/onbording/onbording.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,7 +34,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
     if (!mounted) return;
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
-        pageBuilder: (_, animation, _) => const HomeView(),
+        pageBuilder: (_, animation, _) => const Onboarding(),
         transitionsBuilder: (_, animation, _, child) {
           return FadeTransition(opacity: animation, child: child);
         },
