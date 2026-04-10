@@ -15,7 +15,7 @@ class OneItemOfClinicList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push(Go.details, extra: clinic),
+      onTap: () => context.push(GoTo.details, extra: clinic),
       child: Container(
         margin: EdgeInsets.only(bottom: 8.h),
         padding: EdgeInsets.all(10.r),

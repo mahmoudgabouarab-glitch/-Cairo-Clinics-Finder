@@ -6,8 +6,9 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth;
+  final FirebaseFirestore _firestore;
+  AuthRepoImpl(this._auth, this._firestore);
   @override
   Future<Either<Failure, UserModel>> signUp({
     required String email,
@@ -78,7 +79,14 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<void> signOut() async {
-    await _auth.signOut();
+  Future<Either<Failure, void>> signOut() async {
+    try {
+      await _auth.signOut();
+      return Right(null);
+    } on FirebaseAuthException catch (e) {
+      return Left(Failure(e.message ?? 'Sign out failed'));
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
   }
 }

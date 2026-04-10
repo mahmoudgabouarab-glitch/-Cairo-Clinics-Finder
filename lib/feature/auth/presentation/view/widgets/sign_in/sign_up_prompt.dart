@@ -17,7 +17,7 @@ class SignUpPrompt extends StatelessWidget {
           style: TextStyle(color: Colors.grey[500], fontSize: 13.sp),
         ),
         GestureDetector(
-          onTap: () => context.pushReplacement(Go.signUp),
+          onTap: () => context.pushReplacement(GoTo.signUp),
           child: Text(
             'Create one',
             style: TextStyle(

@@ -1,7 +1,8 @@
+import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_assets.dart';
-import 'package:cairo_clinics_finder/feature/onbording/onbording.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -32,15 +33,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   Future<void> _navigate() async {
     await Future.delayed(const Duration(seconds: 4));
     if (!mounted) return;
-    Navigator.of(context).pushReplacement(
-      PageRouteBuilder(
-        pageBuilder: (_, animation, _) => const Onboarding(),
-        transitionsBuilder: (_, animation, _, child) {
-          return FadeTransition(opacity: animation, child: child);
-        },
-        transitionDuration: const Duration(milliseconds: 1300),
-      ),
-    );
+    context.pushReplacement(GoTo.onBording);
   }
 
   @override

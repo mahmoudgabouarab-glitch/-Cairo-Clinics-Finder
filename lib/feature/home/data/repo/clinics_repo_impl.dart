@@ -5,7 +5,8 @@ import 'package:cairo_clinics_finder/core/errors/failures.dart';
 import 'clinics_repo.dart';
 
 class ClinicsRepoImpl implements ClinicsRepo {
-  final _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore;
+  ClinicsRepoImpl(this._firestore);
 
   @override
   Future<Either<Failure, List<ClinicModel>>> getClinics() async {

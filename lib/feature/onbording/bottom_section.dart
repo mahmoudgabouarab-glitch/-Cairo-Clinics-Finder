@@ -25,7 +25,7 @@ class BottomSection extends StatelessWidget {
               title: 'Login',
               subtitle: 'Welcome back! Sign in to your account',
               filled: false,
-              onTap: () => context.push(Go.signIn),
+              onTap: () => context.push(GoTo.signIn),
             ),
             spaceH(12),
             _OnboardingCard(
@@ -33,7 +33,7 @@ class BottomSection extends StatelessWidget {
               title: 'Create an account',
               subtitle: 'New here? Join and find clinics near you',
               filled: true,
-              onTap: () => context.push(Go.signUp),
+              onTap: () => context.push(GoTo.signUp),
             ),
             const Spacer(),
             Text(

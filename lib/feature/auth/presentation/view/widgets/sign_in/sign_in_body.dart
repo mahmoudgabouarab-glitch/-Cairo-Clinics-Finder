@@ -1,8 +1,9 @@
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
-import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shared/header_auth.dart';
+import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_in_action.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/forget_password.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_in_filed.dart';
+import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_up_listener.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_up_prompt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,9 +23,10 @@ class SignInBody extends StatelessWidget {
             const SignInFiled(),
             const ForgetPassword(),
             spaceH(24),
-            Btn(onPressed: () {}, text: "Sign In"),
+            const SignInAction(),
             spaceH(24),
             const SignUpPrompt(),
+            const SignInListener(),
           ],
         ),
       ),

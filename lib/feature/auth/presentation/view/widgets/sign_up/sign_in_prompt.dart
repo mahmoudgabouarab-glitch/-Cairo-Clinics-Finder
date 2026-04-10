@@ -17,7 +17,7 @@ class SignInPrompt extends StatelessWidget {
           style: TextStyle(color: Colors.grey[500], fontSize: 13.sp),
         ),
         GestureDetector(
-          onTap: () => context.pushReplacement(Go.signIn),
+          onTap: () => context.pushReplacement(GoTo.signIn),
           child: Text(
             'Sign in',
             style: TextStyle(
