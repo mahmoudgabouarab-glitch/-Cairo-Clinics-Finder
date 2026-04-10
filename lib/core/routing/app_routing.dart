@@ -36,7 +36,10 @@ abstract class AppRouting {
       ),
       GoRoute(
         path: GoTo.verified,
-        builder: (context, state) => VerifiedView(email: state.extra as String),
+        builder: (context, state) => BlocProvider(
+          create: (context) => VerifiedCubit(getIt<AuthRepo>()),
+          child: VerifiedView(email: state.extra as String),
+        ),
       ),
     ],
   );

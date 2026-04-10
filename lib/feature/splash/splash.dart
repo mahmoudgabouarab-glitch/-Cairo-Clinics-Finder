@@ -1,5 +1,7 @@
+import 'package:cairo_clinics_finder/core/network/service_locator.dart';
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_assets.dart';
+import 'package:cairo_clinics_finder/feature/auth/data/repo/auth_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -32,8 +34,12 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
 
   Future<void> _navigate() async {
     await Future.delayed(const Duration(seconds: 4));
+    final authRepo = getIt<AuthRepo>();
+    final isSignedIn = await authRepo.isSignedIn();
     if (!mounted) return;
-    context.pushReplacement(GoTo.onBording);
+    isSignedIn
+        ? context.pushReplacement(GoTo.home)
+        : context.pushReplacement(GoTo.onBording);
   }
 
   @override

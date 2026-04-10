@@ -31,6 +31,7 @@ class AuthRepoImpl implements AuthRepo {
           .collection('users')
           .doc(credential.user!.uid)
           .set(user.toJson());
+      await credential.user!.sendEmailVerification();
       return Right(user);
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
@@ -58,6 +59,10 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
+      await credential.user!.reload();
+      if (!credential.user!.emailVerified) {
+        return Left(Failure('Please verify your email first'));
+      }
       final doc = await _firestore
           .collection('users')
           .doc(credential.user!.uid)
@@ -88,5 +93,28 @@ class AuthRepoImpl implements AuthRepo {
     } catch (e) {
       return Left(Failure(e.toString()));
     }
+  }
+
+  @override
+  Future<bool> isVerified() async {
+    await _auth.currentUser!.reload();
+    return _auth.currentUser!.emailVerified;
+  }
+
+  @override
+  Future<Either<Failure, void>> resendVerificationEmail() async {
+    try {
+      await _auth.currentUser!.sendEmailVerification();
+      return const Right(null);
+    } on FirebaseAuthException catch (e) {
+      return Left(Failure(e.message ?? 'Failed to resend email'));
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<bool> isSignedIn() async {
+    return _auth.currentUser != null;
   }
 }

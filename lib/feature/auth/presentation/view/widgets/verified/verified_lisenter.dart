@@ -1,22 +1,22 @@
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
-import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/signin/sign_in_cubit.dart';
+import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/verified/verified_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class SignInListener extends StatelessWidget {
-  const SignInListener({super.key});
+class VerifiedLisenter extends StatelessWidget {
+  const VerifiedLisenter({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SignInCubit, SignInState>(
+    return BlocListener<VerifiedCubit, VerifiedState>(
       listener: (context, state) {
         switch (state) {
-          case SignInInitial():
+          case VerifiedInitial():
             break;
-          case SignInLoading():
+          case VerifiedLoading():
             showDialog(
               context: context,
               barrierDismissible: false,
@@ -25,11 +25,19 @@ class SignInListener extends StatelessWidget {
               ),
             );
             break;
-          case SignInSuccess():
+          case VerifiedSuccess():
             context.pop();
             context.pushReplacement(GoTo.home);
             break;
-          case SignInFailure():
+          case ResendVerifiedSuccess():
+            context.pop();
+            CustomSnackBar.show(
+              context,
+              message: state.message,
+              type: SnackBarType.success,
+            );
+            break;
+          case VerifiedFailure():
             context.pop();
             CustomSnackBar.show(
               context,

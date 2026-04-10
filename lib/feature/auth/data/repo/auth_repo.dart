@@ -16,4 +16,9 @@ abstract class AuthRepo {
   });
 
   Future<Either<Failure, void>> signOut();
+
+  Future<Either<Failure, void>> resendVerificationEmail();
+
+  Future<bool> isVerified();
+  Future<bool> isSignedIn();
 }
