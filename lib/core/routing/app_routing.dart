@@ -43,7 +43,10 @@ abstract class AppRouting {
       ),
       GoRoute(
         path: GoTo.forgetPassword,
-        builder: (context, state) => ForgetPasswordView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => ForgetPasswordCubit(getIt<AuthRepo>()),
+          child: ForgetPasswordView(),
+        ),
       ),
     ],
   );

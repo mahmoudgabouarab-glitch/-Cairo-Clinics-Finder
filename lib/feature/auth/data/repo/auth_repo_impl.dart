@@ -34,16 +34,7 @@ class AuthRepoImpl implements AuthRepo {
       await credential.user!.sendEmailVerification();
       return Right(user);
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'email-already-in-use':
-          return Left(Failure('Email already in use'));
-        case 'invalid-email':
-          return Left(Failure('Invalid email'));
-        case 'weak-password':
-          return Left(Failure('Weak password'));
-        default:
-          return Left(Failure(e.message ?? 'Sign up failed'));
-      }
+      return Left(ServerFailure.fromFirebase(e));
     } catch (e) {
       return Left(Failure(e.toString()));
     }
@@ -70,14 +61,7 @@ class AuthRepoImpl implements AuthRepo {
       final user = UserModel.fromJson(doc.data()!);
       return Right(user);
     } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'user-not-found':
-          return Left(Failure('User not found'));
-        case 'wrong-password':
-          return Left(Failure('Wrong password'));
-        default:
-          return Left(Failure(e.message ?? 'Sign in failed'));
-      }
+      return Left(ServerFailure.fromFirebase(e));
     } catch (e) {
       return Left(Failure(e.toString()));
     }
@@ -89,7 +73,7 @@ class AuthRepoImpl implements AuthRepo {
       await _auth.signOut();
       return Right(null);
     } on FirebaseAuthException catch (e) {
-      return Left(Failure(e.message ?? 'Sign out failed'));
+      return Left(ServerFailure.fromFirebase(e));
     } catch (e) {
       return Left(Failure(e.toString()));
     }
@@ -107,7 +91,7 @@ class AuthRepoImpl implements AuthRepo {
       await _auth.currentUser!.sendEmailVerification();
       return const Right(null);
     } on FirebaseAuthException catch (e) {
-      return Left(Failure(e.message ?? 'Failed to resend email'));
+      return Left(ServerFailure.fromFirebase(e));
     } catch (e) {
       return Left(Failure(e.toString()));
     }
@@ -116,5 +100,17 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<bool> isSignedIn() async {
     return _auth.currentUser != null;
+  }
+
+  @override
+  Future<Either<Failure, void>> forgetPassword({required String email}) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      return const Right(null);
+    } on FirebaseAuthException catch (e) {
+      return Left(ServerFailure.fromFirebase(e));
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
   }
 }

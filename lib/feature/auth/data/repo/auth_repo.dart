@@ -18,7 +18,7 @@ abstract class AuthRepo {
   Future<Either<Failure, void>> signOut();
 
   Future<Either<Failure, void>> resendVerificationEmail();
-
+  Future<Either<Failure, void>> forgetPassword({required String email});
   Future<bool> isVerified();
   Future<bool> isSignedIn();
 }
