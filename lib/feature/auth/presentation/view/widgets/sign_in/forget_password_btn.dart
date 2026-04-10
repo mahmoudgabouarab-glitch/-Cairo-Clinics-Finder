@@ -1,17 +1,18 @@
-
+import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
-class ForgetPassword extends StatelessWidget {
-  const ForgetPassword({super.key});
+class ForgetPasswordBtn extends StatelessWidget {
+  const ForgetPasswordBtn({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
       child: TextButton(
-        onPressed: () {},
+        onPressed: () => context.push(GoTo.forgetPassword),
         child: Text(
           'Forgot password?',
           style: TextStyle(color: AppColor.primary, fontSize: 13.sp),

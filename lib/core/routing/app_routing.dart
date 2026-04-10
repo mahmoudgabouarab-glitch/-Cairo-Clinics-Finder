@@ -41,6 +41,10 @@ abstract class AppRouting {
           child: VerifiedView(email: state.extra as String),
         ),
       ),
+      GoRoute(
+        path: GoTo.forgetPassword,
+        builder: (context, state) => ForgetPasswordView(),
+      ),
     ],
   );
 }

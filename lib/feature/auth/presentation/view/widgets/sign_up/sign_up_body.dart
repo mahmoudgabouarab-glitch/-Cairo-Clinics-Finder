@@ -12,23 +12,27 @@ class SignUpBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            HeaderAuth(
-              title: "Create account",
-              subtitle: "Join and find clinics near you",
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          HeaderAuth(
+            title: "Create account",
+            subtitle: "Join and find clinics near you",
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 24.h),
+            child: Column(
+              children: [
+                const SignUpFiled(),
+                const SignUpAction(),
+                spaceH(24),
+                const SignInPrompt(),
+                const SignUpListener(),
+              ],
             ),
-            const SignUpFiled(),
-            const SignUpAction(),
-            spaceH(24),
-            const SignInPrompt(),
-            const SignUpListener(),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

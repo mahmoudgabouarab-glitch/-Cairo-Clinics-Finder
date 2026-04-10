@@ -4,6 +4,7 @@ import 'package:cairo_clinics_finder/feature/auth/data/repo/auth_repo.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/Verified_view.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/sign_in_view.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/sign_up_view.dart';
+import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/forget_password_screen.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/signin/sign_in_cubit.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/signup/sign_up_cubit.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/verified/verified_cubit.dart';

@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/utils/app_assets.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,7 @@ class TopSection extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 48.h, horizontal: 32.w),
       child: Column(
         children: [
-          Image.asset(
-            'assets/onbording.png',
-            height: 80.h,
-            color: Colors.white54,
-          ),
+          Image.asset(AppAssets.onBording, height: 80.h, color: Colors.white54),
           spaceH(16),
           Text(
             'Welcome to',

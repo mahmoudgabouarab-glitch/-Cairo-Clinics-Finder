@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class VerifiedTitle extends StatelessWidget {
-  const VerifiedTitle({super.key});
+class AuthTitle extends StatelessWidget {
+  final String title;
+  const AuthTitle({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Check your inbox',
+      title,
       style: TextStyle(
         fontSize: 24.sp,
         fontWeight: FontWeight.w700,

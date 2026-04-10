@@ -5,4 +5,5 @@ class GoTo {
   static const String onBording = '/onBording';
   static const String details = '/details';
   static const String verified = '/verified';
+  static const String forgetPassword = '/forgetPassword';
 }

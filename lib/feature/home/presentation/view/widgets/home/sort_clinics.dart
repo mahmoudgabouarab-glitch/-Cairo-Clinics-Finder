@@ -1,8 +1,12 @@
+import 'package:cairo_clinics_finder/core/network/service_locator.dart';
+import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/feature/auth/data/repo/auth_repo.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class SortClinics extends StatelessWidget {
   const SortClinics({super.key});
@@ -58,6 +62,17 @@ class SortClinics extends StatelessWidget {
                     context.read<MapCubit>().sortClinics(value);
                   }
                 },
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: IconButton(
+                onPressed: () async {
+                  final out = getIt<AuthRepo>();
+                  await out.signOut();
+                  context.pushReplacement(GoTo.onBording);
+                },
+                icon: Icon(Icons.logout, color: AppColor.primary),
               ),
             ),
           ],

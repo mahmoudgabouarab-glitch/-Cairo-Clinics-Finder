@@ -1,10 +1,10 @@
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/resend_button.dart';
-import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/verified_icon.dart';
+import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shared/auth_icon.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/verified_lisenter.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/verified_subtitle.dart';
-import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/verified_title.dart';
+import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shared/auth_title.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/verified/verified_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,9 +23,9 @@ class VerifiedBody extends StatelessWidget {
         child: Column(
           children: [
             const Spacer(),
-            const VerifiedIcon(),
+            const AuthIcon(icon: Icons.mark_email_unread_outlined),
             spaceH(32),
-            const VerifiedTitle(),
+            const AuthTitle(title: "Check your email"),
             spaceH(12),
             VerifiedSubtitle(email: email),
             const Spacer(),
