@@ -27,12 +27,7 @@ class SignUpListener extends StatelessWidget {
             break;
           case SignUpSuccess():
             context.pop();
-            CustomSnackBar.show(
-              context,
-              message: "Account created successfully",
-              type: SnackBarType.success,
-            );
-            context.pushReplacement(GoTo.home);
+            context.push(GoTo.verified, extra: state.user.email);
             break;
           case SignUpFailure():
             context.pop();

@@ -1,4 +1,4 @@
-import 'package:cairo_clinics_finder/core/routing/app_routing.dart';
+import 'package:cairo_clinics_finder/core/routing/routing_import.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

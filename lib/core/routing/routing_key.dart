@@ -4,4 +4,5 @@ class GoTo {
   static const String home = '/home';
   static const String onBording = '/onBording';
   static const String details = '/details';
+  static const String verified = '/verified';
 }
