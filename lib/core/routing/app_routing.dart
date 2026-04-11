@@ -28,7 +28,13 @@ abstract class AppRouting {
           child: SignUpView(),
         ),
       ),
-      GoRoute(path: GoTo.home, builder: (context, state) => HomeView()),
+      GoRoute(
+        path: GoTo.home,
+        builder: (context, state) => BlocProvider(
+          create: (context) => MapCubit(getIt<ClinicsRepo>())..getMap(),
+          child: HomeView(),
+        ),
+      ),
       GoRoute(
         path: GoTo.details,
         builder: (context, state) =>
