@@ -1,9 +1,11 @@
+import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/edit_profile/edit_profile_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfileView extends StatelessWidget {
-  const EditProfileView({super.key});
+  final ProfileModel profileModel;
+  const EditProfileView({super.key, required this.profileModel});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class EditProfileView extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: EditProfileBody(),
+      body: EditProfileBody(profileModel: profileModel),
     );
   }
 }

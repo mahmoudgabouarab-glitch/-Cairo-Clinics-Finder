@@ -22,4 +22,23 @@ class ProfileRepoImpl implements ProfileRepo {
       return Left(Failure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> editProfile({
+    required String name,
+    required String phone,
+  }) async {
+    try {
+      final user = _auth.currentUser!.uid;
+      await _firestore.collection('users').doc(user).update({
+        'name': name,
+        'phone': phone,
+      });
+      return const Right(null);
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure.fromFirebase(e));
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
 }

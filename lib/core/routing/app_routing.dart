@@ -29,26 +29,6 @@ abstract class AppRouting {
         ),
       ),
       GoRoute(
-        path: GoTo.home,
-        builder: (context, state) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => MapCubit(getIt<ClinicsRepo>())..getMap(),
-            ),
-            BlocProvider(
-              create: (context) =>
-                  ProfileCubit(getIt<ProfileRepo>())..getProfile(),
-            ),
-          ],
-          child: HomeView(),
-        ),
-      ),
-      GoRoute(
-        path: GoTo.details,
-        builder: (context, state) =>
-            DetailsView(clinic: state.extra as ClinicModel),
-      ),
-      GoRoute(
         path: GoTo.verified,
         builder: (context, state) => BlocProvider(
           create: (context) => VerifiedCubit(getIt<AuthRepo>()),
@@ -63,13 +43,31 @@ abstract class AppRouting {
         ),
       ),
       GoRoute(
-        path: GoTo.profile,
+        path: GoTo.home,
+        builder: (context, state) => BlocProvider(
+          create: (context) => MapCubit(getIt<ClinicsRepo>())..getMap(),
+          child: const HomeView(),
+        ),
+      ),
+      GoRoute(
+        path: GoTo.details,
         builder: (context, state) =>
-            ProfileView(profileModel: state.extra as ProfileModel),
+            DetailsView(clinic: state.extra as ClinicModel),
+      ),
+
+      GoRoute(
+        path: GoTo.profile,
+        builder: (_, state) => BlocProvider(
+          create: (_) => ProfileCubit(getIt<ProfileRepo>())..getProfile(),
+          child: const ProfileView(),
+        ),
       ),
       GoRoute(
         path: GoTo.editProfile,
-        builder: (context, state) => EditProfileView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => EditProfileCubit(getIt<ProfileRepo>()),
+          child: EditProfileView(profileModel: state.extra as ProfileModel),
+        ),
       ),
     ],
   );

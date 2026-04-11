@@ -4,4 +4,8 @@ import 'package:dartz/dartz.dart';
 
 abstract class ProfileRepo {
   Future<Either<Failure, ProfileModel>> getProfile();
+  Future<Either<Failure, void>> editProfile({
+    required String name,
+    required String phone,
+  });
 }

@@ -2,12 +2,14 @@ import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
+import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class ActionsCard extends StatelessWidget {
-  const ActionsCard({super.key});
+  final ProfileModel profileModel;
+  const ActionsCard({super.key, required this.profileModel});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class ActionsCard extends StatelessWidget {
           _ActionRow(
             icon: Icons.edit_outlined,
             title: 'Edit Profile',
-            onTap: () => context.push(GoTo.editProfile),
+            onTap: () => context.push(GoTo.editProfile, extra: profileModel),
           ),
           _ActionRow(
             icon: Icons.lock_outline,
