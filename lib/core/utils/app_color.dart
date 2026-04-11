@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColor {
   static const primary = Colors.teal;
+  static const iconBg = Color(0xFFe0f2f1);
   static const clinicRed = Color(0xFFE53935);
   static const background = Color(0xFFE8F5E9);
   static const cardBg = Color(0xFFF9F9F9);

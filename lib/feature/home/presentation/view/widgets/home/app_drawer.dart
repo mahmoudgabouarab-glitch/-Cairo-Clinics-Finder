@@ -1,7 +1,9 @@
+import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -10,7 +12,6 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: const Color(0xFFF0F4F8),
-
       child: Column(
         children: [
           _DrawerHeader(),
@@ -18,7 +19,7 @@ class AppDrawer extends StatelessWidget {
           _DrawerItem(
             icon: Icons.person_outline,
             title: 'My Profile',
-            onTap: () {},
+            onTap: () => context.push(GoTo.profile),
           ),
           _DrawerItem(
             icon: Icons.add_business_outlined,

@@ -6,4 +6,5 @@ class GoTo {
   static const String details = '/details';
   static const String verified = '/verified';
   static const String forgetPassword = '/forgetPassword';
+  static const String profile = '/profile';
 }

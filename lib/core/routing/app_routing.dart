@@ -54,6 +54,7 @@ abstract class AppRouting {
           child: ForgetPasswordView(),
         ),
       ),
+      GoRoute(path: GoTo.profile, builder: (context, state) => ProfileView()),
     ],
   );
 }

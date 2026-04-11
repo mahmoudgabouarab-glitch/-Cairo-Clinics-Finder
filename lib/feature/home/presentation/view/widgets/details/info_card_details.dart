@@ -1,0 +1,55 @@
+import 'package:cairo_clinics_finder/core/widgets/custom_info_row.dart';
+import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class InfoCardDetails extends StatelessWidget {
+  final ClinicModel clinic;
+  const InfoCardDetails({super.key, required this.clinic});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16.r),
+      ),
+      child: Column(
+        children: [
+          CustomInfoRow(
+            icon: Icons.category_outlined,
+            label: 'Specialty',
+            value: clinic.category,
+          ),
+          _divider(),
+          CustomInfoRow(
+            icon: Icons.location_on_outlined,
+            label: 'Address',
+            value: clinic.address,
+          ),
+          _divider(),
+          GestureDetector(
+            onTap: () async =>
+                await launchUrl(Uri.parse('https://wa.me/+2${clinic.phone}')),
+            child: CustomInfoRow(
+              icon: Icons.phone_outlined,
+              label: 'Phone',
+              value: clinic.phone,
+              isLink: true,
+            ),
+          ),
+          _divider(),
+          CustomInfoRow(
+            icon: Icons.access_time_outlined,
+            label: 'Hours',
+            value: clinic.hours,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _divider() => Divider(height: 24.h, color: Colors.grey[200]);
+}
