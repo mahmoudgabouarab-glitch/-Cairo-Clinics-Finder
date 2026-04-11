@@ -1,10 +1,12 @@
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_info_row.dart';
+import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InfoCardProfile extends StatelessWidget {
-  const InfoCardProfile({super.key});
+  final ProfileModel state;
+  const InfoCardProfile({super.key, required this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +33,20 @@ class InfoCardProfile extends StatelessWidget {
           CustomInfoRow(
             icon: Icons.person_outline,
             label: 'Full name',
-            value: 'Mahmoud A. Elsayed',
+            value: state.name,
           ),
           _divider(),
           CustomInfoRow(
             icon: Icons.email_outlined,
             label: 'Email',
-            value: 'mahmoud@email.com',
+            value: state.email,
           ),
 
           _divider(),
           CustomInfoRow(
             icon: Icons.phone_outlined,
             label: 'Phone',
-            value: '01012345678',
+            value: state.phone,
           ),
         ],
       ),

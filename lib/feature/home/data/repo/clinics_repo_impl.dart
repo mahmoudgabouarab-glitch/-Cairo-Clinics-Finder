@@ -17,7 +17,7 @@ class ClinicsRepoImpl implements ClinicsRepo {
 
       return Right(result);
     } on FirebaseException catch (e) {
-      return Left(ServerFailure(e.toString()));
+      return Left(FirestoreFailure.fromFirebase(e));
     }
   }
 }

@@ -30,8 +30,16 @@ abstract class AppRouting {
       ),
       GoRoute(
         path: GoTo.home,
-        builder: (context, state) => BlocProvider(
-          create: (context) => MapCubit(getIt<ClinicsRepo>())..getMap(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => MapCubit(getIt<ClinicsRepo>())..getMap(),
+            ),
+            BlocProvider(
+              create: (context) =>
+                  ProfileCubit(getIt<ProfileRepo>())..getProfile(),
+            ),
+          ],
           child: HomeView(),
         ),
       ),
@@ -54,7 +62,11 @@ abstract class AppRouting {
           child: ForgetPasswordView(),
         ),
       ),
-      GoRoute(path: GoTo.profile, builder: (context, state) => ProfileView()),
+      GoRoute(
+        path: GoTo.profile,
+        builder: (context, state) =>
+            ProfileView(profileModel: state.extra as ProfileModel),
+      ),
     ],
   );
 }

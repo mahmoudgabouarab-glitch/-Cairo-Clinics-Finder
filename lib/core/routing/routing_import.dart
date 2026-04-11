@@ -15,7 +15,10 @@ import 'package:cairo_clinics_finder/feature/home/presentation/view/details_view
 import 'package:cairo_clinics_finder/feature/home/presentation/view/home_view.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:cairo_clinics_finder/feature/onbording/onbording.dart';
+import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
+import 'package:cairo_clinics_finder/feature/profile/data/repo/profile_repo.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/profile_view.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/profile_cubit.dart';
 import 'package:cairo_clinics_finder/feature/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
