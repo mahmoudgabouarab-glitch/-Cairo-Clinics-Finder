@@ -5,39 +5,64 @@ class Failure {
   const Failure(this.message);
 }
 
-class ServerFailure extends Failure {
-  const ServerFailure(super.message);
-  factory ServerFailure.fromFirebase(FirebaseAuthException e) {
+class AuthFirebseFailure extends Failure {
+  const AuthFirebseFailure(super.message);
+  factory AuthFirebseFailure.fromFirebase(FirebaseAuthException e) {
     switch (e.code) {
       case 'invalid-email':
-        return const ServerFailure('Invalid email address');
+        return const AuthFirebseFailure('Invalid email address');
 
       case 'user-not-found':
-        return const ServerFailure('Invalid email or password');
+        return const AuthFirebseFailure('Invalid email or password');
 
       case 'wrong-password':
-        return const ServerFailure('Invalid email or password');
+        return const AuthFirebseFailure('Invalid email or password');
 
       case 'email-already-in-use':
-        return const ServerFailure('Email already in use');
+        return const AuthFirebseFailure('Email already in use');
 
       case 'weak-password':
-        return const ServerFailure('Password is too weak');
+        return const AuthFirebseFailure('Password is too weak');
 
       case 'user-disabled':
-        return const ServerFailure('This account has been disabled');
+        return const AuthFirebseFailure('This account has been disabled');
 
       case 'too-many-requests':
-        return const ServerFailure('Too many requests, try again later');
+        return const AuthFirebseFailure('Too many requests, try again later');
 
       case 'network-request-failed':
-        return const ServerFailure('Check your internet connection');
+        return const AuthFirebseFailure('Check your internet connection');
 
       case 'invalid-credential':
-        return const ServerFailure('Invalid credentials');
+        return const AuthFirebseFailure('Invalid credentials');
 
       default:
-        return const ServerFailure('Something went wrong, please try again');
+        return const AuthFirebseFailure(
+          'Something went wrong, please try again',
+        );
+    }
+  }
+}
+
+class FirestoreFailure extends Failure {
+  const FirestoreFailure(super.message);
+
+  factory FirestoreFailure.fromFirebase(FirebaseException e) {
+    switch (e.code) {
+      case 'permission-denied':
+        return const FirestoreFailure('You don’t have permission');
+
+      case 'not-found':
+        return const FirestoreFailure('Data not found');
+
+      case 'unavailable':
+        return const FirestoreFailure('Service unavailable');
+
+      case 'deadline-exceeded':
+        return const FirestoreFailure('Request timeout');
+
+      default:
+        return FirestoreFailure(e.message ?? 'Database error');
     }
   }
 }

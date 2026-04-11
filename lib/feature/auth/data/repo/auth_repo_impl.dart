@@ -34,7 +34,7 @@ class AuthRepoImpl implements AuthRepo {
       await credential.user!.sendEmailVerification();
       return Right(user);
     } on FirebaseAuthException catch (e) {
-      return Left(ServerFailure.fromFirebase(e));
+      return Left(AuthFirebseFailure.fromFirebase(e));
     } catch (e) {
       return Left(Failure(e.toString()));
     }
@@ -61,7 +61,7 @@ class AuthRepoImpl implements AuthRepo {
       final user = UserModel.fromJson(doc.data()!);
       return Right(user);
     } on FirebaseAuthException catch (e) {
-      return Left(ServerFailure.fromFirebase(e));
+      return Left(AuthFirebseFailure.fromFirebase(e));
     } catch (e) {
       return Left(Failure(e.toString()));
     }
@@ -73,7 +73,7 @@ class AuthRepoImpl implements AuthRepo {
       await _auth.signOut();
       return Right(null);
     } on FirebaseAuthException catch (e) {
-      return Left(ServerFailure.fromFirebase(e));
+      return Left(AuthFirebseFailure.fromFirebase(e));
     } catch (e) {
       return Left(Failure(e.toString()));
     }
@@ -91,7 +91,7 @@ class AuthRepoImpl implements AuthRepo {
       await _auth.currentUser!.sendEmailVerification();
       return const Right(null);
     } on FirebaseAuthException catch (e) {
-      return Left(ServerFailure.fromFirebase(e));
+      return Left(AuthFirebseFailure.fromFirebase(e));
     } catch (e) {
       return Left(Failure(e.toString()));
     }
@@ -108,7 +108,7 @@ class AuthRepoImpl implements AuthRepo {
       await _auth.sendPasswordResetEmail(email: email);
       return const Right(null);
     } on FirebaseAuthException catch (e) {
-      return Left(ServerFailure.fromFirebase(e));
+      return Left(AuthFirebseFailure.fromFirebase(e));
     } catch (e) {
       return Left(Failure(e.toString()));
     }
