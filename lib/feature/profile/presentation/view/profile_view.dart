@@ -1,5 +1,5 @@
 import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
-import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/profile_body.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/profile/profile_body.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {

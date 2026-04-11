@@ -1,21 +1,17 @@
+import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ActionsCard extends StatelessWidget {
   const ActionsCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(20.r),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: Colors.grey.shade100),
-      ),
+    return CustomCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,7 +27,7 @@ class ActionsCard extends StatelessWidget {
           _ActionRow(
             icon: Icons.edit_outlined,
             title: 'Edit Profile',
-            onTap: () {},
+            onTap: () => context.push(GoTo.editProfile),
           ),
           _ActionRow(
             icon: Icons.lock_outline,
@@ -71,10 +67,7 @@ class _ActionRow extends StatelessWidget {
       leading: Icon(icon, color: color, size: 20.r),
       title: Text(
         title,
-        style: TextStyle(
-          fontSize: 14.sp,
-          color: color,
-        ),
+        style: TextStyle(fontSize: 14.sp, color: color),
       ),
       trailing: isDestructive
           ? null

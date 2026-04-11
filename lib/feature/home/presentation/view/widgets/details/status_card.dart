@@ -1,5 +1,6 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,12 +11,7 @@ class StatusCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.r),
-      ),
+    return CustomCard(
       child: Row(
         children: [
           const Icon(Icons.star, color: Colors.amber),

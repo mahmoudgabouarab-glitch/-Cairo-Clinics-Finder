@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_info_row.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +11,7 @@ class InfoCardProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(16.r),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: Colors.grey.shade100),
-      ),
+    return CustomCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

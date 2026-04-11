@@ -1,8 +1,8 @@
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
-import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/actions_card.dart';
-import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/info_card_profile.dart';
-import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/profile_app_bar.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/profile/actions_card.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/profile/info_card_profile.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/profile/profile_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

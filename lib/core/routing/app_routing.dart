@@ -67,6 +67,10 @@ abstract class AppRouting {
         builder: (context, state) =>
             ProfileView(profileModel: state.extra as ProfileModel),
       ),
+      GoRoute(
+        path: GoTo.editProfile,
+        builder: (context, state) => EditProfileView(),
+      ),
     ],
   );
 }

@@ -1,5 +1,5 @@
 import 'package:cairo_clinics_finder/core/widgets/custom_drawer_item.dart';
-import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/profile_builed.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/profile/profile_builed.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
