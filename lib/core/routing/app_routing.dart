@@ -54,7 +54,6 @@ abstract class AppRouting {
         builder: (context, state) =>
             DetailsView(clinic: state.extra as ClinicModel),
       ),
-
       GoRoute(
         path: GoTo.profile,
         builder: (_, state) => BlocProvider(
@@ -64,10 +63,20 @@ abstract class AppRouting {
       ),
       GoRoute(
         path: GoTo.editProfile,
-        builder: (context, state) => BlocProvider(
-          create: (context) => EditProfileCubit(getIt<ProfileRepo>()),
-          child: EditProfileView(profileModel: state.extra as ProfileModel),
-        ),
+        builder: (context, state) {
+          final data = state.extra as Map;
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => EditProfileCubit(getIt<ProfileRepo>()),
+              ),
+              BlocProvider.value(value: data['cubit'] as ProfileCubit),
+            ],
+            child: EditProfileView(
+              profileModel: data['profile'] as ProfileModel,
+            ),
+          );
+        },
       ),
     ],
   );

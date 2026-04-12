@@ -4,7 +4,7 @@ import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.da
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/edit_profile/edit_profile_avatar.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/edit_profile/edit_profile_filed.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/edit_profile/edit_profile_listener.dart';
-import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/cubit/edit_profile_cubit.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/edit_profile/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
