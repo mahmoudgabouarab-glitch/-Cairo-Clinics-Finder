@@ -44,8 +44,15 @@ abstract class AppRouting {
       ),
       GoRoute(
         path: GoTo.home,
-        builder: (context, state) => BlocProvider(
-          create: (context) => MapCubit(getIt<ClinicsRepo>())..getMap(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => MapCubit(getIt<ClinicsRepo>())..getMap(),
+            ),
+            BlocProvider(
+              create: (_) => ProfileCubit(getIt<ProfileRepo>())..getProfile(),
+            ),
+          ],
           child: const HomeView(),
         ),
       ),
@@ -56,8 +63,8 @@ abstract class AppRouting {
       ),
       GoRoute(
         path: GoTo.profile,
-        builder: (_, state) => BlocProvider(
-          create: (_) => ProfileCubit(getIt<ProfileRepo>())..getProfile(),
+        builder: (context, state) => BlocProvider.value(
+          value: state.extra as ProfileCubit,
           child: const ProfileView(),
         ),
       ),

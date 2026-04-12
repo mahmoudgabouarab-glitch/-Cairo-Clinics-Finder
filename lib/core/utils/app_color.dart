@@ -18,4 +18,9 @@ class AppColor {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   );
+  static const drawer = LinearGradient(
+    colors: [Colors.teal, Color(0xFFF0F4F8)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 }
