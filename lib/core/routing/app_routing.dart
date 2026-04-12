@@ -98,6 +98,11 @@ abstract class AppRouting {
           child: const ChangePasswordView(),
         ),
       ),
+
+      GoRoute(
+        path: GoTo.addClinic,
+        builder: (context, state) => const AddClinicView(),
+      ),
     ],
   );
 }

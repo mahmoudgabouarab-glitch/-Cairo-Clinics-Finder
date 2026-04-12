@@ -27,7 +27,7 @@ class AppDrawer extends StatelessWidget {
           DrawerItem(
             icon: Icons.add_business_outlined,
             title: 'Add Clinic',
-            onTap: () {},
+            onTap: () => context.push(GoTo.addClinic),
           ),
           DrawerItem(
             icon: Icons.favorite_outline,

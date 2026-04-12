@@ -19,7 +19,7 @@ class CustomTextFormFiled extends StatefulWidget {
   final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
   final bool? readOnly;
-  final void Function(PointerDownEvent)? onTap;
+  final void Function()? onTap;
 
   const CustomTextFormFiled({
     super.key,
@@ -56,6 +56,7 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: widget.onTap,
       readOnly: widget.readOnly ?? false,
       inputFormatters: widget.inputFormatters,
       maxLength: widget.maxLength,
