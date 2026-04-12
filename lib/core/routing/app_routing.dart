@@ -88,7 +88,10 @@ abstract class AppRouting {
 
       GoRoute(
         path: GoTo.changePassword,
-        builder: (context, state) => const ChangePasswordView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => ChangePasswordCubit(getIt<ProfileRepo>()),
+          child: const ChangePasswordView(),
+        ),
       ),
     ],
   );

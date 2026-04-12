@@ -41,4 +41,25 @@ class ProfileRepoImpl implements ProfileRepo {
       return Left(Failure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> changePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    try {
+      final user = _auth.currentUser!;
+      final credential = EmailAuthProvider.credential(
+        email: user.email!,
+        password: oldPassword,
+      );
+      await user.reauthenticateWithCredential(credential);
+      await user.updatePassword(newPassword);
+      return const Right(null);
+    } on FirebaseAuthException catch (e) {
+      return Left(AuthFirebseFailure.fromFirebase(e));
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
 }

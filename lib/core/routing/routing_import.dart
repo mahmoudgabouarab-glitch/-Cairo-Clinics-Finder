@@ -20,6 +20,7 @@ import 'package:cairo_clinics_finder/feature/profile/data/repo/profile_repo.dart
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/change_password_view.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/edit_profile_view.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/profile_view.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/change_password/change_password_cubit.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/edit_profile/edit_profile_cubit.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:cairo_clinics_finder/feature/splash/splash.dart';
