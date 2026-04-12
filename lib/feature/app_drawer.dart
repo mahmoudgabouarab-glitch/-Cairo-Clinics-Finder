@@ -14,39 +14,28 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      //backgroundColor: const Color(0xFFF0F4F8),
-      child: Container(
-        decoration: BoxDecoration(gradient: AppColor.drawer.withOpacity(0.75)),
-        child: Column(
-          children: [
-            _DrawerHeader(),
-            DrawerItem(
-              icon: Icons.person_outline,
-              title: 'My Profile',
-              onTap: () => context.push(
-                GoTo.profile,
-                extra: context.read<ProfileCubit>(),
-              ),
-            ),
-            DrawerItem(
-              icon: Icons.add_business_outlined,
-              title: 'Add Clinic',
-              onTap: () {},
-            ),
-            DrawerItem(
-              icon: Icons.favorite_outline,
-              title: 'Saved Clinics',
-              onTap: () {},
-            ),
-            DrawerItem(icon: Icons.info_outline, title: 'About', onTap: () {}),
-            DrawerItem(
-              icon: Icons.logout,
-              title: 'Logout',
-              isDestructive: true,
-              onTap: () {},
-            ),
-          ],
-        ),
+      backgroundColor: const Color(0xFFF0F4F8),
+      child: Column(
+        children: [
+          _DrawerHeader(),
+          DrawerItem(
+            icon: Icons.person_outline,
+            title: 'My Profile',
+            onTap: () =>
+                context.push(GoTo.profile, extra: context.read<ProfileCubit>()),
+          ),
+          DrawerItem(
+            icon: Icons.add_business_outlined,
+            title: 'Add Clinic',
+            onTap: () {},
+          ),
+          DrawerItem(
+            icon: Icons.favorite_outline,
+            title: 'Saved Clinics',
+            onTap: () {},
+          ),
+          DrawerItem(icon: Icons.info_outline, title: 'About', onTap: () {}),
+        ],
       ),
     );
   }
@@ -66,6 +55,9 @@ class _DrawerHeader extends StatelessWidget {
             );
           case ProfileSuccess():
             return Container(
+              decoration: BoxDecoration(
+                gradient: AppColor.drawer.withOpacity(0.75),
+              ),
               width: double.infinity,
               padding: EdgeInsets.only(top: 60.h, left: 16.w, right: 16.w),
               child: Column(

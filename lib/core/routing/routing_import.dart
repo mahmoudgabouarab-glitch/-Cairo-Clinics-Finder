@@ -23,6 +23,7 @@ import 'package:cairo_clinics_finder/feature/profile/presentation/view/profile_v
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/change_password/change_password_cubit.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/edit_profile/edit_profile_cubit.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/signout/sign_out_cubit.dart';
 import 'package:cairo_clinics_finder/feature/splash/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

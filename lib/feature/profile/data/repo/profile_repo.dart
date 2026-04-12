@@ -12,4 +12,6 @@ abstract class ProfileRepo {
     required String oldPassword,
     required String newPassword,
   });
+  Future<Either<Failure, void>> signOut();
+
 }

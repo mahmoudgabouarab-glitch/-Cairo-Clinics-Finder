@@ -3,7 +3,9 @@ import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/profile/sign_out_listener.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/signout/sign_out_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,8 +50,9 @@ class ActionsCard extends StatelessWidget {
             icon: Icons.logout,
             title: 'Logout',
             isDestructive: true,
-            onTap: () {},
+            onTap: () => context.read<SignOutCubit>().signOut(),
           ),
+          SignOutListener(),
         ],
       ),
     );

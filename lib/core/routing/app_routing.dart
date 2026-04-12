@@ -63,8 +63,13 @@ abstract class AppRouting {
       ),
       GoRoute(
         path: GoTo.profile,
-        builder: (context, state) => BlocProvider.value(
-          value: state.extra as ProfileCubit,
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: state.extra as ProfileCubit),
+            BlocProvider(
+              create: (context) => SignOutCubit(getIt<ProfileRepo>()),
+            ),
+          ],
           child: const ProfileView(),
         ),
       ),
