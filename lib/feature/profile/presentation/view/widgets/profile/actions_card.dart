@@ -42,7 +42,7 @@ class ActionsCard extends StatelessWidget {
           _ActionRow(
             icon: Icons.lock_outline,
             title: 'Change Password',
-            onTap: () {},
+            onTap: () => context.push(GoTo.changePassword),
           ),
           _ActionRow(
             icon: Icons.logout,

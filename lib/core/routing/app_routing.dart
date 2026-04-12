@@ -85,6 +85,11 @@ abstract class AppRouting {
           );
         },
       ),
+
+      GoRoute(
+        path: GoTo.changePassword,
+        builder: (context, state) => const ChangePasswordView(),
+      ),
     ],
   );
 }

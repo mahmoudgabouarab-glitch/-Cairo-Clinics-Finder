@@ -1,7 +1,7 @@
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/resend_button.dart';
-import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shared/auth_icon.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_title_icon.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/verified_lisenter.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/verified_subtitle.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shared/auth_title.dart';
@@ -23,7 +23,7 @@ class VerifiedBody extends StatelessWidget {
         child: Column(
           children: [
             const Spacer(),
-            const AuthIcon(icon: Icons.mark_email_unread_outlined),
+            const CustomTitleIcon(icon: Icons.mark_email_unread_outlined),
             spaceH(32),
             const AuthTitle(title: "Check your email"),
             spaceH(12),

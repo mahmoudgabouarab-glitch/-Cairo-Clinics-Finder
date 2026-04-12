@@ -17,6 +17,7 @@ import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/
 import 'package:cairo_clinics_finder/feature/onbording/onbording.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/repo/profile_repo.dart';
+import 'package:cairo_clinics_finder/feature/profile/presentation/view/change_password_view.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/edit_profile_view.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/profile_view.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/edit_profile/edit_profile_cubit.dart';

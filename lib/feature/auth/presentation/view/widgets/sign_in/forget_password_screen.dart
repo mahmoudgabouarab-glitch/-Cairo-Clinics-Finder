@@ -5,7 +5,7 @@ import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shared/Auth_title.dart';
-import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shared/auth_icon.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_title_icon.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/forget_password/forget_password_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,7 +59,7 @@ class ForgetPasswordView extends StatelessWidget {
             child: Column(
               children: [
                 const Spacer(),
-                const AuthIcon(icon: Icons.lock_reset_outlined),
+                const CustomTitleIcon(icon: Icons.lock_reset_outlined),
                 spaceH(32),
                 const AuthTitle(title: "Forgot password?"),
                 spaceH(12),
