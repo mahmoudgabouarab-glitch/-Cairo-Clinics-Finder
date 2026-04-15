@@ -1,5 +1,6 @@
 import 'package:cairo_clinics_finder/core/network/service_locator.dart';
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
+import 'package:cairo_clinics_finder/feature/about/about_view.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/data/repo/add_clinic_repo.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/add_clinic_view.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view_model/cubit/add_clinic_cubit.dart';
@@ -12,6 +13,7 @@ import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/forget
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/signin/sign_in_cubit.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/signup/sign_up_cubit.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/verified/verified_cubit.dart';
+import 'package:cairo_clinics_finder/feature/favorite/presentation/view/fav_view.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:cairo_clinics_finder/feature/home/data/repo/clinics_repo.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view/details_view.dart';

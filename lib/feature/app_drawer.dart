@@ -31,10 +31,14 @@ class AppDrawer extends StatelessWidget {
           ),
           DrawerItem(
             icon: Icons.favorite_outline,
-            title: 'Saved Clinics',
-            onTap: () {},
+            title: 'Favorites',
+            onTap: () => context.push(GoTo.fav),
           ),
-          DrawerItem(icon: Icons.info_outline, title: 'About', onTap: () {}),
+          DrawerItem(
+            icon: Icons.info_outline,
+            title: 'About',
+            onTap: () => context.push(GoTo.about),
+          ),
         ],
       ),
     );

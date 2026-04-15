@@ -10,4 +10,6 @@ class GoTo {
   static const String editProfile = '/editProfile';
   static const String changePassword = '/changePassword';
   static const String addClinic = '/addClinic';
+  static const String fav = '/fav';
+  static const String about = '/about';
 }
