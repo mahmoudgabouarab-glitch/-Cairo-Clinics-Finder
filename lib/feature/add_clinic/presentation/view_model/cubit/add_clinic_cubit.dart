@@ -17,11 +17,11 @@ class AddClinicCubit extends Cubit<AddClinicState> {
   final TextEditingController selectedCategory = .new();
   final TextEditingController phoneController = .new();
   final TextEditingController addressController = .new();
+  final TextEditingController openingController = .new();
+  final TextEditingController closingController = .new();
   final GlobalKey<FormState> formKey = .new();
 
   LatLng? selectedLocation;
-  TimeOfDay? openingTime;
-  TimeOfDay? closingTime;
 
   Future<void> loadUserLocation() async {
     final location = await LocationHelper.getUserLocation();
@@ -40,14 +40,6 @@ class AddClinicCubit extends Cubit<AddClinicState> {
     emit(AddClinicLocationLoaded(location, isUserSelection: true));
   }
 
-  void setOpeningTime(TimeOfDay time) {
-    openingTime = time;
-  }
-
-  void setClosingTime(TimeOfDay time) {
-    closingTime = time;
-  }
-
   Future<void> addClinic() async {
     if (selectedLocation == null) return;
     emit(AddClinicLoading());
@@ -61,9 +53,7 @@ class AddClinicCubit extends Cubit<AddClinicState> {
       rating: 0,
       reviewCount: 0,
       isOpen: true,
-      hours: openingTime != null && closingTime != null
-          ? '${openingTime!.hour}-${closingTime!.hour}'
-          : '',
+      hours: '${openingController.text}-${closingController.text}',
     );
     result.fold(
       (failure) => emit(AddClinicFailure(failure.message)),
@@ -78,6 +68,8 @@ class AddClinicCubit extends Cubit<AddClinicState> {
     phoneController.dispose();
     addressController.dispose();
     mapController.dispose();
+    openingController.dispose();
+    closingController.dispose();
     return super.close();
   }
 }

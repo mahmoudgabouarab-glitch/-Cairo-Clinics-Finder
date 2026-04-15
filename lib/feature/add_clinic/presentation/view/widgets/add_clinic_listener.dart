@@ -1,0 +1,50 @@
+import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
+import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view_model/cubit/add_clinic_cubit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
+class AddClinicListener extends StatelessWidget {
+  const AddClinicListener({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<AddClinicCubit, AddClinicState>(
+      listener: (context, state) {
+        switch (state) {
+          case AddClinicInitial():
+            break;
+          case AddClinicLoading():
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) => const Center(
+                child: CircularProgressIndicator(color: AppColor.primary),
+              ),
+            );
+            break;
+          case AddClinicSuccess():
+            context.pop();
+            CustomSnackBar.show(
+              context,
+              message: 'Clinic added successfully',
+              type: SnackBarType.success,
+            );
+            break;
+          case AddClinicFailure():
+            context.pop();
+            CustomSnackBar.show(
+              context,
+              message: state.message,
+              type: SnackBarType.error,
+            );
+            break;
+          case AddClinicLocationLoaded():
+            break;
+        }
+      },
+      child: const SizedBox.shrink(),
+    );
+  }
+}
