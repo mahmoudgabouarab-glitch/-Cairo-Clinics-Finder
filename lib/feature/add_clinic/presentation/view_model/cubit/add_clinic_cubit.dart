@@ -13,14 +13,13 @@ class AddClinicCubit extends Cubit<AddClinicState> {
   final AddClinicRepo _repo;
   final MapController mapController = MapController();
 
-  final TextEditingController clinicNameController = TextEditingController();
-  final TextEditingController doctorNameController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController doctorNameController = .new();
+  final TextEditingController selectedCategory = .new();
+  final TextEditingController phoneController = .new();
+  final TextEditingController addressController = .new();
+  final GlobalKey<FormState> formKey = .new();
 
   LatLng? selectedLocation;
-  String? selectedCategory;
   TimeOfDay? openingTime;
   TimeOfDay? closingTime;
 
@@ -41,10 +40,6 @@ class AddClinicCubit extends Cubit<AddClinicState> {
     emit(AddClinicLocationLoaded(location, isUserSelection: true));
   }
 
-  void selectCategory(String category) {
-    selectedCategory = category;
-  }
-
   void setOpeningTime(TimeOfDay time) {
     openingTime = time;
   }
@@ -55,13 +50,12 @@ class AddClinicCubit extends Cubit<AddClinicState> {
 
   Future<void> addClinic() async {
     if (selectedLocation == null) return;
-    if (selectedCategory == null) return;
     emit(AddClinicLoading());
     final result = await _repo.addClinic(
-      name: clinicNameController.text,
+      name: doctorNameController.text,
       phone: phoneController.text,
       address: addressController.text,
-      category: selectedCategory!,
+      category: selectedCategory.text,
       lat: selectedLocation!.latitude,
       lng: selectedLocation!.longitude,
       rating: 0,
@@ -79,8 +73,8 @@ class AddClinicCubit extends Cubit<AddClinicState> {
 
   @override
   Future<void> close() {
-    clinicNameController.dispose();
     doctorNameController.dispose();
+    selectedCategory.dispose();
     phoneController.dispose();
     addressController.dispose();
     mapController.dispose();
