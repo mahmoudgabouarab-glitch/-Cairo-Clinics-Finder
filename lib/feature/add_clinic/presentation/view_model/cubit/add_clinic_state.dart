@@ -1,22 +1,28 @@
 part of 'add_clinic_cubit.dart';
 
 sealed class AddClinicState extends Equatable {
-  const AddClinicState();
-
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-final class AddClinicInitial extends AddClinicState {}
+class AddClinicInitial extends AddClinicState {}
 
-final class AddClinicLoading extends AddClinicState {}
+class AddClinicLoading extends AddClinicState {}
 
-final class AddClinicSuccess extends AddClinicState {}
+class AddClinicSuccess extends AddClinicState {}
 
-final class AddClinicFailure extends AddClinicState {
+class AddClinicFailure extends AddClinicState {
   final String message;
-  const AddClinicFailure(this.message);
+  AddClinicFailure(this.message);
 
   @override
-  List<Object> get props => [message];
+  List<Object?> get props => [message];
+}
+
+class AddClinicLocationLoaded extends AddClinicState {
+  final LatLng location;
+  AddClinicLocationLoaded(this.location);
+
+  @override
+  List<Object?> get props => [location];
 }
