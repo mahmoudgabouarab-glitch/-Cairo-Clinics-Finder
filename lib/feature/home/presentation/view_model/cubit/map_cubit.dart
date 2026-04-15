@@ -4,7 +4,6 @@ import 'package:cairo_clinics_finder/feature/home/data/repo/clinics_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 part 'map_state.dart';
 

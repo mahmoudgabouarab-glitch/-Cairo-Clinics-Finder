@@ -1,6 +1,7 @@
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
+import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/add_clinic_map_botton_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,7 +19,20 @@ class LocationCard extends StatelessWidget {
           ),
           spaceH(12),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20.r),
+                  ),
+                ),
+                builder: (context) {
+                  return const AddClinicMapBottonSheet();
+                },
+              );
+            },
             child: Container(
               width: double.infinity,
               padding: EdgeInsets.all(14.r),
