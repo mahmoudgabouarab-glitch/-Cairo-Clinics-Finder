@@ -21,8 +21,9 @@ class AddClinicFailure extends AddClinicState {
 
 class AddClinicLocationLoaded extends AddClinicState {
   final LatLng location;
-  AddClinicLocationLoaded(this.location);
+  final bool isUserSelection;
+  AddClinicLocationLoaded(this.location, {this.isUserSelection = false});
 
   @override
-  List<Object?> get props => [location];
+  List<Object?> get props => [location, isUserSelection];
 }

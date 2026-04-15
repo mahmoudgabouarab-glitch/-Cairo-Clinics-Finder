@@ -101,7 +101,10 @@ abstract class AppRouting {
 
       GoRoute(
         path: GoTo.addClinic,
-        builder: (context, state) => const AddClinicView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => AddClinicCubit(getIt<AddClinicRepo>())..loadUserLocation(),
+          child: const AddClinicView(),
+        ),
       ),
     ],
   );

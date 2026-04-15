@@ -27,12 +27,18 @@ class AddClinicCubit extends Cubit<AddClinicState> {
   Future<void> loadUserLocation() async {
     final location = await LocationHelper.getUserLocation();
     selectedLocation = location;
-    emit(AddClinicLocationLoaded(location));
+    emit(AddClinicLocationLoaded(location, isUserSelection: false));
+  }
+
+  void goToMyLocation() {
+    if (selectedLocation != null) {
+      mapController.move(selectedLocation!, 14);
+    }
   }
 
   void onMapTap(LatLng location) {
     selectedLocation = location;
-    emit(AddClinicLocationLoaded(location));
+    emit(AddClinicLocationLoaded(location, isUserSelection: true));
   }
 
   void selectCategory(String category) {

@@ -1,12 +1,12 @@
-
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
+import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view_model/cubit/add_clinic_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:latlong2/latlong.dart';
 
 class AddClinicMapBottonSheet extends StatelessWidget {
   const AddClinicMapBottonSheet({super.key});
@@ -47,7 +47,7 @@ class AddClinicMapBottonSheet extends StatelessWidget {
                 elevation: 0,
                 color: Color(0xffECECEC),
                 onPressed: () {
-                  //context.read<RegisterPostCubit>().getCurrentLocationcubit();
+                  context.read<AddClinicCubit>().goToMyLocation();
                 },
                 child: Row(
                   children: [
@@ -70,7 +70,7 @@ class AddClinicMapBottonSheet extends StatelessWidget {
             child: AddClinicMap(),
           ),
           spaceH(16),
-          Btn(onPressed: () {}, text: "Confirm"),
+          _buildBtn(),
           spaceH(100),
         ],
       ),
@@ -78,42 +78,57 @@ class AddClinicMapBottonSheet extends StatelessWidget {
   }
 }
 
+Widget _buildBtn() {
+  return BlocBuilder<AddClinicCubit, AddClinicState>(
+    builder: (context, state) {
+      if (state is! AddClinicLocationLoaded || !state.isUserSelection) {
+        return const SizedBox.shrink();
+      }
+      return Btn(onPressed: () => context.pop(), text: "Confirm");
+    },
+  );
+}
+
 class AddClinicMap extends StatelessWidget {
   const AddClinicMap({super.key});
   @override
   Widget build(BuildContext context) {
-    return FlutterMap(
-      options: MapOptions(
-        initialCenter: LatLng(30.0444, 31.2357),
-        initialZoom: 10,
-      ),
-      // mapController: mapController,
-      children: [
-        TileLayer(
-          urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-          userAgentPackageName: 'com.example.cairo_clinics_finder',
-        ),
-        MarkerLayer(
-          markers: [
-            Marker(
-              point: LatLng(30.0454, 31.2367),
-              width: 40,
-              height: 40,
-              child: GestureDetector(
-                onTap: () {
-                  // context.read<RegisterPostCubit>().setLocation(location);
-                  // print(location);
-                },
-                child: const Icon(
-                  Icons.location_pin,
-                  color: Colors.red,
-                  size: 40,
+    final cubit = context.read<AddClinicCubit>();
+    return BlocBuilder<AddClinicCubit, AddClinicState>(
+      builder: (context, state) {
+        return state is AddClinicLocationLoaded
+            ? FlutterMap(
+                mapController: cubit.mapController,
+                options: MapOptions(
+                  initialCenter: state.location,
+                  initialZoom: 10,
+                  onTap: (tapPosition, point) => cubit.onMapTap(point),
                 ),
-              ),
-            ),
-          ],
-        ),
-      ],
+                // mapController: mapController,
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    userAgentPackageName: 'com.example.cairo_clinics_finder',
+                  ),
+                  MarkerLayer(
+                    markers: [
+                      Marker(
+                        point: state.location,
+                        width: 40,
+                        height: 40,
+                        child: const Icon(
+                          Icons.location_pin,
+                          color: Colors.red,
+                          size: 40,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            : const SizedBox.shrink();
+      },
     );
   }
 }
