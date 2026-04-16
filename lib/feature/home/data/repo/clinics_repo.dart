@@ -3,5 +3,5 @@ import 'package:dartz/dartz.dart';
 import 'package:cairo_clinics_finder/core/errors/failures.dart';
 
 abstract class ClinicsRepo {
-  Future<Either<Failure, List<ClinicModel>>> getClinics();
+  Stream<Either<Failure, List<ClinicModel>>> getClinics();
 }

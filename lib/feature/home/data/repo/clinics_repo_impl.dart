@@ -9,17 +9,17 @@ class ClinicsRepoImpl implements ClinicsRepo {
   ClinicsRepoImpl(this._firestore);
 
   @override
-  Future<Either<Failure, List<ClinicModel>>> getClinics() async {
-    try {
-      var snapshot = await _firestore.collection('clinics').get();
-      final clinics = snapshot.docs;
-      final result = clinics
-          .map((e) => ClinicModel.fromJson(e.data(), e.id))
-          .toList();
-
-      return Right(result);
-    } on FirebaseException catch (e) {
-      return Left(FirestoreFailure.fromFirebase(e));
-    }
+  Stream<Either<Failure, List<ClinicModel>>> getClinics() {
+    return _firestore.collection('clinics').snapshots().map((snapshot) {
+      try {
+        final clinics = snapshot.docs;
+        final result = clinics
+            .map((e) => ClinicModel.fromJson(e.data(), e.id))
+            .toList();
+        return Right(result);
+      } on FirebaseException catch (e) {
+        return Left(FirestoreFailure.fromFirebase(e));
+      }
+    });
   }
 }

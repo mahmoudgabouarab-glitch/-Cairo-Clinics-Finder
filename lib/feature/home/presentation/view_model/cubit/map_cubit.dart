@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cairo_clinics_finder/core/network/location_helper.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:cairo_clinics_finder/feature/home/data/repo/clinics_repo.dart';
@@ -11,24 +13,25 @@ class MapCubit extends Cubit<MapState> {
   MapCubit(this._repo) : super(MapState());
   final ClinicsRepo _repo;
   final MapController controller = MapController();
-
+  StreamSubscription? _subscription;
   // this fun to #get clinics
   Future<void> getMap() async {
     if (state.clinics.isNotEmpty) return;
     emit(state.copyWith(isLoading: true));
-    final result = await _repo.getClinics();
     final userLocation = await LocationHelper.getUserLocation();
-    result.fold(
-      (failure) =>
-          emit(state.copyWith(isLoading: false, error: failure.message)),
-      (success) => emit(
-        state.copyWith(
-          isLoading: false,
-          clinics: success,
-          userLocation: userLocation,
+    _subscription = _repo.getClinics().listen((result) {
+      result.fold(
+        (failure) =>
+            emit(state.copyWith(isLoading: false, error: failure.message)),
+        (success) => emit(
+          state.copyWith(
+            isLoading: false,
+            clinics: success,
+            userLocation: userLocation,
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   // this fun to #sort clinics
@@ -88,5 +91,12 @@ class MapCubit extends Cubit<MapState> {
   // this fun to #go to my location
   void goToMyLocation() {
     controller.move(state.userLocation!, 14);
+  }
+
+  @override
+  Future<void> close() {
+    _subscription?.cancel();
+    controller.dispose();
+    return super.close();
   }
 }
