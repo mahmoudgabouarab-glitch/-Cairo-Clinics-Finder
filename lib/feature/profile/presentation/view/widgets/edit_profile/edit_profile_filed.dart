@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/utils/app_validator.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
@@ -42,12 +43,7 @@ class _EditProfileFiledState extends State<EditProfileFiled> {
               hint: "Name",
               prefixIcon: Icons.person,
               controller: cubit.nameController,
-              validator: (val) {
-                if (val == null || val.isEmpty) {
-                  return 'Please enter your name';
-                }
-                return null;
-              },
+              validator: AppValidator.nameValidator(),
             ),
             spaceH(12),
             _sectionTitle("Email"),
@@ -65,12 +61,8 @@ class _EditProfileFiledState extends State<EditProfileFiled> {
               hint: "phone",
               prefixIcon: Icons.phone,
               controller: cubit.phoneController,
-              validator: (val) {
-                if (val == null || val.isEmpty) {
-                  return 'Please enter your phone';
-                }
-                return null;
-              },
+              validator: AppValidator.phoneValidator(),
+              keybordtype: TextInputType.phone,
             ),
           ],
         ),

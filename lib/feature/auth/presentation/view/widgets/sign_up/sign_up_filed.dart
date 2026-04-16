@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/utils/app_validator.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/signup/sign_up_cubit.dart';
@@ -19,36 +20,22 @@ class SignUpFiled extends StatelessWidget {
             hint: "Name",
             prefixIcon: Icons.person,
             controller: cubit.nameController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your name';
-              }
-              return null;
-            },
+            validator: AppValidator.nameValidator(),
           ),
           spaceH(16),
           CustomTextFormFiled(
             hint: "Phone",
             prefixIcon: Icons.phone,
             controller: cubit.phoneController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your phone';
-              }
-              return null;
-            },
+            validator: AppValidator.phoneValidator(),
+            keybordtype: TextInputType.phone,
           ),
           spaceH(16),
           CustomTextFormFiled(
             hint: "Email",
             prefixIcon: Icons.email_outlined,
             controller: cubit.emailController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your email';
-              }
-              return null;
-            },
+            validator: AppValidator.emailValidator(),
           ),
           spaceH(16),
           CustomTextFormFiled(
@@ -56,12 +43,8 @@ class SignUpFiled extends StatelessWidget {
             prefixIcon: Icons.lock_outline_rounded,
             obscureText: true,
             controller: cubit.passwordController,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your password';
-              }
-              return null;
-            },
+            validator: AppValidator.passwordValidator(),
+            autovalidateMode: AutovalidateMode.onUserInteraction,
           ),
           spaceH(16),
           CustomTextFormFiled(
@@ -76,7 +59,6 @@ class SignUpFiled extends StatelessWidget {
               return null;
             },
           ),
-
           spaceH(32),
         ],
       ),

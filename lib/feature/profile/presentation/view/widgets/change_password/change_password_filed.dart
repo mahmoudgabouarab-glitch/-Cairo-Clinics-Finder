@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
+import 'package:cairo_clinics_finder/core/utils/app_validator.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
@@ -24,26 +25,18 @@ class ChangePasswordFiled extends StatelessWidget {
               hint: "Current Password",
               obscureText: true,
               prefixIcon: Icons.lock,
-              validator: (val) {
-                if (val == null || val.isEmpty) {
-                  return 'Please enter your current password';
-                }
-                return null;
-              },
+              validator: AppValidator.passwordValidator(),
               controller: cubit.oldPasswordController,
+              keybordtype: TextInputType.phone,
             ),
             spaceH(12),
             CustomTextFormFiled(
               hint: "New Password",
               obscureText: true,
               prefixIcon: Icons.lock,
-              validator: (val) {
-                if (val == null || val.isEmpty) {
-                  return 'Please enter your new password';
-                }
-                return null;
-              },
+              validator: AppValidator.passwordValidator(),
               controller: cubit.newPasswordController,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
             ),
             spaceH(12),
             CustomTextFormFiled(

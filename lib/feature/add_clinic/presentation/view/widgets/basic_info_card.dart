@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/utils/app_validator.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
@@ -19,12 +20,7 @@ class BasicInfoCard extends StatelessWidget {
             hint: "Doctor Name",
             prefixIcon: Icons.person_outlined,
             controller: cubit.doctorNameController,
-            validator: (val) {
-              if (val == null || val.isEmpty) {
-                return 'Please enter your name';
-              }
-              return null;
-            },
+            validator: AppValidator.nameValidator(),
           ),
           spaceH(12),
           CustomTextFormFiled(
@@ -37,7 +33,7 @@ class BasicInfoCard extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.r),
               ),
-              icon:const Icon(Icons.expand_more),
+              icon: const Icon(Icons.expand_more),
               itemBuilder: (context) => _categories
                   .map(
                     (e) => PopupMenuItem(
@@ -48,18 +44,19 @@ class BasicInfoCard extends StatelessWidget {
                   .toList(),
               onSelected: (value) => cubit.selectedCategory.text = value,
             ),
+            validator: (val) {
+              if (val == null || val.isEmpty) {
+                return 'Please choose your speciality';
+              }
+              return null;
+            },
           ),
           spaceH(12),
           CustomTextFormFiled(
             hint: "Phone Number",
             prefixIcon: Icons.phone,
             controller: cubit.phoneController,
-            validator: (val) {
-              if (val == null || val.isEmpty) {
-                return 'Please enter your phone number';
-              }
-              return null;
-            },
+            validator: AppValidator.phoneValidator(),
           ),
         ],
       ),

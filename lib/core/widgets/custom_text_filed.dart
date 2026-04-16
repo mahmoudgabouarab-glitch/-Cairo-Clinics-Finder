@@ -1,6 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextFormFiled extends StatefulWidget {
@@ -10,16 +9,13 @@ class CustomTextFormFiled extends StatefulWidget {
   final bool obscureText;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final String? labelText;
-  final TextStyle? labelStyle;
   final Color? fillcolor;
   final TextStyle? textstyle;
   final Function(String)? onchange;
   final TextInputType? keybordtype;
-  final int? maxLength;
-  final List<TextInputFormatter>? inputFormatters;
   final bool? readOnly;
   final void Function()? onTap;
+  final AutovalidateMode? autovalidateMode;
 
   const CustomTextFormFiled({
     super.key,
@@ -29,16 +25,13 @@ class CustomTextFormFiled extends StatefulWidget {
     this.controller,
     this.validator,
     this.prefixIcon,
-    this.labelText,
-    this.labelStyle,
     this.fillcolor,
     this.textstyle,
     this.onchange,
     this.keybordtype,
-    this.maxLength,
-    this.inputFormatters,
     this.readOnly,
     this.onTap,
+    this.autovalidateMode,
   });
 
   @override
@@ -58,9 +51,7 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
     return TextFormField(
       onTap: widget.onTap,
       readOnly: widget.readOnly ?? false,
-      inputFormatters: widget.inputFormatters,
-      maxLength: widget.maxLength,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: widget.autovalidateMode ?? AutovalidateMode.disabled,
       onTapOutside: (_) =>
           widget.onTap ?? FocusManager.instance.primaryFocus?.unfocus(),
       keyboardType: widget.keybordtype,
@@ -70,8 +61,6 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
       decoration: InputDecoration(
         // display counter text when max length is set
         counterText: '',
-        labelText: widget.labelText,
-        labelStyle: widget.labelStyle,
         prefixIcon: Icon(
           widget.prefixIcon,
           color: AppColor.primary.shade400,

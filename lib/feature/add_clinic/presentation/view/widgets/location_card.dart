@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
+import 'package:cairo_clinics_finder/core/utils/app_validator.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
@@ -21,12 +22,7 @@ class LocationCard extends StatelessWidget {
             hint: "Address",
             prefixIcon: Icons.location_on_outlined,
             controller: cubit.addressController,
-            validator: (val) {
-              if (val == null || val.isEmpty) {
-                return 'Please enter your address';
-              }
-              return null;
-            },
+            validator: AppValidator.nameValidator(),
           ),
           spaceH(12),
           GestureDetector(
