@@ -52,14 +52,20 @@ abstract class AppRouting {
             BlocProvider(
               create: (_) => ProfileCubit(getIt<ProfileRepo>())..getProfile(),
             ),
+            BlocProvider(create: (_) => FavCubit(getIt<FavRepo>())..getFav()),
           ],
           child: const HomeView(),
         ),
       ),
       GoRoute(
         path: GoTo.details,
-        builder: (context, state) =>
-            DetailsView(clinic: state.extra as ClinicModel),
+        builder: (context, state) {
+          final data = state.extra as Map;
+          return BlocProvider.value(
+            value: data['cubit'] as FavCubit,
+            child: DetailsView(clinic: data['clinic'] as ClinicModel),
+          );
+        },
       ),
       GoRoute(
         path: GoTo.profile,
@@ -107,7 +113,13 @@ abstract class AppRouting {
           child: const AddClinicView(),
         ),
       ),
-      GoRoute(path: GoTo.fav, builder: (context, state) => const FavView()),
+      GoRoute(
+        path: GoTo.fav,
+        builder: (context, state) => BlocProvider.value(
+          value: state.extra as FavCubit,
+          child: const FavView(),
+        ),
+      ),
       GoRoute(path: GoTo.about, builder: (context, state) => const AboutView()),
     ],
   );

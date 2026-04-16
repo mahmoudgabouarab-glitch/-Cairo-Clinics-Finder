@@ -13,7 +13,9 @@ class ClinicsRepoImpl implements ClinicsRepo {
     try {
       var snapshot = await _firestore.collection('clinics').get();
       final clinics = snapshot.docs;
-      final result = clinics.map((e) => ClinicModel.fromJson(e)).toList();
+      final result = clinics
+          .map((e) => ClinicModel.fromJson(e.data(), e.id))
+          .toList();
 
       return Right(result);
     } on FirebaseException catch (e) {

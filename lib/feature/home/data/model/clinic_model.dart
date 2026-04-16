@@ -31,21 +31,33 @@ class ClinicModel extends Equatable {
 
   LatLng get latLng => LatLng(lat, lng);
 
-  factory ClinicModel.fromJson(
-    QueryDocumentSnapshot<Map<String, dynamic>> json,
-  ) => ClinicModel(
-    id: json.id,
-    name: json['name'] as String? ?? '',
-    category: json['category'] as String? ?? 'clinic',
-    lat: (json['lat'] as num?)?.toDouble() ?? 0.0,
-    lng: (json['lng'] as num?)?.toDouble() ?? 0.0,
-    phone: json['phone'] as String? ?? '',
-    address: json['address'] as String? ?? '',
-    rating: (json['rating'] as num?)?.toDouble() ?? 0.0,
-    reviewCount: json['reviewCount'] as int? ?? 0,
-    isOpen: json['isOpen'] as bool? ?? false,
-    hours: json['hours'] as String? ?? '',
-  );
+  factory ClinicModel.fromJson(Map<String, dynamic> map, String id) =>
+      ClinicModel(
+        id: id,
+        name: map['name'] as String? ?? '',
+        category: map['category'] as String? ?? 'clinic',
+        lat: (map['lat'] as num?)?.toDouble() ?? 0.0,
+        lng: (map['lng'] as num?)?.toDouble() ?? 0.0,
+        phone: map['phone'] as String? ?? '',
+        address: map['address'] as String? ?? '',
+        rating: (map['rating'] as num?)?.toDouble() ?? 0.0,
+        reviewCount: map['reviewCount'] as int? ?? 0,
+        isOpen: map['isOpen'] as bool? ?? false,
+        hours: map['hours'] as String? ?? '',
+      );
+
+  Map<String, dynamic> toMap() => {
+    'name': name,
+    'category': category,
+    'lat': lat,
+    'lng': lng,
+    'phone': phone,
+    'address': address,
+    'rating': rating,
+    'reviewCount': reviewCount,
+    'isOpen': isOpen,
+    'hours': hours,
+  };
 
   @override
   List<Object?> get props => [
@@ -58,5 +70,7 @@ class ClinicModel extends Equatable {
     address,
     rating,
     isOpen,
+    reviewCount,
+    hours,
   ];
 }

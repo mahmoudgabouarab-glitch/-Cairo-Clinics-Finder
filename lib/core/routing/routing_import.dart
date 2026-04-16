@@ -13,7 +13,9 @@ import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/forget
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/signin/sign_in_cubit.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/signup/sign_up_cubit.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/verified/verified_cubit.dart';
+import 'package:cairo_clinics_finder/feature/favorite/data/repo/fav_repo.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view/fav_view.dart';
+import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:cairo_clinics_finder/feature/home/data/repo/clinics_repo.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view/details_view.dart';

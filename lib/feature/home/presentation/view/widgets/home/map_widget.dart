@@ -1,6 +1,7 @@
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
+import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,7 +74,13 @@ class MapWidget extends StatelessWidget {
                     width: 45.w,
                     height: 45.h,
                     child: GestureDetector(
-                      onTap: () => context.push(GoTo.details, extra: clinic),
+                      onTap: () => context.push(
+                        GoTo.details,
+                        extra: {
+                          'clinic': clinic,
+                          'cubit': context.read<FavCubit>(),
+                        },
+                      ),
                       child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
