@@ -1,5 +1,7 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_title_icon.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view/widgets/one_item_of_fav.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,7 @@ class FavBody extends StatelessWidget {
               child: CircularProgressIndicator(color: AppColor.primary),
             );
           case FavSuccess():
+            if (state.clinics.isEmpty) return _buildEmptyFav();
             return ListView.separated(
               padding: EdgeInsets.all(16.r),
               itemCount: state.clinics.length,
@@ -33,4 +36,25 @@ class FavBody extends StatelessWidget {
       },
     );
   }
+}
+
+Widget _buildEmptyFav() {
+  return Center(
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CustomTitleIcon(
+          icon: Icons.bookmark_border,
+          height: 180,
+          width: 180,
+          size: 100,
+        ),
+        spaceH(12),
+        Text(
+          "No Favorite Clinics yet !",
+          style: AppTextStyles.f14SemiBoldBlack,
+        ),
+      ],
+    ),
+  );
 }
