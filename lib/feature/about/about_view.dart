@@ -13,7 +13,7 @@ class AboutView extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          AboutAppBar(),
+          const AboutAppBar(),
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),

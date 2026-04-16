@@ -52,7 +52,7 @@ class AuthRepoImpl implements AuthRepo {
       );
       await credential.user!.reload();
       if (!credential.user!.emailVerified) {
-        return Left(Failure('Please verify your email first'));
+        return const Left(Failure('Please verify your email first'));
       }
       final doc = await _firestore
           .collection('users')

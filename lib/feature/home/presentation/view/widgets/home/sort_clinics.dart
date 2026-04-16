@@ -33,10 +33,10 @@ class SortClinics extends StatelessWidget {
                 ),
                 dropdownColor: AppColor.cardBg,
                 borderRadius: BorderRadius.circular(14.r),
-                icon: Icon(Icons.keyboard_arrow_down),
+                icon: const Icon(Icons.keyboard_arrow_down),
                 menuMaxHeight: 200.h,
                 initialValue: state.sortBy,
-                items: [
+                items: const [
                   DropdownMenuItem(
                     value: SortBy.normal,
                     child: Text('Default'),

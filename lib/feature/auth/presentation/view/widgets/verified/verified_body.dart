@@ -38,7 +38,7 @@ class VerifiedBody extends StatelessWidget {
             spaceH(12),
             ResendButton(onPressed: () {}),
             spaceH(32),
-            VerifiedLisenter(),
+            const VerifiedLisenter(),
           ],
         ),
       ),

@@ -16,7 +16,7 @@ class SignUpBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderAuth(
+          const HeaderAuth(
             title: "Create account",
             subtitle: "Join and find clinics near you",
           ),

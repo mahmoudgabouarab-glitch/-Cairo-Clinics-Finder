@@ -20,8 +20,8 @@ class CustomTitleIcon extends StatelessWidget {
     return Container(
       width: width ?? 100.w,
       height: height ?? 100.h,
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 200, 242, 241),
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 200, 242, 241),
         shape: BoxShape.circle,
       ),
       child: Icon(icon, size: size ?? 48.sp, color: AppColor.primary),

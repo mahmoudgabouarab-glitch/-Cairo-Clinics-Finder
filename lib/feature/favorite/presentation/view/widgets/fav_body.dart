@@ -16,7 +16,7 @@ class FavBody extends StatelessWidget {
         switch (state) {
           case FavInitial():
           case FavLoading():
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(color: AppColor.primary),
             );
           case FavSuccess():

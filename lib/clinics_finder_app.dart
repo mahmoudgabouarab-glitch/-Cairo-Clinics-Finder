@@ -11,8 +11,8 @@ class ClinicsFinderApp extends StatelessWidget {
       designSize: const Size(360, 800),
       child: MaterialApp.router(
         theme: ThemeData(
-          scaffoldBackgroundColor: Color(0xFFF0F4F8),
-          appBarTheme: AppBarTheme(backgroundColor: Color(0xFFF0F4F8)),
+          scaffoldBackgroundColor: const Color(0xFFF0F4F8),
+          appBarTheme: const AppBarTheme(backgroundColor: Color(0xFFF0F4F8)),
         ),
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouting.router,

@@ -11,7 +11,7 @@ class TopSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(gradient: AppColor.onBordingBar),
+      decoration: const BoxDecoration(gradient: AppColor.onBordingBar),
       padding: EdgeInsets.symmetric(vertical: 48.h, horizontal: 32.w),
       child: Column(
         children: [

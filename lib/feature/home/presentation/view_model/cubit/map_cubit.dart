@@ -10,7 +10,7 @@ import 'package:latlong2/latlong.dart';
 part 'map_state.dart';
 
 class MapCubit extends Cubit<MapState> {
-  MapCubit(this._repo) : super(MapState());
+  MapCubit(this._repo) : super(const MapState());
   final ClinicsRepo _repo;
   final MapController controller = MapController();
   StreamSubscription? _subscription;
@@ -49,7 +49,7 @@ class MapCubit extends Cubit<MapState> {
         break;
       case SortBy.nearest:
         if (state.userLocation != null) {
-          final distance = Distance();
+          const distance = Distance();
           sorted.sort((a, b) {
             final distA = distance.as(
               LengthUnit.Kilometer,

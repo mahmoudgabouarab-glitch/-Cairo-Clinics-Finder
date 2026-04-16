@@ -24,10 +24,10 @@ class AddClinicMapBottonSheet extends StatelessWidget {
                 "Choose Location",
                 style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
               ),
-              Spacer(),
+             const Spacer(),
               GestureDetector(
                 onTap: () => context.pop(),
-                child: Icon(Icons.cancel_outlined),
+                child:const Icon(Icons.cancel_outlined),
               ),
             ],
           ),
@@ -45,13 +45,13 @@ class AddClinicMapBottonSheet extends StatelessWidget {
               ),
               MaterialButton(
                 elevation: 0,
-                color: Color(0xffECECEC),
+                color:const Color(0xffECECEC),
                 onPressed: () {
                   context.read<AddClinicCubit>().goToMyLocation();
                 },
                 child: Row(
                   children: [
-                    Icon(Icons.location_on_outlined, color: AppColor.primary),
+                   const Icon(Icons.location_on_outlined, color: AppColor.primary),
                     Text(
                       "Your Current Location",
                       style: TextStyle(fontSize: 12.sp),
@@ -67,7 +67,7 @@ class AddClinicMapBottonSheet extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.r),
             ),
-            child: AddClinicMap(),
+            child:const AddClinicMap(),
           ),
           spaceH(16),
           _buildBtn(),

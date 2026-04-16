@@ -19,7 +19,7 @@ class ProfileBody extends StatelessWidget {
           case ProfileInitial():
             return const SizedBox.shrink();
           case ProfileLoading():
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(color: AppColor.primary),
             );
           case ProfileSuccess():

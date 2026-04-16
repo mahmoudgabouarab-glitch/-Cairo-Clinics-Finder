@@ -67,7 +67,7 @@ class ProfileRepoImpl implements ProfileRepo {
   Future<Either<Failure, void>> signOut() async {
     try {
       await _auth.signOut();
-      return Right(null);
+      return const Right(null);
     } on FirebaseAuthException catch (e) {
       return Left(AuthFirebseFailure.fromFirebase(e));
     } catch (e) {

@@ -52,7 +52,7 @@ class ActionsCard extends StatelessWidget {
             isDestructive: true,
             onTap: () => context.read<SignOutCubit>().signOut(),
           ),
-          SignOutListener(),
+          const SignOutListener(),
         ],
       ),
     );

@@ -22,17 +22,17 @@ class AddClinicBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _SectionTitle('Basic Info'),
+            const _SectionTitle('Basic Info'),
             spaceH(12),
-            BasicInfoCard(),
+            const BasicInfoCard(),
             spaceH(16),
-            _SectionTitle('Location'),
+            const _SectionTitle('Location'),
             spaceH(12),
-            LocationCard(),
+            const LocationCard(),
             spaceH(16),
-            _SectionTitle('Working Hours'),
+            const _SectionTitle('Working Hours'),
             spaceH(12),
-            WorkingHoursCard(),
+            const WorkingHoursCard(),
             spaceH(32),
             Btn(
               onPressed: () {
@@ -43,7 +43,7 @@ class AddClinicBody extends StatelessWidget {
               text: "Submit for review",
             ),
             spaceH(24),
-            AddClinicListener(),
+            const AddClinicListener(),
           ],
         ),
       ),

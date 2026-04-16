@@ -16,7 +16,7 @@ class ProfileAppBar extends StatelessWidget {
       backgroundColor: AppColor.primary,
       leading: GestureDetector(
         onTap: () => context.pop(),
-        child: Icon(Icons.arrow_back_ios, color: Colors.white),
+        child: const Icon(Icons.arrow_back_ios, color: Colors.white),
       ),
       flexibleSpace: FlexibleSpaceBar(
         title: Padding(

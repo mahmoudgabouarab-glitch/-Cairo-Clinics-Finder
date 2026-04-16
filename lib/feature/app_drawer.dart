@@ -56,7 +56,7 @@ class _DrawerHeader extends StatelessWidget {
           case ProfileInitial():
             return const SizedBox.shrink();
           case ProfileLoading():
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(color: AppColor.primary),
             );
           case ProfileSuccess():
@@ -95,7 +95,7 @@ class _DrawerHeader extends StatelessWidget {
                     ),
                   ),
                   spaceH(10),
-                  Divider(color: Colors.blueGrey),
+                  const Divider(color: Colors.blueGrey),
                 ],
               ),
             );

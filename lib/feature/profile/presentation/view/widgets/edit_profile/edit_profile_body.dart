@@ -20,7 +20,7 @@ class EditProfileBody extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       child: Column(
         children: [
-          EditProfileAvatar(),
+          const EditProfileAvatar(),
           spaceH(32),
           EditProfileFiled(profileModel: profileModel),
           spaceH(32),
@@ -32,7 +32,7 @@ class EditProfileBody extends StatelessWidget {
             },
             text: "Save changes",
           ),
-          EditProfileListener(),
+          const EditProfileListener(),
         ],
       ),
     );

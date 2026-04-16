@@ -56,7 +56,7 @@ class CustomInfoRow extends StatelessWidget {
         ),
         ...isLink
             ? [
-                Spacer(),
+                const Spacer(),
                 Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 12.w,

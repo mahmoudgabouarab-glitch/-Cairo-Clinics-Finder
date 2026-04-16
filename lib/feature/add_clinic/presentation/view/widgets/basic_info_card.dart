@@ -37,7 +37,7 @@ class BasicInfoCard extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.r),
               ),
-              icon: Icon(Icons.expand_more),
+              icon:const Icon(Icons.expand_more),
               itemBuilder: (context) => _categories
                   .map(
                     (e) => PopupMenuItem(

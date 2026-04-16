@@ -21,9 +21,9 @@ class DetailsAppBar extends StatelessWidget {
       backgroundColor: Colors.teal,
       leading: GestureDetector(
         onTap: () => context.pop(),
-        child: Icon(Icons.arrow_back_ios, color: Colors.white),
+        child: const Icon(Icons.arrow_back_ios, color: Colors.white),
       ),
-       actions: [
+      actions: [
         BlocBuilder<FavCubit, FavState>(
           builder: (context, state) {
             final isFav = context.read<FavCubit>().isFavorite(clinic.id);
@@ -49,7 +49,7 @@ class DetailsAppBar extends StatelessWidget {
         ),
         centerTitle: true,
         background: Container(
-          decoration: BoxDecoration(gradient: AppColor.detailsAppBar),
+          decoration: const BoxDecoration(gradient: AppColor.detailsAppBar),
           child: Center(
             child: FaIcon(
               ClinicTheme.markerIcon(clinic.category),

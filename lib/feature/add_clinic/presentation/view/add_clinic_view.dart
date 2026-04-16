@@ -7,7 +7,7 @@ class AddClinicView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: CustomAppBar(title: "Add Clinic"),
       body: AddClinicBody(),
     );

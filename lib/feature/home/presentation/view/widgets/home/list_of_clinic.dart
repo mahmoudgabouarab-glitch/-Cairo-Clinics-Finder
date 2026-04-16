@@ -19,13 +19,13 @@ class ListOfClinic extends StatelessWidget {
             child: LinearProgressIndicator(
               minHeight: 6,
               backgroundColor: Colors.grey.shade200,
-              valueColor: AlwaysStoppedAnimation<Color>(AppColor.primary),
+              valueColor: const AlwaysStoppedAnimation<Color>(AppColor.primary),
               borderRadius: BorderRadius.circular(12),
             ),
           );
         }
         return ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.zero,
           shrinkWrap: true,
           itemCount: state.filteredClinics.length,

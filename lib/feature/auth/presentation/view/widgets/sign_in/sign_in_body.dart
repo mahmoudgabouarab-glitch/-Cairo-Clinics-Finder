@@ -17,7 +17,10 @@ class SignInBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderAuth(title: "Welcome back", subtitle: "Sign in to continue"),
+          const HeaderAuth(
+            title: "Welcome back",
+            subtitle: "Sign in to continue",
+          ),
           Padding(
             padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 24.h),
             child: Column(

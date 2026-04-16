@@ -1,4 +1,3 @@
-
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +16,7 @@ class VerifiedSubtitle extends StatelessWidget {
           const TextSpan(text: "We've sent a verification link to\n"),
           TextSpan(
             text: email,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColor.primary,
               fontWeight: FontWeight.w600,
             ),

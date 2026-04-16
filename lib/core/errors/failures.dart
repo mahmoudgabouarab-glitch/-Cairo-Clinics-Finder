@@ -36,7 +36,7 @@ class AuthFirebseFailure extends Failure {
       case 'invalid-credential':
         return const AuthFirebseFailure('Invalid credentials');
       case 'requires-recent-login':
-        return AuthFirebseFailure("please sign in again");
+        return const AuthFirebseFailure("please sign in again");
 
       default:
         return const AuthFirebseFailure(

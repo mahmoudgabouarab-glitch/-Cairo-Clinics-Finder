@@ -4,7 +4,7 @@ abstract class AppRouting {
   static final router = GoRouter(
     initialLocation: '/',
     routes: [
-      GoRoute(path: '/', builder: (context, state) => Splash()),
+      GoRoute(path: '/', builder: (context, state) => const Splash()),
       GoRoute(
         path: GoTo.onBording,
         pageBuilder: (context, state) => CustomTransitionPage(
@@ -18,14 +18,14 @@ abstract class AppRouting {
         path: GoTo.signIn,
         builder: (context, state) => BlocProvider(
           create: (context) => SignInCubit(getIt<AuthRepo>()),
-          child: SignInView(),
+          child: const SignInView(),
         ),
       ),
       GoRoute(
         path: GoTo.signUp,
         builder: (context, state) => BlocProvider(
           create: (context) => SignUpCubit(getIt<AuthRepo>()),
-          child: SignUpView(),
+          child: const SignUpView(),
         ),
       ),
       GoRoute(
@@ -39,7 +39,7 @@ abstract class AppRouting {
         path: GoTo.forgetPassword,
         builder: (context, state) => BlocProvider(
           create: (context) => ForgetPasswordCubit(getIt<AuthRepo>()),
-          child: ForgetPasswordView(),
+          child: const ForgetPasswordView(),
         ),
       ),
       GoRoute(
