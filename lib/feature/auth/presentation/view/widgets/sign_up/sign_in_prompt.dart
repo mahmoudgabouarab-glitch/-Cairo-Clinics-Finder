@@ -1,8 +1,6 @@
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
-import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class SignInPrompt extends StatelessWidget {

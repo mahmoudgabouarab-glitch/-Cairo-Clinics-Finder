@@ -67,8 +67,6 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
-
-
   @override
   Future<bool> isVerified() async {
     await _auth.currentUser!.reload();
@@ -89,7 +87,7 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<bool> isSignedIn() async {
-    return _auth.currentUser != null;
+    return _auth.currentUser != null && _auth.currentUser!.emailVerified;
   }
 
   @override
