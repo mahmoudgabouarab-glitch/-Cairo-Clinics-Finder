@@ -52,8 +52,7 @@ class AddClinicCubit extends Cubit<AddClinicState> {
       lng: selectedLocation!.longitude,
       rating: 0,
       reviewCount: 0,
-      isOpen: true,
-      hours: '${openingController.text}-${closingController.text}',
+      hours: '${openingController.text} - ${closingController.text}',
     );
     result.fold(
       (failure) => emit(AddClinicFailure(failure.message)),

@@ -18,7 +18,6 @@ class AddClinicRepoImpl implements AddClinicRepo {
     required String address,
     required double rating,
     required int reviewCount,
-    required bool isOpen,
     required String hours,
   }) async {
     try {
@@ -32,7 +31,6 @@ class AddClinicRepoImpl implements AddClinicRepo {
         'address': address,
         'rating': rating,
         'reviewCount': reviewCount,
-        'isOpen': isOpen,
         'hours': hours,
       });
       return const Right(null);

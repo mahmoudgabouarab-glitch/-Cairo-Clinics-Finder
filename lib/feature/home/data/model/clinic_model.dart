@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/utils/clinic_hours_helper.dart';
 import 'package:equatable/equatable.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -11,7 +12,6 @@ class ClinicModel extends Equatable {
   final String address;
   final double rating;
   final int reviewCount;
-  final bool isOpen;
   final String hours;
 
   const ClinicModel({
@@ -24,11 +24,11 @@ class ClinicModel extends Equatable {
     required this.address,
     required this.rating,
     required this.reviewCount,
-    required this.isOpen,
     required this.hours,
   });
 
   LatLng get latLng => LatLng(lat, lng);
+  bool get isOpen => ClinicHoursHelper.isOpenNow(hours);
 
   factory ClinicModel.fromJson(Map<String, dynamic> map, String id) =>
       ClinicModel(
@@ -41,7 +41,6 @@ class ClinicModel extends Equatable {
         address: map['address'] as String? ?? '',
         rating: (map['rating'] as num?)?.toDouble() ?? 0.0,
         reviewCount: map['reviewCount'] as int? ?? 0,
-        isOpen: map['isOpen'] as bool? ?? false,
         hours: map['hours'] as String? ?? '',
       );
 
@@ -54,7 +53,6 @@ class ClinicModel extends Equatable {
     'address': address,
     'rating': rating,
     'reviewCount': reviewCount,
-    'isOpen': isOpen,
     'hours': hours,
   };
 
@@ -68,7 +66,6 @@ class ClinicModel extends Equatable {
     phone,
     address,
     rating,
-    isOpen,
     reviewCount,
     hours,
   ];

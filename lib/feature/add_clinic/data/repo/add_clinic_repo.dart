@@ -11,7 +11,6 @@ abstract class AddClinicRepo {
     required String address,
     required double rating,
     required int reviewCount,
-    required bool isOpen,
     required String hours,
   });
 }
