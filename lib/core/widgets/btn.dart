@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +25,7 @@ class Btn extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+          style: AppTextStyles.f15SemiBoldWhite,
         ),
       ),
     );

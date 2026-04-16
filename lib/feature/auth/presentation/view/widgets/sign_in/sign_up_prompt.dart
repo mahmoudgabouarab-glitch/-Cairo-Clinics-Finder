@@ -1,7 +1,6 @@
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
-import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class SignUpPrompt extends StatelessWidget {
@@ -12,20 +11,10 @@ class SignUpPrompt extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          "Don't have an account? ",
-          style: TextStyle(color: Colors.grey[500], fontSize: 13.sp),
-        ),
+        Text("Don't have an account? ", style: AppTextStyles.f13Grey),
         GestureDetector(
           onTap: () => context.pushReplacement(GoTo.signUp),
-          child: Text(
-            'Create one',
-            style: TextStyle(
-              color: AppColor.primary,
-              fontSize: 13.sp,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          child: Text('Create one', style: AppTextStyles.f13BoldPrimary),
         ),
       ],
     );

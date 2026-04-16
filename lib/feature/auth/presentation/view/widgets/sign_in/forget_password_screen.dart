@@ -1,5 +1,6 @@
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
@@ -98,6 +99,6 @@ class ForgetPasswordView extends StatelessWidget {
 Widget _subtitle() {
   return Text(
     "Enter your email and we'll send you a reset link",
-    style: TextStyle(fontSize: 14.sp, color: Colors.grey[500], height: 1.6),
+    style: AppTextStyles.f14Grey.copyWith(height: 1.6, color: Colors.grey[500]),
   );
 }

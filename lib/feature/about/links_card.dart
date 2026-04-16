@@ -1,5 +1,6 @@
 
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -47,7 +48,7 @@ class _LinkRow extends StatelessWidget {
       leading: Icon(icon, color: AppColor.primary, size: 20.r),
       title: Text(
         title,
-        style: TextStyle(fontSize: 14.sp, color: Colors.black87),
+        style: AppTextStyles.f14MediumBlack,
       ),
       trailing: Icon(Icons.chevron_right, color: Colors.grey[400], size: 20.r),
       onTap: onTap,

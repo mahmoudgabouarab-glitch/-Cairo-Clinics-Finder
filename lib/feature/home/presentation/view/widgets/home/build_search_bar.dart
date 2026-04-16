@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
@@ -40,10 +41,7 @@ class BuildSearchBar extends StatelessWidget {
             onChanged: context.read<MapCubit>().onSearchChanged,
             decoration: InputDecoration(
               hintText: 'Search clinics, pharmacies...',
-              hintStyle: TextStyle(
-                color: AppColor.textSecondary,
-                fontSize: 13.sp,
-              ),
+              hintStyle: AppTextStyles.f13Grey,
               prefixIcon: Icon(
                 Icons.search,
                 color: AppColor.textSecondary,

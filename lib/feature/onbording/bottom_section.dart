@@ -1,5 +1,6 @@
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +18,7 @@ class BottomSection extends StatelessWidget {
           children: [
             Text(
               'Your health journey starts here',
-              style: TextStyle(color: Colors.grey[600], fontSize: 14.sp),
+              style: AppTextStyles.f14Grey,
             ),
             spaceH(24),
             _OnboardingCard(
@@ -39,7 +40,7 @@ class BottomSection extends StatelessWidget {
             Text(
               'Clinics Finder — helping you find the right care, nearby',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey[600], fontSize: 12.sp),
+              style: AppTextStyles.f12Grey,
             ),
           ],
         ),
@@ -100,16 +101,16 @@ class _OnboardingCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w600,
+                    style: AppTextStyles.f15MediumBlack.copyWith(
                       color: titleColor,
                     ),
                   ),
                   spaceH(4),
                   Text(
                     subtitle,
-                    style: TextStyle(fontSize: 12.sp, color: subtitleColor),
+                    style: AppTextStyles.f12Black.copyWith(
+                      color: subtitleColor,
+                    ),
                   ),
                 ],
               ),

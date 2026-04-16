@@ -1,5 +1,6 @@
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_drawer_item.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
@@ -78,19 +79,14 @@ class _DrawerHeader extends StatelessWidget {
                   Text(
                     state.profile.name,
                     maxLines: 1,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w700,
+                    style: AppTextStyles.f18boldBlack.copyWith(
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Text(
                     state.profile.email,
                     maxLines: 1,
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontSize: 13.sp,
+                    style: AppTextStyles.f13MediumBlack.copyWith(
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

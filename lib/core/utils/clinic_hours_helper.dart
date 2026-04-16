@@ -27,7 +27,6 @@ class ClinicHoursHelper {
   }
 
   static TimeOfDay? _parse(String time) {
-    // "9:00 AM" or "5:00 PM"
     final regex = RegExp(r'(\d+):(\d+)\s*(AM|PM)', caseSensitive: false);
     final match = regex.firstMatch(time);
     if (match == null) return null;

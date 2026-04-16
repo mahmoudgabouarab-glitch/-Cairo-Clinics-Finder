@@ -1,4 +1,4 @@
-
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
@@ -13,22 +13,11 @@ class AboutCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'About the app',
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
-          ),
+          Text('About the app', style: AppTextStyles.f14SemiBoldBlack),
           spaceH(12),
           Text(
             'Cairo Clinics Finder helps you find nearby clinics, pharmacies, and medical specialists in Cairo. Browse by category, view details, and get directions — all in one place.',
-            style: TextStyle(
-              fontSize: 13.sp,
-              color: Colors.grey[600],
-              height: 1.6,
-            ),
+            style: AppTextStyles.f13Grey.copyWith(height: 1.6),
           ),
         ],
       ),

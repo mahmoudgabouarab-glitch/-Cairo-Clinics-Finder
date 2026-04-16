@@ -1,5 +1,5 @@
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthTitle extends StatelessWidget {
   final String title;
@@ -7,13 +7,6 @@ class AuthTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: 24.sp,
-        fontWeight: FontWeight.w700,
-        color: Colors.black87,
-      ),
-    );
+    return Text(title, style: AppTextStyles.f24BoldBlack);
   }
 }

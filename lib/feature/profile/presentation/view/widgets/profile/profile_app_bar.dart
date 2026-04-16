@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,10 +22,7 @@ class ProfileAppBar extends StatelessWidget {
       flexibleSpace: FlexibleSpaceBar(
         title: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Text(
-            state.name,
-            style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold),
-          ),
+          child: Text(state.name, style: AppTextStyles.f12BoldBlack),
         ),
         centerTitle: true,
         background: Container(

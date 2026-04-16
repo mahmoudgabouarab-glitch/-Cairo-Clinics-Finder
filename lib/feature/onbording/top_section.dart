@@ -1,5 +1,6 @@
 import 'package:cairo_clinics_finder/core/utils/app_assets.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,22 +20,12 @@ class TopSection extends StatelessWidget {
           spaceH(16),
           Text(
             'Welcome to',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 14.sp,
-              letterSpacing: 0.5,
-              fontWeight: FontWeight.w600,
-            ),
+            style: AppTextStyles.f14SemiBoldBlack.copyWith(letterSpacing: 0.5),
           ),
           spaceH(4),
           Text(
             'Clinics Finder',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 26.sp,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 1.5,
-            ),
+            style: AppTextStyles.f26BoldBlack.copyWith(letterSpacing: 1.5),
           ),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
@@ -65,12 +66,5 @@ class ChangePasswordFiled extends StatelessWidget {
 }
 
 Widget _title() {
-  return Text(
-    'Update your password',
-    style: TextStyle(
-      fontSize: 14.sp,
-      fontWeight: FontWeight.w600,
-      color: Colors.black87,
-    ),
-  );
+  return Text('Update your password', style: AppTextStyles.f14SemiBoldBlack);
 }

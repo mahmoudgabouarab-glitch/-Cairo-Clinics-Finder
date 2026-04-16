@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,7 @@ class SortClinics extends StatelessWidget {
               flex: 2,
               child: Text(
                 'Clinics ${state.filteredClinics.length}',
-                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
+                style: AppTextStyles.f14SemiBoldBlack,
               ),
             ),
             Expanded(

@@ -1,5 +1,6 @@
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
@@ -21,14 +22,7 @@ class ActionsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Account',
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
-          ),
+          Text('Account', style: AppTextStyles.f14SemiBoldBlack),
           spaceH(8),
           _ActionRow(
             icon: Icons.edit_outlined,
@@ -78,10 +72,7 @@ class _ActionRow extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Icon(icon, color: color, size: 20.r),
-      title: Text(
-        title,
-        style: TextStyle(fontSize: 14.sp, color: color),
-      ),
+      title: Text(title, style: AppTextStyles.f14Grey.copyWith(color: color)),
       trailing: isDestructive
           ? null
           : Icon(Icons.chevron_right, color: Colors.grey[400], size: 20.r),

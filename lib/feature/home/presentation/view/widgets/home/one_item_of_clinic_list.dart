@@ -1,5 +1,6 @@
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
@@ -17,10 +18,10 @@ class OneItemOfClinicList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push(GoTo.details, extra: {
-        'clinic': clinic,
-        'cubit': context.read<FavCubit>(),
-      } , ),
+      onTap: () => context.push(
+        GoTo.details,
+        extra: {'clinic': clinic, 'cubit': context.read<FavCubit>()},
+      ),
       child: Container(
         margin: EdgeInsets.only(bottom: 8.h),
         padding: EdgeInsets.all(10.r),
@@ -53,16 +54,13 @@ class OneItemOfClinicList extends StatelessWidget {
                 children: [
                   Text(
                     clinic.name,
-                    style: TextStyle(
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: AppTextStyles.f13MediumBlack,
                     overflow: TextOverflow.ellipsis,
                   ),
                   spaceH(2),
                   Text(
                     "${clinic.category} | ${clinic.address}",
-                    style: TextStyle(fontSize: 11.sp, color: Colors.grey),
+                    style: AppTextStyles.f11Grey,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
@@ -78,7 +76,9 @@ class OneItemOfClinicList extends StatelessWidget {
                     spaceW(2),
                     Text(
                       clinic.rating.toString(),
-                      style: TextStyle(fontSize: 11.sp),
+                      style: AppTextStyles.f11Grey.copyWith(
+                        color: Colors.black87,
+                      ),
                     ),
                   ],
                 ),
@@ -91,11 +91,8 @@ class OneItemOfClinicList extends StatelessWidget {
                   ),
                   child: Text(
                     clinic.isOpen ? 'Open' : 'Closed',
-                    style: TextStyle(
-                      fontSize: 10.sp,
-                      color: clinic.isOpen
-                          ? AppColor.openGreen
-                          : AppColor.clinicRed,
+                    style: AppTextStyles.f10Black.copyWith(
+                      color: clinic.isOpen ? Colors.green : Colors.red,
                     ),
                   ),
                 ),

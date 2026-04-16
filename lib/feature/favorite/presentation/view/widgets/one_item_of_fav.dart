@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
@@ -34,18 +35,11 @@ class OneItemOfFav extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  clinic.name,
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black87,
-                  ),
-                ),
+                Text(clinic.name, style: AppTextStyles.f14SemiBoldBlack),
                 spaceH(4),
                 Text(
                   '${clinic.category}• ${clinic.address}',
-                  style: TextStyle(fontSize: 12.sp, color: Colors.grey[500]),
+                  style: AppTextStyles.f12Grey,
                 ),
                 spaceH(4),
                 Row(
@@ -54,10 +48,7 @@ class OneItemOfFav extends StatelessWidget {
                     spaceW(4),
                     Text(
                       clinic.rating.toString(),
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        color: Colors.grey[600],
-                      ),
+                      style: AppTextStyles.f12Grey,
                     ),
                   ],
                 ),

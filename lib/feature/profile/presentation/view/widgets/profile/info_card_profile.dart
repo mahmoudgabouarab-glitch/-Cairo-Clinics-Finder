@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_info_row.dart';
@@ -17,11 +18,7 @@ class InfoCardProfile extends StatelessWidget {
         children: [
           Text(
             'Personal Info',
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
+            style: AppTextStyles.f14SemiBoldBlack,
           ),
           spaceH(16),
           CustomInfoRow(

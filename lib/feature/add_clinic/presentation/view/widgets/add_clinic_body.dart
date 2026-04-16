@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/add_clinic_listener.dart';
@@ -59,11 +60,7 @@ class _SectionTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyle(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w600,
-        color: Colors.black87,
-      ),
+      style: AppTextStyles.f14SemiBoldBlack,
     );
   }
 }

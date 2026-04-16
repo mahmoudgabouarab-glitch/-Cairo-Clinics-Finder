@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/verified/verified_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,10 +25,7 @@ class ResendButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(14.r),
           ),
         ),
-        child: Text(
-          'Resend email',
-          style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
-        ),
+        child: Text('Resend email', style: AppTextStyles.f15BoldPrimary),
       ),
     );
   }

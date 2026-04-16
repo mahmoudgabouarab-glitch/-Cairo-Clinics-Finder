@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
@@ -60,11 +61,7 @@ class LocationCard extends StatelessWidget {
                   spaceW(8),
                   Text(
                     'Pick location from map',
-                    style: TextStyle(
-                      color: Colors.teal,
-                      fontSize: 13.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: AppTextStyles.f13BoldPrimary,
                   ),
                 ],
               ),

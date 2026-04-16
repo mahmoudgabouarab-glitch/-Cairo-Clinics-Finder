@@ -1,5 +1,5 @@
-
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,18 +36,12 @@ class CustomInfoRow extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                label,
-                style: TextStyle(fontSize: 11.sp, color: Colors.grey[500]),
-              ),
+              Text(label, style: AppTextStyles.f11Grey),
               spaceH(2),
               Text(
                 value,
                 maxLines: 1,
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black87,
+                style: AppTextStyles.f14MediumBlack.copyWith(
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -66,14 +60,7 @@ class CustomInfoRow extends StatelessWidget {
                     color: AppColor.openGreen.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(20.r),
                   ),
-                  child: Text(
-                    "Call",
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColor.openGreen,
-                    ),
-                  ),
+                  child: Text("Call", style: AppTextStyles.f12BoldGreen),
                 ),
               ]
             : [],

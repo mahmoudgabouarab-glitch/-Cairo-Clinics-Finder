@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view_model/cubit/add_clinic_cubit.dart';
@@ -20,14 +21,11 @@ class AddClinicMapBottonSheet extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(
-                "Choose Location",
-                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
-              ),
-             const Spacer(),
+              Text("Choose Location", style: AppTextStyles.f16MediumBlack),
+              const Spacer(),
               GestureDetector(
                 onTap: () => context.pop(),
-                child:const Icon(Icons.cancel_outlined),
+                child: const Icon(Icons.cancel_outlined),
               ),
             ],
           ),
@@ -37,24 +35,26 @@ class AddClinicMapBottonSheet extends StatelessWidget {
               Expanded(
                 child: Text(
                   "Click Map To Select",
-                  style: TextStyle(
-                    fontSize: 12.sp,
+                  style: AppTextStyles.f12MediumBlack.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
               MaterialButton(
                 elevation: 0,
-                color:const Color(0xffECECEC),
+                color: const Color(0xffECECEC),
                 onPressed: () {
                   context.read<AddClinicCubit>().goToMyLocation();
                 },
                 child: Row(
                   children: [
-                   const Icon(Icons.location_on_outlined, color: AppColor.primary),
+                    const Icon(
+                      Icons.location_on_outlined,
+                      color: AppColor.primary,
+                    ),
                     Text(
                       "Your Current Location",
-                      style: TextStyle(fontSize: 12.sp),
+                      style: AppTextStyles.f12Black,
                     ),
                   ],
                 ),
@@ -67,7 +67,7 @@ class AddClinicMapBottonSheet extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.r),
             ),
-            child:const AddClinicMap(),
+            child: const AddClinicMap(),
           ),
           spaceH(16),
           _buildBtn(),

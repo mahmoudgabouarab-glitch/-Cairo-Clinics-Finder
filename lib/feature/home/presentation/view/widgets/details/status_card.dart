@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
@@ -16,15 +17,9 @@ class StatusCard extends StatelessWidget {
         children: [
           const Icon(Icons.star, color: Colors.amber),
           spaceW(4),
-          Text(
-            clinic.rating.toString(),
-            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
-          ),
+          Text(clinic.rating.toString(), style: AppTextStyles.f14MediumBlack),
           spaceW(4),
-          Text(
-            '(${clinic.reviewCount} reviews)',
-            style: TextStyle(fontSize: 12.sp, color: Colors.grey[500]),
-          ),
+          Text('(${clinic.reviewCount} reviews)', style: AppTextStyles.f12Grey),
           const Spacer(),
           // Open/Closed badge
           Container(
@@ -37,9 +32,7 @@ class StatusCard extends StatelessWidget {
             ),
             child: Text(
               clinic.isOpen ? 'Open' : 'Closed',
-              style: TextStyle(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w600,
+              style: AppTextStyles.f12BoldGreen.copyWith(
                 color: clinic.isOpen ? AppColor.openGreen : AppColor.clinicRed,
               ),
             ),
