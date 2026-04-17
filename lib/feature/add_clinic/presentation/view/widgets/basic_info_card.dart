@@ -24,6 +24,13 @@ class BasicInfoCard extends StatelessWidget {
           ),
           spaceH(12),
           CustomTextFormFiled(
+            hint: "Phone Number",
+            prefixIcon: Icons.phone,
+            controller: cubit.phoneController,
+            validator: AppValidator.phoneValidator(),
+          ),
+          spaceH(12),
+          CustomTextFormFiled(
             hint: "speciality",
             prefixIcon: Icons.category_outlined,
             controller: cubit.selectedCategory,
@@ -53,10 +60,32 @@ class BasicInfoCard extends StatelessWidget {
           ),
           spaceH(12),
           CustomTextFormFiled(
-            hint: "Phone Number",
-            prefixIcon: Icons.phone,
-            controller: cubit.phoneController,
-            validator: AppValidator.phoneValidator(),
+            hint: "Degree",
+            prefixIcon: Icons.workspace_premium_outlined,
+            controller: cubit.degreeController,
+            readOnly: true,
+            suffix: PopupMenuButton(
+              constraints: BoxConstraints(maxHeight: 250.h),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.r),
+              ),
+              icon: const Icon(Icons.expand_more),
+              itemBuilder: (context) => _degrees
+                  .map(
+                    (e) => PopupMenuItem(
+                      value: e,
+                      child: Text(e.replaceAll(e[0], e[0].toUpperCase())),
+                    ),
+                  )
+                  .toList(),
+              onSelected: (value) => cubit.degreeController.text = value,
+            ),
+            validator: (val) {
+              if (val == null || val.isEmpty) {
+                return 'Please choose your degree';
+              }
+              return null;
+            },
           ),
         ],
       ),
@@ -64,7 +93,7 @@ class BasicInfoCard extends StatelessWidget {
   }
 }
 
-List<String> _categories = [
+const List<String> _categories = [
   'dentist',
   'dermatology',
   'ophthalmology',
@@ -75,4 +104,11 @@ List<String> _categories = [
   'gynecology',
   'urology',
   'ent',
+];
+const List<String> _degrees = [
+  "bachelor",
+  "master",
+  "phD",
+  "diploma",
+  "specialist",
 ];

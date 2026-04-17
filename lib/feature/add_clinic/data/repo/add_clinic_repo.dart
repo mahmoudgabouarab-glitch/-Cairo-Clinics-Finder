@@ -12,5 +12,9 @@ abstract class AddClinicRepo {
     required double rating,
     required int reviewCount,
     required String hours,
+    required String breakTime,
+    required String booking,
+    required String price,
+    required String degree,
   });
 }

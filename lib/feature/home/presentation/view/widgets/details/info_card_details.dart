@@ -1,7 +1,6 @@
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_info_row.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
-import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/details/rating_info_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -27,6 +26,36 @@ class InfoCardDetails extends StatelessWidget {
             value: clinic.address,
           ),
           _divider(),
+          CustomInfoRow(
+            icon: Icons.access_time_outlined,
+            label: 'Hours',
+            value: clinic.hours,
+          ),
+          _divider(),
+          CustomInfoRow(
+            icon: Icons.calendar_today_outlined,
+            label: 'Break Time',
+            value: clinic.breakTime,
+          ),
+          _divider(),
+          CustomInfoRow(
+            icon: Icons.monetization_on_outlined,
+            label: 'Price',
+            value: clinic.price,
+          ),
+          _divider(),
+          CustomInfoRow(
+            icon: Icons.event_note_outlined,
+            label: 'Booking',
+            value: clinic.booking,
+          ),
+          _divider(),
+          CustomInfoRow(
+            icon: Icons.workspace_premium_outlined,
+            label: "Degree",
+            value: clinic.degree,
+          ),
+          _divider(),
           GestureDetector(
             onTap: () async =>
                 await launchUrl(Uri.parse('https://wa.me/+2${clinic.phone}')),
@@ -37,18 +66,10 @@ class InfoCardDetails extends StatelessWidget {
               isLink: true,
             ),
           ),
-          _divider(),
-          CustomInfoRow(
-            icon: Icons.access_time_outlined,
-            label: 'Hours',
-            value: clinic.hours,
-          ),
-          _divider(),
-          RatingInfoRow(clinic: clinic),
         ],
       ),
     );
   }
 
-  Widget _divider() => Divider(height: 24.h, color: Colors.grey[200]);
+  Widget _divider() => Divider(height: 25.h, color: Colors.grey[200]);
 }

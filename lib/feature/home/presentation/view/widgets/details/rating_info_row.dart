@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_loading.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
@@ -48,35 +49,37 @@ class _RatingInfoRowState extends State<RatingInfoRow> {
       },
       builder: (context, state) {
         if (state is RatingSuccess) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Your Last Rating : ${state.ratingUser.rating}",
-                style: AppTextStyles.f14SemiBoldBlack,
-              ),
-              RatingBar.builder(
-                glowColor: Colors.amber,
-                initialRating: state.ratingUser.rating,
-                minRating: 1,
-                allowHalfRating: false,
-                direction: Axis.horizontal,
-                tapOnlyMode: true,
-                itemCount: 5,
-                itemSize: 24.r,
-                itemBuilder: (context, _) =>
-                    const Icon(Icons.star, color: Colors.amber),
-                onRatingUpdate: (rating) {
-                  _debounce?.cancel();
-                  _debounce = Timer(const Duration(milliseconds: 500), () {
-                    context.read<RatingCubit>().addRating(
-                      clinicId: widget.clinic.id,
-                      rating: rating,
-                    );
-                  });
-                },
-              ),
-            ],
+          return CustomCard(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Your Rating : ${state.ratingUser.rating}",
+                  style: AppTextStyles.f14SemiBoldBlack,
+                ),
+                RatingBar.builder(
+                  glowColor: Colors.amber,
+                  initialRating: state.ratingUser.rating,
+                  minRating: 1,
+                  allowHalfRating: false,
+                  direction: Axis.horizontal,
+                  tapOnlyMode: true,
+                  itemCount: 5,
+                  itemSize: 24.r,
+                  itemBuilder: (context, _) =>
+                      const Icon(Icons.star, color: Colors.amber),
+                  onRatingUpdate: (rating) {
+                    _debounce?.cancel();
+                    _debounce = Timer(const Duration(milliseconds: 500), () {
+                      context.read<RatingCubit>().addRating(
+                        clinicId: widget.clinic.id,
+                        rating: rating,
+                      );
+                    });
+                  },
+                ),
+              ],
+            ),
           );
         } else {
           return CustomLoading();

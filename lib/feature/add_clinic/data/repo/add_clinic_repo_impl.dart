@@ -19,6 +19,10 @@ class AddClinicRepoImpl implements AddClinicRepo {
     required double rating,
     required int reviewCount,
     required String hours,
+    required String breakTime,
+    required String booking,
+    required String price,
+    required String degree,
   }) async {
     try {
       await _firestore.collection('clinics').add({
@@ -32,6 +36,10 @@ class AddClinicRepoImpl implements AddClinicRepo {
         'rating': rating,
         'reviewCount': reviewCount,
         'hours': hours,
+        'breakTime': breakTime,
+        'booking': booking,
+        'price': price,
+        'degree': degree,
       });
       return const Right(null);
     } on FirebaseException catch (e) {

@@ -19,6 +19,10 @@ class AddClinicCubit extends Cubit<AddClinicState> {
   final TextEditingController addressController = .new();
   final TextEditingController openingController = .new();
   final TextEditingController closingController = .new();
+  final TextEditingController breakTimeController = .new();
+  final TextEditingController bookingController = .new();
+  final TextEditingController priceController = .new();
+  final TextEditingController degreeController = .new();
   final GlobalKey<FormState> formKey = .new();
 
   LatLng? selectedLocation;
@@ -53,6 +57,10 @@ class AddClinicCubit extends Cubit<AddClinicState> {
       rating: 0,
       reviewCount: 0,
       hours: '${openingController.text} - ${closingController.text}',
+      breakTime: breakTimeController.text,
+      booking: bookingController.text,
+      price: priceController.text,
+      degree: degreeController.text,
     );
     result.fold(
       (failure) => emit(AddClinicFailure(failure.message)),
@@ -69,6 +77,10 @@ class AddClinicCubit extends Cubit<AddClinicState> {
     mapController.dispose();
     openingController.dispose();
     closingController.dispose();
+    breakTimeController.dispose();
+    bookingController.dispose();
+    priceController.dispose();
+    degreeController.dispose();
     return super.close();
   }
 }

@@ -3,6 +3,7 @@ import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/add_clinic_listener.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/basic_info_card.dart';
+import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/bookong_info_card.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/location_card.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/working_hours_card.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view_model/cubit/add_clinic_cubit.dart';
@@ -34,6 +35,10 @@ class AddClinicBody extends StatelessWidget {
             const _SectionTitle('Working Hours'),
             spaceH(12),
             const WorkingHoursCard(),
+            spaceH(16),
+            _SectionTitle("Booking Info"),
+            spaceH(12),
+            const BookongInfoCard(),
             spaceH(32),
             Btn(
               onPressed: () {

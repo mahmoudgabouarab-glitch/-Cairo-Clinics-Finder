@@ -12,6 +12,10 @@ class ClinicModel extends Equatable {
   final String phone;
   final String address;
   final String hours;
+  final String breakTime;
+  final String booking;
+  final String price;
+  final String degree;
   final RatingStats ratingStats;
 
   const ClinicModel({
@@ -24,6 +28,10 @@ class ClinicModel extends Equatable {
     required this.address,
     required this.hours,
     required this.ratingStats,
+    required this.breakTime,
+    required this.booking,
+    required this.price,
+    required this.degree,
   });
 
   LatLng get latLng => LatLng(lat, lng);
@@ -41,6 +49,10 @@ class ClinicModel extends Equatable {
       phone: map['phone'] as String? ?? '',
       address: map['address'] as String? ?? '',
       hours: map['hours'] as String? ?? '',
+      breakTime: map['breakTime'] as String? ?? '',
+      booking: map['booking'] as String? ?? '',
+      price: map['price'] as String? ?? '',
+      degree: map['degree'] as String? ?? '',
       ratingStats: RatingStats.fromJson(
         map['ratingStats'] as Map<String, dynamic>? ?? {},
       ),
@@ -55,6 +67,10 @@ class ClinicModel extends Equatable {
     'phone': phone,
     'address': address,
     'hours': hours,
+    'breakTime': breakTime,
+    'booking': booking,
+    'price': price,
+    'degree': degree,
     'ratingStats': ratingStats.toMap(),
   };
 
@@ -69,6 +85,10 @@ class ClinicModel extends Equatable {
     address,
     hours,
     ratingStats,
+    breakTime,
+    booking,
+    price,
+    degree
   ];
 }
 
