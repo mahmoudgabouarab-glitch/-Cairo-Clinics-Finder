@@ -1,6 +1,6 @@
-import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_loading.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/home/one_item_of_clinic_list.dart';
-import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
+import 'package:cairo_clinics_finder/feature/home/presentation/view_model/map_cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,16 +14,7 @@ class ListOfClinic extends StatelessWidget {
         return previous.filteredClinics != current.filteredClinics;
       },
       builder: (context, state) {
-        if (state.isLoading) {
-          return Center(
-            child: LinearProgressIndicator(
-              minHeight: 6,
-              backgroundColor: Colors.grey.shade200,
-              valueColor: const AlwaysStoppedAnimation<Color>(AppColor.primary),
-              borderRadius: BorderRadius.circular(12),
-            ),
-          );
-        }
+        if (state.isLoading) return CustomLoading();
         return ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.zero,

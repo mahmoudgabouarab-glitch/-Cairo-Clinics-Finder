@@ -1,6 +1,7 @@
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_info_row.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
+import 'package:cairo_clinics_finder/feature/home/presentation/view/widgets/details/rating_info_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -42,6 +43,8 @@ class InfoCardDetails extends StatelessWidget {
             label: 'Hours',
             value: clinic.hours,
           ),
+          _divider(),
+          RatingInfoRow(clinic: clinic),
         ],
       ),
     );

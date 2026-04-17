@@ -22,7 +22,7 @@ void setUpServiceLocator() {
   getIt.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
 
   getIt.registerLazySingleton<ClinicsRepo>(
-    () => ClinicsRepoImpl(getIt<FirebaseFirestore>()),
+    () => ClinicsRepoImpl(getIt<FirebaseFirestore>(), getIt<FirebaseAuth>()),
   );
 
   getIt.registerLazySingleton<AuthRepo>(
@@ -35,10 +35,6 @@ void setUpServiceLocator() {
     () => AddClinicRepoImpl(getIt<FirebaseFirestore>(), getIt<FirebaseAuth>()),
   );
   getIt.registerLazySingleton<FavRepo>(
-  () => FavRepoImpl(
-    FirebaseFirestore.instance,
-    FirebaseAuth.instance,
-  ),
-);
-
+    () => FavRepoImpl(FirebaseFirestore.instance, FirebaseAuth.instance),
+  );
 }

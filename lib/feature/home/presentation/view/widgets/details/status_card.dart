@@ -17,11 +17,13 @@ class StatusCard extends StatelessWidget {
         children: [
           const Icon(Icons.star, color: Colors.amber),
           spaceW(4),
-          Text(clinic.rating.toString(), style: AppTextStyles.f14MediumBlack),
+          Text(
+            clinic.ratingStats.average.toString(),
+            style: AppTextStyles.f14MediumBlack,
+          ),
           spaceW(4),
           Text('(${clinic.reviewCount} reviews)', style: AppTextStyles.f12Grey),
           const Spacer(),
-          // Open/Closed badge
           Container(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
             decoration: BoxDecoration(

@@ -2,7 +2,7 @@ import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
-import 'package:cairo_clinics_finder/feature/home/presentation/view_model/cubit/map_cubit.dart';
+import 'package:cairo_clinics_finder/feature/home/presentation/view_model/map_cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';

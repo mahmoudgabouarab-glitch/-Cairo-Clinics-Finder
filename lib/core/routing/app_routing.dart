@@ -61,8 +61,15 @@ abstract class AppRouting {
         path: GoTo.details,
         builder: (context, state) {
           final data = state.extra as Map;
-          return BlocProvider.value(
-            value: data['cubit'] as FavCubit,
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: data['cubit'] as FavCubit),
+              BlocProvider(
+                create: (context) =>
+                    RatingCubit(getIt<ClinicsRepo>())
+                      ..getRatingUser(clinicId: data['clinic'].id),
+              ),
+            ],
             child: DetailsView(clinic: data['clinic'] as ClinicModel),
           );
         },

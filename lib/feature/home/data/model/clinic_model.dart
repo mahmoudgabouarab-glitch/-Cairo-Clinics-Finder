@@ -1,4 +1,5 @@
 import 'package:cairo_clinics_finder/core/utils/clinic_hours_helper.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -10,9 +11,8 @@ class ClinicModel extends Equatable {
   final double lng;
   final String phone;
   final String address;
-  final double rating;
-  final int reviewCount;
   final String hours;
+  final RatingStats ratingStats;
 
   const ClinicModel({
     required this.id,
@@ -22,27 +22,30 @@ class ClinicModel extends Equatable {
     required this.lng,
     required this.phone,
     required this.address,
-    required this.rating,
-    required this.reviewCount,
     required this.hours,
+    required this.ratingStats,
   });
 
   LatLng get latLng => LatLng(lat, lng);
   bool get isOpen => ClinicHoursHelper.isOpenNow(hours);
+  double get rating => ratingStats.average;
+  int get reviewCount => ratingStats.count;
 
-  factory ClinicModel.fromJson(Map<String, dynamic> map, String id) =>
-      ClinicModel(
-        id: id,
-        name: map['name'] as String? ?? '',
-        category: map['category'] as String? ?? 'clinic',
-        lat: (map['lat'] as num?)?.toDouble() ?? 0.0,
-        lng: (map['lng'] as num?)?.toDouble() ?? 0.0,
-        phone: map['phone'] as String? ?? '',
-        address: map['address'] as String? ?? '',
-        rating: (map['rating'] as num?)?.toDouble() ?? 0.0,
-        reviewCount: map['reviewCount'] as int? ?? 0,
-        hours: map['hours'] as String? ?? '',
-      );
+  factory ClinicModel.fromJson(Map<String, dynamic> map, String id) {
+    return ClinicModel(
+      id: id,
+      name: map['name'] as String? ?? '',
+      category: map['category'] as String? ?? 'clinic',
+      lat: (map['lat'] as num?)?.toDouble() ?? 0.0,
+      lng: (map['lng'] as num?)?.toDouble() ?? 0.0,
+      phone: map['phone'] as String? ?? '',
+      address: map['address'] as String? ?? '',
+      hours: map['hours'] as String? ?? '',
+      ratingStats: RatingStats.fromJson(
+        map['ratingStats'] as Map<String, dynamic>? ?? {},
+      ),
+    );
+  }
 
   Map<String, dynamic> toMap() => {
     'name': name,
@@ -51,9 +54,8 @@ class ClinicModel extends Equatable {
     'lng': lng,
     'phone': phone,
     'address': address,
-    'rating': rating,
-    'reviewCount': reviewCount,
     'hours': hours,
+    'ratingStats': ratingStats.toMap(),
   };
 
   @override
@@ -65,8 +67,51 @@ class ClinicModel extends Equatable {
     lng,
     phone,
     address,
-    rating,
-    reviewCount,
     hours,
+    ratingStats,
   ];
+}
+
+class RatingStats extends Equatable {
+  final double total;
+  final int count;
+
+  const RatingStats({required this.total, required this.count});
+
+  double get average => count == 0 ? 0.0 : total / count;
+
+  factory RatingStats.fromJson(Map<String, dynamic> map) {
+    return RatingStats(
+      total: (map['total'] as num?)?.toDouble() ?? 0.0,
+      count: map['count'] as int? ?? 0,
+    );
+  }
+
+  Map<String, dynamic> toMap() => {'total': total, 'count': count};
+
+  @override
+  List<Object?> get props => [total, count];
+}
+
+class RatingUser extends Equatable {
+  final String id;
+  final double rating;
+  final DateTime updatedAt;
+
+  const RatingUser({
+    required this.id,
+    required this.rating,
+    required this.updatedAt,
+  });
+
+  factory RatingUser.fromJson(Map<String, dynamic>? json, String id) {
+    return RatingUser(
+      id: id,
+      rating: (json?['rating'] as num?)?.toDouble() ?? 0.0,
+      updatedAt: (json?['updatedAt'] as Timestamp?)?.toDate() ?? DateTime.now(),
+    );
+  }
+
+  @override
+  List<Object?> get props => [id, rating, updatedAt];
 }
