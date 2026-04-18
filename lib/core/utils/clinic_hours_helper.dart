@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ClinicHoursHelper {
-  static bool isOpenNow(String hours) {
+  static bool isOpenNow(String hours, String offDay) {
     try {
+      if (offDay.isNotEmpty) {
+        final today = _getTodayName();
+        final offDays = offDay.split(',').map((d) => d.trim().toLowerCase());
+        if (offDays.contains(today.toLowerCase())) return false;
+      }
       final parts = hours.split(' - ');
       if (parts.length != 2) return false;
 
@@ -42,5 +47,10 @@ class ClinicHoursHelper {
     }
 
     return TimeOfDay(hour: hour, minute: minute);
+  }
+
+  static String _getTodayName() {
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    return days[DateTime.now().weekday - 1];
   }
 }

@@ -35,7 +35,7 @@ class ClinicModel extends Equatable {
   });
 
   LatLng get latLng => LatLng(lat, lng);
-  bool get isOpen => ClinicHoursHelper.isOpenNow(hours);
+  bool get isOpen => ClinicHoursHelper.isOpenNow(hours, breakTime);
   double get rating => ratingStats.average;
   int get reviewCount => ratingStats.count;
 
