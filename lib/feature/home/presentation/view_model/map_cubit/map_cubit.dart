@@ -72,6 +72,8 @@ class MapCubit extends Cubit<MapState> {
           return 0;
         });
         break;
+      case SortBy.price:
+        sorted.sort((a, b) => a.price.compareTo(b.price));
       case SortBy.normal:
         break;
     }

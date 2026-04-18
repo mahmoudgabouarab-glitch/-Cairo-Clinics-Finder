@@ -68,4 +68,4 @@ class MapState extends Equatable {
   ];
 }
 
-enum SortBy { normal, rating, reviewCount, name, nearest, isOpen }
+enum SortBy { normal, rating, reviewCount, name, nearest, isOpen, price }

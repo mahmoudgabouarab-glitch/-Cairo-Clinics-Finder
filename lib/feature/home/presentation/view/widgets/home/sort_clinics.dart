@@ -1,5 +1,6 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
+import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/map_cubit/map_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,10 +14,9 @@ class SortClinics extends StatelessWidget {
     return BlocBuilder<MapCubit, MapState>(
       builder: (context, state) {
         return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Text(
                 'Clinics ${state.filteredClinics.length}',
                 style: AppTextStyles.f14SemiBoldBlack,
@@ -37,23 +37,14 @@ class SortClinics extends StatelessWidget {
                 icon: const Icon(Icons.keyboard_arrow_down),
                 menuMaxHeight: 200.h,
                 initialValue: state.sortBy,
-                items: const [
-                  DropdownMenuItem(
-                    value: SortBy.normal,
-                    child: Text('Default'),
-                  ),
-                  DropdownMenuItem(
-                    value: SortBy.nearest,
-                    child: Text('Nearest'),
-                  ),
-                  DropdownMenuItem(value: SortBy.isOpen, child: Text('Open')),
-                  DropdownMenuItem(value: SortBy.rating, child: Text('Rating')),
-                  DropdownMenuItem(
-                    value: SortBy.reviewCount,
-                    child: Text('Reviews'),
-                  ),
-                  DropdownMenuItem(value: SortBy.name, child: Text('Name')),
-                ],
+                items: sortItems
+                    .map(
+                      (e) => DropdownMenuItem(
+                        value: e.value,
+                        child: _SortDropdownItem(e),
+                      ),
+                    )
+                    .toList(),
                 onChanged: (value) {
                   if (value != null) {
                     context.read<MapCubit>().sortClinics(value);
@@ -61,17 +52,6 @@ class SortClinics extends StatelessWidget {
                 },
               ),
             ),
-            // Expanded(
-            //   flex: 1,
-            //   child: IconButton(
-            //     onPressed: () async {
-            //       final out = getIt<AuthRepo>();
-            //       await out.signOut();
-            //       context.pushReplacement(GoTo.onBording);
-            //     },
-            //     icon: Icon(Icons.logout, color: AppColor.primary),
-            //   ),
-            // ),
           ],
         );
       },
@@ -84,4 +64,49 @@ OutlineInputBorder _border() {
     borderRadius: BorderRadius.circular(14.r),
     borderSide: BorderSide(color: Colors.grey.shade200, width: 2),
   );
+}
+
+class SortItem {
+  final SortBy value;
+  final String label;
+  final IconData icon;
+
+  const SortItem(this.value, this.label, this.icon);
+}
+
+const List<SortItem> sortItems = [
+  SortItem(SortBy.normal, 'Default', Icons.sort),
+  SortItem(SortBy.nearest, 'Nearest', Icons.location_on_outlined),
+  SortItem(SortBy.price, 'Price', Icons.attach_money_outlined),
+  SortItem(SortBy.isOpen, 'Open Now', Icons.access_time),
+  SortItem(SortBy.rating, 'Rating', Icons.star_outline),
+  SortItem(SortBy.reviewCount, 'Reviews', Icons.rate_review_outlined),
+  SortItem(SortBy.name, 'Name', Icons.sort_by_alpha),
+];
+
+class _SortDropdownItem extends StatelessWidget {
+  final SortItem item;
+
+  const _SortDropdownItem(this.item);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          width: 32.w,
+          height: 32.h,
+          decoration: BoxDecoration(
+            color: AppColor.primary.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(8.r),
+          ),
+          child: Center(
+            child: Icon(item.icon, size: 18.sp, color: AppColor.primary),
+          ),
+        ),
+        spaceW(10),
+        Text(item.label, style: AppTextStyles.f14MediumBlack),
+      ],
+    );
+  }
 }
