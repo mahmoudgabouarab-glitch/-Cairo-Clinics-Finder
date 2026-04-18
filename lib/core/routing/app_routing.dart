@@ -128,6 +128,10 @@ abstract class AppRouting {
         ),
       ),
       GoRoute(path: GoTo.about, builder: (context, state) => const AboutView()),
+      GoRoute(
+        path: GoTo.myClinics,
+        builder: (context, state) => const MyClinicsView(),
+      ),
     ],
   );
 }

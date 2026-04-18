@@ -22,6 +22,7 @@ import 'package:cairo_clinics_finder/feature/home/presentation/view/details_view
 import 'package:cairo_clinics_finder/feature/home/presentation/view/home_view.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/map_cubit/map_cubit.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/rating_cubit/rating_cubit.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/my_clinic_view.dart';
 import 'package:cairo_clinics_finder/feature/onbording/onbording.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/repo/profile_repo.dart';
