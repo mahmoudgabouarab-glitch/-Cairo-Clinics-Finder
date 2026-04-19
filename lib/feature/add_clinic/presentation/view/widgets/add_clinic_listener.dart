@@ -26,6 +26,7 @@ class AddClinicListener extends StatelessWidget {
             break;
           case AddClinicSuccess():
             context.pop();
+            context.pop();
             CustomSnackBar.show(
               context,
               message: 'Clinic added successfully',
