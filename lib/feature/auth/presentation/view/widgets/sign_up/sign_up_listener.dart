@@ -37,6 +37,8 @@ class SignUpListener extends StatelessWidget {
               type: SnackBarType.error,
             );
             break;
+          case SignUpPickImage():
+            break;
         }
       },
       child: const SizedBox.shrink(),

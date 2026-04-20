@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cairo_clinics_finder/feature/auth/data/model/user_model.dart';
 import 'package:cairo_clinics_finder/feature/auth/data/repo/auth_repo.dart';
 import 'package:equatable/equatable.dart';
@@ -15,6 +17,14 @@ class SignUpCubit extends Cubit<SignUpState> {
   final TextEditingController phoneController = .new();
   final TextEditingController confirmPasswordController = .new();
   final GlobalKey<FormState> formKey = .new();
+
+  File? imageFile;
+
+  void pickImage(File image) {
+    imageFile = image;
+    emit(SignUpPickImage(image));
+  }
+
   Future<void> signUp() async {
     emit(SignUpLoading());
     final result = await _repo.signUp(
@@ -22,6 +32,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       password: passwordController.text,
       name: nameController.text,
       phone: phoneController.text,
+      imageUrl: imageFile,
     );
     result.fold(
       (faliure) => emit(SignUpFailure(faliure.message)),

@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:cairo_clinics_finder/core/errors/failures.dart';
+import 'package:cairo_clinics_finder/core/network/cloudinary_service.dart';
+import 'package:cairo_clinics_finder/core/utils/app_assets.dart';
 import 'package:cairo_clinics_finder/feature/auth/data/model/user_model.dart';
 import 'package:cairo_clinics_finder/feature/auth/data/repo/auth_repo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,8 +19,12 @@ class AuthRepoImpl implements AuthRepo {
     required String password,
     required String name,
     required String phone,
+    File? imageUrl,
   }) async {
     try {
+      final image = imageUrl != null
+          ? await CloudinaryService.uploadImage(imageUrl)
+          : AppAssets.defaultAvatar;
       final credential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
@@ -26,6 +34,7 @@ class AuthRepoImpl implements AuthRepo {
         name: name,
         email: email,
         phone: phone,
+        imageUrl: image,
       );
       await _firestore
           .collection('users')

@@ -19,6 +19,11 @@ final class SignUpSuccess extends SignUpState {
   List<Object> get props => [user];
 }
 
+final class SignUpPickImage extends SignUpState {
+  final File imageFile;
+  const SignUpPickImage(this.imageFile);
+}
+
 final class SignUpFailure extends SignUpState {
   final String message;
   const SignUpFailure(this.message);

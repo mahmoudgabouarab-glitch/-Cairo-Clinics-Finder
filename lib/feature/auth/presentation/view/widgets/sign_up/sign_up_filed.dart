@@ -15,7 +15,7 @@ class SignUpFiled extends StatelessWidget {
       key: cubit.formKey,
       child: Column(
         children: [
-          spaceH(40),
+          spaceH(16),
           CustomTextFormFiled(
             hint: "Name",
             prefixIcon: Icons.person,
