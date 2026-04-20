@@ -1,6 +1,7 @@
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
+import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/add_clinic_image_card.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/add_clinic_listener.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/basic_info_card.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/bookong_info_card.dart';
@@ -24,6 +25,8 @@ class AddClinicBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const AddClinicImageCard(),
+            spaceH(12),
             const _SectionTitle('Basic Info'),
             spaceH(12),
             const BasicInfoCard(),
@@ -39,7 +42,7 @@ class AddClinicBody extends StatelessWidget {
             _SectionTitle("Booking Info"),
             spaceH(12),
             const BookongInfoCard(),
-            spaceH(32),
+            spaceH(24),
             Btn(
               onPressed: () {
                 if (cubit.formKey.currentState!.validate()) {
@@ -63,9 +66,7 @@ class _SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: AppTextStyles.f14SemiBoldBlack,
-    );
+    return Text(title, style: AppTextStyles.f14SemiBoldBlack);
   }
 }
+

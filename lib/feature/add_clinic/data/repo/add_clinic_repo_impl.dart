@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cairo_clinics_finder/core/errors/failures.dart';
+import 'package:cairo_clinics_finder/core/network/cloudinary_service.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/data/repo/add_clinic_repo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
@@ -23,9 +26,10 @@ class AddClinicRepoImpl implements AddClinicRepo {
     required String booking,
     required String price,
     required String degree,
+    File? imageUrl,
   }) async {
     try {
-      await _firestore.collection('clinics').add({
+      final Map<String, dynamic> data = {
         'uid': _auth.currentUser!.uid,
         'name': name,
         'category': category,
@@ -40,7 +44,12 @@ class AddClinicRepoImpl implements AddClinicRepo {
         'booking': booking,
         'price': price,
         'degree': degree,
-      });
+      };
+      if (imageUrl != null) {
+        final uploadedImage = await CloudinaryService.uploadImage(imageUrl);
+        data['imageUrl'] = uploadedImage;
+      }
+      await _firestore.collection('clinics').add(data);
       return const Right(null);
     } on FirebaseException catch (e) {
       return Left(FirestoreFailure.fromFirebase(e));

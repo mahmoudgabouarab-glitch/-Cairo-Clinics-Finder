@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cairo_clinics_finder/core/errors/failures.dart';
 import 'package:dartz/dartz.dart';
 
@@ -16,5 +18,6 @@ abstract class AddClinicRepo {
     required String booking,
     required String price,
     required String degree,
+    File? imageUrl,
   });
 }

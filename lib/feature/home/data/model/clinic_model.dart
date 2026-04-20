@@ -16,6 +16,7 @@ class ClinicModel extends Equatable {
   final String booking;
   final String price;
   final String degree;
+  final String? imageUrl;
   final RatingStats ratingStats;
 
   const ClinicModel({
@@ -32,6 +33,7 @@ class ClinicModel extends Equatable {
     required this.booking,
     required this.price,
     required this.degree,
+    required this.imageUrl,
   });
 
   LatLng get latLng => LatLng(lat, lng);
@@ -56,6 +58,7 @@ class ClinicModel extends Equatable {
       ratingStats: RatingStats.fromJson(
         map['ratingStats'] as Map<String, dynamic>? ?? {},
       ),
+      imageUrl: map['imageUrl'] as String?,
     );
   }
 
@@ -71,6 +74,7 @@ class ClinicModel extends Equatable {
     'booking': booking,
     'price': price,
     'degree': degree,
+    'imageUrl': imageUrl,
     'ratingStats': ratingStats.toMap(),
   };
 
@@ -88,7 +92,8 @@ class ClinicModel extends Equatable {
     breakTime,
     booking,
     price,
-    degree
+    degree,
+    imageUrl,
   ];
 }
 

@@ -4,7 +4,9 @@ abstract class AppRouting {
   static final router = GoRouter(
     initialLocation: '/',
     routes: [
+      // Splash Route
       GoRoute(path: '/', builder: (context, state) => const Splash()),
+      // Onboarding Route
       GoRoute(
         path: GoTo.onBording,
         pageBuilder: (context, state) => CustomTransitionPage(
@@ -14,6 +16,7 @@ abstract class AppRouting {
           transitionDuration: const Duration(milliseconds: 1300),
         ),
       ),
+      // SignIn Route
       GoRoute(
         path: GoTo.signIn,
         builder: (context, state) => BlocProvider(
@@ -21,6 +24,7 @@ abstract class AppRouting {
           child: const SignInView(),
         ),
       ),
+      // SignUp Route
       GoRoute(
         path: GoTo.signUp,
         builder: (context, state) => BlocProvider(
@@ -28,6 +32,7 @@ abstract class AppRouting {
           child: const SignUpView(),
         ),
       ),
+      // Verify Route
       GoRoute(
         path: GoTo.verified,
         builder: (context, state) => BlocProvider(
@@ -35,6 +40,7 @@ abstract class AppRouting {
           child: VerifiedView(email: state.extra as String),
         ),
       ),
+      // ForgetPassword Route
       GoRoute(
         path: GoTo.forgetPassword,
         builder: (context, state) => BlocProvider(
@@ -42,6 +48,7 @@ abstract class AppRouting {
           child: const ForgetPasswordView(),
         ),
       ),
+      // Home Route
       GoRoute(
         path: GoTo.home,
         builder: (context, state) => MultiBlocProvider(
@@ -57,6 +64,7 @@ abstract class AppRouting {
           child: const HomeView(),
         ),
       ),
+      // Details Route
       GoRoute(
         path: GoTo.details,
         builder: (context, state) {
@@ -74,6 +82,7 @@ abstract class AppRouting {
           );
         },
       ),
+      // Profile Route
       GoRoute(
         path: GoTo.profile,
         builder: (context, state) => MultiBlocProvider(
@@ -86,6 +95,7 @@ abstract class AppRouting {
           child: const ProfileView(),
         ),
       ),
+      // EditProfile Route
       GoRoute(
         path: GoTo.editProfile,
         builder: (context, state) {
@@ -97,13 +107,11 @@ abstract class AppRouting {
               ),
               BlocProvider.value(value: data['cubit'] as ProfileCubit),
             ],
-            child: EditProfileView(
-              userModel: data['profile'] as UserModel,
-            ),
+            child: EditProfileView(userModel: data['profile'] as UserModel),
           );
         },
       ),
-
+      // ChangePassword Route
       GoRoute(
         path: GoTo.changePassword,
         builder: (context, state) => BlocProvider(
@@ -111,7 +119,7 @@ abstract class AppRouting {
           child: const ChangePasswordView(),
         ),
       ),
-
+      // AddClinic Route
       GoRoute(
         path: GoTo.addClinic,
         builder: (context, state) => BlocProvider(
@@ -120,6 +128,7 @@ abstract class AppRouting {
           child: const AddClinicView(),
         ),
       ),
+      // Fav Route
       GoRoute(
         path: GoTo.fav,
         builder: (context, state) => BlocProvider.value(
@@ -127,7 +136,9 @@ abstract class AppRouting {
           child: const FavView(),
         ),
       ),
+      // About Route
       GoRoute(path: GoTo.about, builder: (context, state) => const AboutView()),
+      // My Clinics Route
       GoRoute(
         path: GoTo.myClinics,
         builder: (context, state) => const MyClinicsView(),

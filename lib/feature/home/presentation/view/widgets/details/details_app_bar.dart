@@ -46,16 +46,20 @@ class DetailsAppBar extends StatelessWidget {
           child: Text(clinic.name, style: AppTextStyles.f12BoldBlack),
         ),
         centerTitle: true,
-        background: Container(
-          decoration: const BoxDecoration(gradient: AppColor.detailsAppBar),
-          child: Center(
-            child: FaIcon(
-              ClinicTheme.markerIcon(clinic.category),
-              size: 80.sp,
-              color: Colors.white24,
-            ),
-          ),
-        ),
+        background: clinic.imageUrl != null
+            ? Image.network(clinic.imageUrl!, fit: BoxFit.cover)
+            : Container(
+                decoration: const BoxDecoration(
+                  gradient: AppColor.detailsAppBar,
+                ),
+                child: Center(
+                  child: FaIcon(
+                    ClinicTheme.markerIcon(clinic.category),
+                    size: 80.sp,
+                    color: Colors.white24,
+                  ),
+                ),
+              ),
       ),
     );
   }

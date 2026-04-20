@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:cairo_clinics_finder/core/network/location_helper.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/data/repo/add_clinic_repo.dart';
 import 'package:equatable/equatable.dart';
@@ -9,7 +10,7 @@ import 'package:latlong2/latlong.dart';
 part 'add_clinic_state.dart';
 
 class AddClinicCubit extends Cubit<AddClinicState> {
-  AddClinicCubit(this._repo) : super(AddClinicInitial());
+  AddClinicCubit(this._repo) : super(AddClinicState());
   final AddClinicRepo _repo;
   final MapController mapController = MapController();
 
@@ -26,11 +27,16 @@ class AddClinicCubit extends Cubit<AddClinicState> {
   final GlobalKey<FormState> formKey = .new();
 
   LatLng? selectedLocation;
+  File? imageFile;
+  void pickImage(File image) {
+    imageFile = image;
+    emit(state.copyWith(imageFile: image));
+  }
 
   Future<void> loadUserLocation() async {
     final location = await LocationHelper.getUserLocation();
     selectedLocation = location;
-    emit(AddClinicLocationLoaded(location, isUserSelection: false));
+    emit(state.copyWith(location: location, isUserSelection: false));
   }
 
   void goToMyLocation() {
@@ -41,12 +47,12 @@ class AddClinicCubit extends Cubit<AddClinicState> {
 
   void onMapTap(LatLng location) {
     selectedLocation = location;
-    emit(AddClinicLocationLoaded(location, isUserSelection: true));
+    emit(state.copyWith(location: location, isUserSelection: true));
   }
 
   Future<void> addClinic() async {
     if (selectedLocation == null) return;
-    emit(AddClinicLoading());
+    emit(state.copyWith(isLoading: true));
     final result = await _repo.addClinic(
       name: doctorNameController.text,
       phone: phoneController.text,
@@ -61,10 +67,12 @@ class AddClinicCubit extends Cubit<AddClinicState> {
       booking: bookingController.text,
       price: priceController.text,
       degree: degreeController.text,
+      imageUrl: imageFile,
     );
     result.fold(
-      (failure) => emit(AddClinicFailure(failure.message)),
-      (_) => emit(AddClinicSuccess()),
+      (failure) =>
+          emit(state.copyWith(error: failure.message, isLoading: false)),
+      (_) => emit(state.copyWith(isLoading: false)),
     );
   }
 

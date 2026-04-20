@@ -11,38 +11,35 @@ class AddClinicListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AddClinicCubit, AddClinicState>(
+      listenWhen: (prev, curr) =>
+          prev.isLoading != curr.isLoading || prev.error != curr.error,
       listener: (context, state) {
-        switch (state) {
-          case AddClinicInitial():
-            break;
-          case AddClinicLoading():
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) => const Center(
-                child: CircularProgressIndicator(color: AppColor.primary),
-              ),
-            );
-            break;
-          case AddClinicSuccess():
-            context.pop();
-            context.pop();
-            CustomSnackBar.show(
-              context,
-              message: 'Clinic added successfully',
-              type: SnackBarType.success,
-            );
-            break;
-          case AddClinicFailure():
-            context.pop();
-            CustomSnackBar.show(
-              context,
-              message: state.message,
-              type: SnackBarType.error,
-            );
-            break;
-          case AddClinicLocationLoaded():
-            break;
+        if (state.isLoading) {
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (_) => const Center(
+              child: CircularProgressIndicator(color: AppColor.primary),
+            ),
+          );
+          return;
+        }
+        if (!state.isLoading && state.error == null) {
+          context.pop();
+          context.pop();
+          CustomSnackBar.show(
+            context,
+            message: 'Clinic added successfully',
+            type: SnackBarType.success,
+          );
+        }
+        if (state.error != null) {
+          context.pop();
+          CustomSnackBar.show(
+            context,
+            message: state.error!,
+            type: SnackBarType.error,
+          );
         }
       },
       child: const SizedBox.shrink(),

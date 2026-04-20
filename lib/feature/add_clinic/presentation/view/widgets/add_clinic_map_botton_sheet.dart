@@ -81,7 +81,7 @@ class AddClinicMapBottonSheet extends StatelessWidget {
 Widget _buildBtn() {
   return BlocBuilder<AddClinicCubit, AddClinicState>(
     builder: (context, state) {
-      if (state is! AddClinicLocationLoaded || !state.isUserSelection) {
+      if (state.location == null || !state.isUserSelection) {
         return const SizedBox.shrink();
       }
       return Btn(onPressed: () => context.pop(), text: "Confirm");
@@ -96,11 +96,11 @@ class AddClinicMap extends StatelessWidget {
     final cubit = context.read<AddClinicCubit>();
     return BlocBuilder<AddClinicCubit, AddClinicState>(
       builder: (context, state) {
-        return state is AddClinicLocationLoaded
+        return state.location != null
             ? FlutterMap(
                 mapController: cubit.mapController,
                 options: MapOptions(
-                  initialCenter: state.location,
+                  initialCenter: state.location!,
                   initialZoom: 10,
                   onTap: (tapPosition, point) => cubit.onMapTap(point),
                 ),
@@ -114,7 +114,7 @@ class AddClinicMap extends StatelessWidget {
                   MarkerLayer(
                     markers: [
                       Marker(
-                        point: state.location,
+                        point: state.location!,
                         width: 40,
                         height: 40,
                         child: const Icon(
