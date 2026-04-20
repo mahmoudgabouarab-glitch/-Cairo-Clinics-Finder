@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cairo_clinics_finder/core/errors/failures.dart';
-import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
+import 'package:cairo_clinics_finder/core/network/cloudinary_service.dart';
+import 'package:cairo_clinics_finder/feature/auth/data/model/user_model.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/repo/profile_repo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
@@ -11,11 +14,11 @@ class ProfileRepoImpl implements ProfileRepo {
   const ProfileRepoImpl(this._firestore, this._auth);
 
   @override
-  Future<Either<Failure, ProfileModel>> getProfile() async {
+  Future<Either<Failure, UserModel>> getProfile() async {
     try {
       final user = _auth.currentUser!.uid;
       final data = await _firestore.collection('users').doc(user).get();
-      return Right(ProfileModel.fromJson(data.data()!));
+      return Right(UserModel.fromJson(data.data()!));
     } on FirebaseException catch (e) {
       return Left(FirestoreFailure.fromFirebase(e));
     } catch (e) {
@@ -27,13 +30,18 @@ class ProfileRepoImpl implements ProfileRepo {
   Future<Either<Failure, void>> editProfile({
     required String name,
     required String phone,
+    File? image,
   }) async {
     try {
-      final user = _auth.currentUser!.uid;
-      await _firestore.collection('users').doc(user).update({
-        'name': name,
-        'phone': phone,
-      });
+      final Map<String, dynamic> data = {'name': name, 'phone': phone};
+      final userId = _auth.currentUser!.uid;
+      
+      if (image != null) {
+        final uploadedImage = await CloudinaryService.uploadImage(image);
+        data['imageUrl'] = uploadedImage;
+      }
+      await _firestore.collection('users').doc(userId).update(data);
+
       return const Right(null);
     } on FirebaseException catch (e) {
       return Left(FirestoreFailure.fromFirebase(e));

@@ -34,7 +34,7 @@ class AuthRepoImpl implements AuthRepo {
         name: name,
         email: email,
         phone: phone,
-        imageUrl: image,
+        imageUrl: image!,
       );
       await _firestore
           .collection('users')

@@ -98,7 +98,7 @@ abstract class AppRouting {
               BlocProvider.value(value: data['cubit'] as ProfileCubit),
             ],
             child: EditProfileView(
-              profileModel: data['profile'] as ProfileModel,
+              userModel: data['profile'] as UserModel,
             ),
           );
         },

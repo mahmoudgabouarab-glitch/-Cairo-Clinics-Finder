@@ -12,7 +12,7 @@ final class ProfileInitial extends ProfileState {}
 final class ProfileLoading extends ProfileState {}
 
 final class ProfileSuccess extends ProfileState {
-  final ProfileModel profile;
+  final UserModel profile;
   const ProfileSuccess(this.profile);
   @override
   List<Object> get props => [profile];

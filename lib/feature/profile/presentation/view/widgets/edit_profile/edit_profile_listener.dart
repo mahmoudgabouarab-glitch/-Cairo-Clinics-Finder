@@ -43,6 +43,8 @@ class EditProfileListener extends StatelessWidget {
               type: SnackBarType.error,
             );
             break;
+          case EditProfilePickImage():
+            break;
         }
       },
       child: const SizedBox.shrink(),

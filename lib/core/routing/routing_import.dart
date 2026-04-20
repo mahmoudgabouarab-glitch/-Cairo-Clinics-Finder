@@ -4,6 +4,7 @@ import 'package:cairo_clinics_finder/feature/about/about_view.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/data/repo/add_clinic_repo.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/add_clinic_view.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view_model/cubit/add_clinic_cubit.dart';
+import 'package:cairo_clinics_finder/feature/auth/data/model/user_model.dart';
 import 'package:cairo_clinics_finder/feature/auth/data/repo/auth_repo.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/Verified_view.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/sign_in_view.dart';
@@ -24,7 +25,6 @@ import 'package:cairo_clinics_finder/feature/home/presentation/view_model/map_cu
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/rating_cubit/rating_cubit.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/my_clinic_view.dart';
 import 'package:cairo_clinics_finder/feature/onbording/onbording.dart';
-import 'package:cairo_clinics_finder/feature/profile/data/model/profile_model.dart';
 import 'package:cairo_clinics_finder/feature/profile/data/repo/profile_repo.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/change_password_view.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/edit_profile_view.dart';

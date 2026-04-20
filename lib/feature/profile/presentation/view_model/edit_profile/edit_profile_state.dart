@@ -12,6 +12,12 @@ final class EditProfileInitial extends EditProfileState {}
 final class EditProfileLoading extends EditProfileState {}
 
 final class EditProfileSuccess extends EditProfileState {}
+final class EditProfilePickImage extends EditProfileState {
+    final File imageFile;
+
+ const EditProfilePickImage(this.imageFile);
+
+}
 
 final class EditProfileFailure extends EditProfileState {
   final String message;

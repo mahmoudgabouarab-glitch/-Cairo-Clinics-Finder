@@ -6,7 +6,7 @@ class UserModel extends Equatable {
   final String email;
   final String phone;
   final String name;
-  final String? imageUrl;
+  final String imageUrl;
 
   const UserModel({
     required this.uid,

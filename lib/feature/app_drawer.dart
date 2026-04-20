@@ -76,11 +76,10 @@ class _DrawerHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CircleAvatar(
-                    radius: 22.r,
-                    backgroundColor: Colors.black12,
-                    child: Icon(Icons.person, size: 24.r, color: Colors.white),
+                    radius: 45.r,
+                    backgroundImage: NetworkImage(state.profile.imageUrl),
                   ),
-                  spaceH(12),
+                  spaceH(10),
                   Text(
                     state.profile.name,
                     maxLines: 1,
