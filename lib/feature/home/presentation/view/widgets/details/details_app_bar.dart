@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
-import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_loading.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:flutter/material.dart';
@@ -41,13 +42,14 @@ class DetailsAppBar extends StatelessWidget {
         ),
       ],
       flexibleSpace: FlexibleSpaceBar(
-        title: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Text(clinic.name, style: AppTextStyles.f12BoldBlack),
-        ),
         centerTitle: true,
         background: clinic.imageUrl != null
-            ? Image.network(clinic.imageUrl!, fit: BoxFit.cover)
+            ? CachedNetworkImage(
+                imageUrl: clinic.imageUrl!,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => CustomLoading.cupertinoLoading(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              )
             : Container(
                 decoration: const BoxDecoration(
                   gradient: AppColor.detailsAppBar,

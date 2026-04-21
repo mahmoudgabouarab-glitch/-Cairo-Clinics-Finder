@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_drawer_item.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_loading.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:flutter/material.dart';
@@ -56,53 +58,44 @@ class AppDrawer extends StatelessWidget {
 class _DrawerHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileCubit, ProfileState>(
-      builder: (context, state) {
-        switch (state) {
-          case ProfileInitial():
-            return const SizedBox.shrink();
-          case ProfileLoading():
-            return const Center(
-              child: CircularProgressIndicator(color: AppColor.primary),
-            );
-          case ProfileSuccess():
-            return Container(
-              decoration: BoxDecoration(
-                gradient: AppColor.drawer.withOpacity(0.75),
-              ),
-              width: double.infinity,
-              padding: EdgeInsets.only(top: 60.h, left: 16.w, right: 16.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CircleAvatar(
-                    radius: 45.r,
-                    backgroundImage: NetworkImage(state.profile.imageUrl),
-                  ),
-                  spaceH(10),
-                  Text(
-                    state.profile.name,
-                    maxLines: 1,
-                    style: AppTextStyles.f18boldBlack.copyWith(
-                      overflow: TextOverflow.ellipsis,
+    return Container(
+      decoration: BoxDecoration(gradient: AppColor.drawer.withOpacity(0.75)),
+      width: double.infinity,
+      padding: EdgeInsets.only(top: 60.h, left: 16.w, right: 16.w),
+      child: BlocBuilder<ProfileCubit, ProfileState>(
+        builder: (context, state) {
+          return state is ProfileSuccess
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      radius: 45.r,
+                      backgroundImage: CachedNetworkImageProvider(
+                        state.profile.imageUrl,
+                      ),
                     ),
-                  ),
-                  Text(
-                    state.profile.email,
-                    maxLines: 1,
-                    style: AppTextStyles.f13MediumBlack.copyWith(
-                      overflow: TextOverflow.ellipsis,
+                    spaceH(10),
+                    Text(
+                      state.profile.name,
+                      maxLines: 1,
+                      style: AppTextStyles.f18boldBlack.copyWith(
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
-                  spaceH(10),
-                  const Divider(color: Colors.blueGrey),
-                ],
-              ),
-            );
-          case ProfileFailure():
-            return Center(child: Text(state.message));
-        }
-      },
+                    Text(
+                      state.profile.email,
+                      maxLines: 1,
+                      style: AppTextStyles.f13MediumBlack.copyWith(
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    spaceH(10),
+                    const Divider(color: Colors.blueGrey),
+                  ],
+                )
+              : CustomLoading.cupertinoLoading();
+        },
+      ),
     );
   }
 }

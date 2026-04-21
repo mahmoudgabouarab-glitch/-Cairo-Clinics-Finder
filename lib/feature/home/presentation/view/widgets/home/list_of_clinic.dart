@@ -14,7 +14,7 @@ class ListOfClinic extends StatelessWidget {
         return previous.filteredClinics != current.filteredClinics;
       },
       builder: (context, state) {
-        if (state.isLoading) return CustomLoading();
+        if (state.isLoading) return CustomLoading.linearLoading();
         return ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.zero,

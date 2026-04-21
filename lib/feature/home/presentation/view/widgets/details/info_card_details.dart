@@ -14,6 +14,8 @@ class InfoCardDetails extends StatelessWidget {
     return CustomCard(
       child: Column(
         children: [
+          CustomInfoRow(icon: Icons.person, label: 'Name', value: clinic.name),
+          _divider(),
           CustomInfoRow(
             icon: Icons.category_outlined,
             label: 'Specialty',

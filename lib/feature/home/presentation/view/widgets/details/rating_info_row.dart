@@ -82,7 +82,7 @@ class _RatingInfoRowState extends State<RatingInfoRow> {
             ),
           );
         } else {
-          return CustomLoading();
+          return CustomLoading.linearLoading();
         }
       },
     );

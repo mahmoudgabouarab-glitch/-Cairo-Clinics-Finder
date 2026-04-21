@@ -57,6 +57,7 @@ abstract class AppRouting {
               create: (context) => MapCubit(getIt<ClinicsRepo>())..getMap(),
             ),
             BlocProvider(
+              lazy: false,
               create: (_) => ProfileCubit(getIt<ProfileRepo>())..getProfile(),
             ),
             BlocProvider(create: (_) => FavCubit(getIt<FavRepo>())..getFav()),
