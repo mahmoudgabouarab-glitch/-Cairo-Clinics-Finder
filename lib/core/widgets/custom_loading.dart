@@ -15,9 +15,12 @@ class CustomLoading {
     );
   }
 
-  static Widget cupertinoLoading() {
+  static Widget cupertinoLoading({Color? color}) {
     return Center(
-      child: CupertinoActivityIndicator(color: Colors.white, radius: 16.r),
+      child: CupertinoActivityIndicator(
+        color: color ?? Colors.white,
+        radius: 16.r,
+      ),
     );
   }
 }

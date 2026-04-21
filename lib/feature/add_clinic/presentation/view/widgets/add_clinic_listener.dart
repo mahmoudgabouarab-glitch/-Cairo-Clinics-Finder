@@ -1,3 +1,4 @@
+import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
 import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view_model/cubit/add_clinic_cubit.dart';
@@ -26,7 +27,7 @@ class AddClinicListener extends StatelessWidget {
         }
         if (!state.isLoading && state.error == null) {
           context.pop();
-          context.pop();
+          context.pushReplacement(GoTo.myClinics);
           CustomSnackBar.show(
             context,
             message: 'Clinic added successfully',

@@ -44,6 +44,7 @@ class AddClinicRepoImpl implements AddClinicRepo {
         'booking': booking,
         'price': price,
         'degree': degree,
+        "createdAt": FieldValue.serverTimestamp(),
       };
       if (imageUrl != null) {
         final uploadedImage = await CloudinaryService.uploadImage(imageUrl);

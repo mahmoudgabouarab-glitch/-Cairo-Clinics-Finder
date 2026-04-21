@@ -1,77 +1,67 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
+import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
+import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class OneItemOfMyClinic extends StatelessWidget {
-  const OneItemOfMyClinic({super.key});
+  final ClinicModel clinic;
+  const OneItemOfMyClinic({super.key, required this.clinic});
 
   @override
   Widget build(BuildContext context) {
     return CustomCard(
       child: Row(
         children: [
-          Container(
-            width: 52.r,
-            height: 52.r,
-            decoration: BoxDecoration(
-              color: const Color(0xFFe0f2f1),
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-            child: Icon(
-              Icons.local_hospital_outlined,
-              color: Colors.teal,
-              size: 26.r,
-            ),
-          ),
+          clinic.imageUrl != null
+              ? Container(
+                  width: 52.r,
+                  height: 52.r,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFe0f2f1),
+                    borderRadius: BorderRadius.circular(12.r),
+                    image: DecorationImage(
+                      image: CachedNetworkImageProvider(clinic.imageUrl!),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )
+              : Container(
+                  width: 52.r,
+                  height: 52.r,
+                  decoration: BoxDecoration(
+                    gradient: AppColor.detailsAppBar,
+                    borderRadius: BorderRadius.all(Radius.circular(12.r)),
+                  ),
+                  child: Center(
+                    child: FaIcon(
+                      ClinicTheme.markerIcon(clinic.category),
+                      size: 24.sp,
+                      color: Colors.white24,
+                    ),
+                  ),
+                ),
           spaceW(12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Dr. Ahmed Clinic',
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black87,
-                  ),
-                ),
+                Text(clinic.name, style: AppTextStyles.f14SemiBoldBlack),
                 spaceH(4),
-                Text(
-                  'Cardiology • Cairo',
-                  style: TextStyle(fontSize: 12.sp, color: Colors.grey[500]),
-                ),
+                Text(clinic.address, style: AppTextStyles.f12Grey),
                 spaceH(6),
                 Row(
                   children: [
                     Icon(Icons.star, color: Colors.amber, size: 14.r),
                     spaceW(4),
                     Text(
-                      '4.6',
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                    spaceW(10),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 8.w,
-                        vertical: 3.h,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.green.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                      child: Text(
-                        'Open',
-                        style: TextStyle(
-                          fontSize: 11.sp,
-                          color: Colors.green,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
+                      clinic.ratingStats.average.toString(),
+                      style: AppTextStyles.f12Grey,
                     ),
                   ],
                 ),
