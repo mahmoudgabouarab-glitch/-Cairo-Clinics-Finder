@@ -16,4 +16,13 @@ class MyClinicCubit extends Cubit<MyClinicState> {
       (success) => emit(MyClinicSuccess(success)),
     );
   }
+
+  Future<void> deleteMyClinic(ClinicModel clinic) async {
+    emit(MyClinicLoading());
+    final result = await _myClinicRepo.deleteMyClinic(clinic);
+    result.fold((failure) => emit(MyClinicFailure(failure.message)), (success) {
+      emit(MyClinicDeleteSuccess());
+      getMyClinics();
+    });
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_loading.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/one_item_of_my_clinic.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/my_clinic_cubit.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,16 @@ class MyClinicBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyClinicCubit, MyClinicState>(
+    return BlocConsumer<MyClinicCubit, MyClinicState>(
+      listener: (context, state) {
+        if (state is MyClinicDeleteSuccess) {
+          return CustomSnackBar.show(
+            context,
+            message: 'Clinic deleted successfully',
+            type: SnackBarType.success,
+          );
+        }
+      },
       builder: (context, state) {
         return state is MyClinicSuccess
             ? ListView.separated(

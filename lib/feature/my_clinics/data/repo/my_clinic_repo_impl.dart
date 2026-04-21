@@ -30,4 +30,16 @@ class MyClinicRepoImpl implements MyClinicRepo {
       return Left(Failure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteMyClinic(ClinicModel clinic) async {
+    try {
+      await _firestore.collection("clinics").doc(clinic.id).delete();
+      return const Right(null);
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure.fromFirebase(e));
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
 }

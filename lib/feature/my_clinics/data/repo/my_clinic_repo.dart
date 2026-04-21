@@ -4,4 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class MyClinicRepo {
   Future<Either<Failure, List<ClinicModel>>> getMyClinics();
+  Future<Either<Failure, void>> deleteMyClinic(ClinicModel clinic);
 }

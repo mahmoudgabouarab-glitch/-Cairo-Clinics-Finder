@@ -26,3 +26,5 @@ final class MyClinicFailure extends MyClinicState {
   @override
   List<Object> get props => [message];
 }
+
+class MyClinicDeleteSuccess extends MyClinicState {}
