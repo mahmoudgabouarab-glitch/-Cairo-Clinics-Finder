@@ -42,6 +42,7 @@ class FavRepoImpl implements FavRepo {
 
   @override
   Stream<Either<Failure, List<ClinicModel>>> getFav() {
+    if (_auth.currentUser == null) return Stream.value(Right([]));
     return _favCollection.snapshots().map((snapshot) {
       try {
         final clinics = snapshot.docs

@@ -5,7 +5,6 @@ import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_drawer_item.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_loading.dart';
-import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,8 +40,7 @@ class AppDrawer extends StatelessWidget {
           DrawerItem(
             icon: Icons.favorite_outline,
             title: 'Favorites',
-            onTap: () =>
-                context.push(GoTo.fav, extra: context.read<FavCubit>()),
+            onTap: () => context.push(GoTo.fav),
           ),
           DrawerItem(
             icon: Icons.info_outline,

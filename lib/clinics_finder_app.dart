@@ -1,5 +1,9 @@
+import 'package:cairo_clinics_finder/core/network/service_locator.dart';
 import 'package:cairo_clinics_finder/core/routing/routing_import.dart';
+import 'package:cairo_clinics_finder/feature/favorite/data/repo/fav_repo.dart';
+import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ClinicsFinderApp extends StatelessWidget {
@@ -9,13 +13,16 @@ class ClinicsFinderApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(360, 800),
-      child: MaterialApp.router(
-        theme: ThemeData(
-          scaffoldBackgroundColor: const Color(0xFFF0F4F8),
-          appBarTheme: const AppBarTheme(backgroundColor: Color(0xFFF0F4F8)),
+      child: BlocProvider(
+        create: (_) => FavCubit(getIt<FavRepo>())..getFav(),
+        child: MaterialApp.router(
+          theme: ThemeData(
+            scaffoldBackgroundColor: const Color(0xFFF0F4F8),
+            appBarTheme: const AppBarTheme(backgroundColor: Color(0xFFF0F4F8)),
+          ),
+          debugShowCheckedModeBanner: false,
+          routerConfig: AppRouting.router,
         ),
-        debugShowCheckedModeBanner: false,
-        routerConfig: AppRouting.router,
       ),
     );
   }

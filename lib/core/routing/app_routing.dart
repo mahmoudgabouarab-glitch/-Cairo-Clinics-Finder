@@ -60,7 +60,6 @@ abstract class AppRouting {
               lazy: false,
               create: (_) => ProfileCubit(getIt<ProfileRepo>())..getProfile(),
             ),
-            BlocProvider(create: (_) => FavCubit(getIt<FavRepo>())..getFav()),
           ],
           child: const HomeView(),
         ),
@@ -70,15 +69,10 @@ abstract class AppRouting {
         path: GoTo.details,
         builder: (context, state) {
           final data = state.extra as Map;
-          return MultiBlocProvider(
-            providers: [
-              BlocProvider.value(value: data['cubit'] as FavCubit),
-              BlocProvider(
-                create: (context) =>
-                    RatingCubit(getIt<ClinicsRepo>())
-                      ..getRatingUser(clinicId: data['clinic'].id),
-              ),
-            ],
+          return BlocProvider(
+            create: (context) =>
+                RatingCubit(getIt<ClinicsRepo>())
+                  ..getRatingUser(clinicId: data['clinic'].id),
             child: DetailsView(clinic: data['clinic'] as ClinicModel),
           );
         },
@@ -130,13 +124,7 @@ abstract class AppRouting {
         ),
       ),
       // Fav Route
-      GoRoute(
-        path: GoTo.fav,
-        builder: (context, state) => BlocProvider.value(
-          value: state.extra as FavCubit,
-          child: const FavView(),
-        ),
-      ),
+      GoRoute(path: GoTo.fav, builder: (context, state) => const FavView()),
       // About Route
       GoRoute(path: GoTo.about, builder: (context, state) => const AboutView()),
       // My Clinics Route

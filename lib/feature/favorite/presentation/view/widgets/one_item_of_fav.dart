@@ -17,10 +17,7 @@ class OneItemOfFav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push(
-        GoTo.details,
-        extra: {"clinic": clinic, "cubit": context.read<FavCubit>()},
-      ),
+      onTap: () => context.push(GoTo.details, extra: {"clinic": clinic}),
       child: CustomCard(
         child: Row(
           children: [

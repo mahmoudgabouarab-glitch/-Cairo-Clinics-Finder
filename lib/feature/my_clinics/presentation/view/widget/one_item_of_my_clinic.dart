@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/clinic_theme.dart';
@@ -11,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class OneItemOfMyClinic extends StatelessWidget {
   final ClinicModel clinic;
@@ -112,7 +114,8 @@ class OneItemOfMyClinic extends StatelessWidget {
                 iconColor: AppColor.primary,
                 bgColor: const Color(0xFFE1F5EE),
                 labelColor: AppColor.primary,
-                onTap: () {},
+                onTap: () =>
+                    context.push(GoTo.details, extra: {'clinic': clinic}),
                 showDivider: true,
               ),
               MyClinicCustomBtnAction(

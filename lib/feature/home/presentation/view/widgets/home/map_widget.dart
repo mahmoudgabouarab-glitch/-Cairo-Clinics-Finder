@@ -74,13 +74,8 @@ class MapWidget extends StatelessWidget {
                     width: 45.w,
                     height: 45.h,
                     child: GestureDetector(
-                      onTap: () => context.push(
-                        GoTo.details,
-                        extra: {
-                          'clinic': clinic,
-                          'cubit': context.read<FavCubit>(),
-                        },
-                      ),
+                      onTap: () =>
+                          context.push(GoTo.details, extra: {'clinic': clinic}),
                       child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
