@@ -1,5 +1,5 @@
 import 'package:cairo_clinics_finder/core/widgets/custom_app_bar.dart';
-import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view/widgets/add_clinic_body.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/add_clinic/add_clinic_body.dart';
 import 'package:flutter/material.dart';
 
 class AddClinicView extends StatelessWidget {

@@ -1,7 +1,7 @@
-import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
-import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view_model/cubit/add_clinic_cubit.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/add_clinic_cubit/add_clinic_cubit.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/my_clinic_cubit/my_clinic_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -27,7 +27,8 @@ class AddClinicListener extends StatelessWidget {
         }
         if (!state.isLoading && state.error == null) {
           context.pop();
-          context.pushReplacement(GoTo.myClinics);
+          context.pop();
+          context.read<MyClinicCubit>().getMyClinics();
           CustomSnackBar.show(
             context,
             message: 'Clinic added successfully',

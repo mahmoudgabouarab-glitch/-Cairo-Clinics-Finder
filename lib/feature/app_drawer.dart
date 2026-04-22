@@ -28,11 +28,6 @@ class AppDrawer extends StatelessWidget {
                 context.push(GoTo.profile, extra: context.read<ProfileCubit>()),
           ),
           DrawerItem(
-            icon: Icons.add_business_outlined,
-            title: 'Add Clinic',
-            onTap: () => context.push(GoTo.addClinic),
-          ),
-          DrawerItem(
             icon: Icons.medical_services_outlined,
             title: 'My Clinics',
             onTap: () => context.push(GoTo.myClinics),

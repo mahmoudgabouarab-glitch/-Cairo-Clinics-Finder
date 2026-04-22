@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:cairo_clinics_finder/core/network/location_helper.dart';
-import 'package:cairo_clinics_finder/feature/add_clinic/data/repo/add_clinic_repo.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/data/repo/my_clinic_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +11,7 @@ part 'add_clinic_state.dart';
 
 class AddClinicCubit extends Cubit<AddClinicState> {
   AddClinicCubit(this._repo) : super(AddClinicState());
-  final AddClinicRepo _repo;
+  final MyClinicRepo _repo;
   final MapController mapController = MapController();
 
   final TextEditingController doctorNameController = .new();

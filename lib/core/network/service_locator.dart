@@ -1,5 +1,3 @@
-import 'package:cairo_clinics_finder/feature/add_clinic/data/repo/add_clinic_repo.dart';
-import 'package:cairo_clinics_finder/feature/add_clinic/data/repo/add_clinic_repo_impl.dart';
 import 'package:cairo_clinics_finder/feature/auth/data/repo/auth_repo.dart';
 import 'package:cairo_clinics_finder/feature/auth/data/repo/auth_repo_impl.dart';
 import 'package:cairo_clinics_finder/feature/favorite/data/repo/fav_repo.dart';
@@ -32,9 +30,6 @@ void setUpServiceLocator() {
   );
   getIt.registerLazySingleton<ProfileRepo>(
     () => ProfileRepoImpl(getIt<FirebaseFirestore>(), getIt<FirebaseAuth>()),
-  );
-  getIt.registerLazySingleton<AddClinicRepo>(
-    () => AddClinicRepoImpl(getIt<FirebaseFirestore>(), getIt<FirebaseAuth>()),
   );
   getIt.registerLazySingleton<FavRepo>(
     () => FavRepoImpl(FirebaseFirestore.instance, FirebaseAuth.instance),

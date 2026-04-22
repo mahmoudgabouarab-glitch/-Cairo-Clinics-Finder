@@ -2,7 +2,7 @@ import 'package:cairo_clinics_finder/core/utils/app_validator.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
-import 'package:cairo_clinics_finder/feature/add_clinic/presentation/view_model/cubit/add_clinic_cubit.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/add_clinic_cubit/add_clinic_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

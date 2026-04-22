@@ -117,9 +117,14 @@ abstract class AppRouting {
       // AddClinic Route
       GoRoute(
         path: GoTo.addClinic,
-        builder: (context, state) => BlocProvider(
-          create: (context) =>
-              AddClinicCubit(getIt<AddClinicRepo>())..loadUserLocation(),
+        builder: (context, state) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) =>
+                  AddClinicCubit(getIt<MyClinicRepo>())..loadUserLocation(),
+            ),
+            BlocProvider.value(value: state.extra as MyClinicCubit),
+          ],
           child: const AddClinicView(),
         ),
       ),
