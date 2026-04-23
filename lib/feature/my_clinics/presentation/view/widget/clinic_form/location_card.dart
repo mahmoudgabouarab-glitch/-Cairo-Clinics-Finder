@@ -3,8 +3,8 @@ import 'package:cairo_clinics_finder/core/utils/app_validator.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
-import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/add_clinic/add_clinic_map_botton_sheet.dart';
-import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/add_clinic_cubit/add_clinic_cubit.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/clinic_form_map_botton_sheet.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +14,7 @@ class LocationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<AddClinicCubit>();
+    final cubit = context.read<ClinicFormCubit>();
     return CustomCard(
       child: Column(
         children: [
@@ -38,7 +38,7 @@ class LocationCard extends StatelessWidget {
                 builder: (_) {
                   return BlocProvider.value(
                     value: cubit,
-                    child: const AddClinicMapBottonSheet(),
+                    child: const ClinicFormMapBottonSheet(),
                   );
                 },
               );

@@ -2,15 +2,15 @@ import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
-import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/add_clinic_cubit/add_clinic_cubit.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class AddClinicMapBottonSheet extends StatelessWidget {
-  const AddClinicMapBottonSheet({super.key});
+class ClinicFormMapBottonSheet extends StatelessWidget {
+  const ClinicFormMapBottonSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class AddClinicMapBottonSheet extends StatelessWidget {
                 elevation: 0,
                 color: const Color(0xffECECEC),
                 onPressed: () {
-                  context.read<AddClinicCubit>().goToMyLocation();
+                  context.read<ClinicFormCubit>().goToMyLocation();
                 },
                 child: Row(
                   children: [
@@ -79,7 +79,7 @@ class AddClinicMapBottonSheet extends StatelessWidget {
 }
 
 Widget _buildBtn() {
-  return BlocBuilder<AddClinicCubit, AddClinicState>(
+  return BlocBuilder<ClinicFormCubit, ClinicFormState>(
     builder: (context, state) {
       if (state.location == null || !state.isUserSelection) {
         return const SizedBox.shrink();
@@ -93,8 +93,8 @@ class AddClinicMap extends StatelessWidget {
   const AddClinicMap({super.key});
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<AddClinicCubit>();
-    return BlocBuilder<AddClinicCubit, AddClinicState>(
+    final cubit = context.read<ClinicFormCubit>();
+    return BlocBuilder<ClinicFormCubit, ClinicFormState>(
       builder: (context, state) {
         return state.location != null
             ? FlutterMap(

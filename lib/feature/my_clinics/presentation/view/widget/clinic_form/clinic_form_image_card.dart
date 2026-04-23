@@ -2,21 +2,21 @@ import 'dart:io';
 
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
-import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/add_clinic_cubit/add_clinic_cubit.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AddClinicImageCard extends StatelessWidget {
-  const AddClinicImageCard({super.key});
+class ClinicFormImageCard extends StatelessWidget {
+  const ClinicFormImageCard({super.key});
 
   static final _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<AddClinicCubit>();
-    return BlocBuilder<AddClinicCubit, AddClinicState>(
+    final cubit = context.read<ClinicFormCubit>();
+    return BlocBuilder<ClinicFormCubit, ClinicFormState>(
       builder: (context, state) {
         final File? image = cubit.imageFile;
         return GestureDetector(

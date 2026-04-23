@@ -120,16 +120,15 @@ abstract class AppRouting {
         builder: (context, state) {
           final data = state.extra as Map;
           final clinic = data['clinic'];
-
           return MultiBlocProvider(
             providers: [
               BlocProvider(
                 create: (context) =>
-                    AddClinicCubit(getIt<MyClinicRepo>(), clinic: clinic)
+                    ClinicFormCubit(getIt<MyClinicRepo>(), clinic: clinic)
                       ..loadUserLocation(),
               ),
             ],
-            child: const AddClinicView(),
+            child: const ClinicFormView(),
           );
         },
       ),

@@ -1,13 +1,13 @@
-part of 'add_clinic_cubit.dart';
+part of 'clinic_form_cubit.dart';
 
-class AddClinicState extends Equatable {
+class ClinicFormState extends Equatable {
   final String? error;
   final File? imageFile;
   final LatLng? location;
   final bool isUserSelection;
   final bool isLoading;
   final bool isSuccess;
-  const AddClinicState({
+  const ClinicFormState({
     this.error,
     this.imageFile,
     this.location,
@@ -16,7 +16,7 @@ class AddClinicState extends Equatable {
     this.isSuccess = false,
   });
 
-  AddClinicState copyWith({
+  ClinicFormState copyWith({
     String? error,
     File? imageFile,
     LatLng? location,
@@ -24,7 +24,7 @@ class AddClinicState extends Equatable {
     bool? isLoading,
     bool? isSuccess,
   }) {
-    return AddClinicState(
+    return ClinicFormState(
       error: error ?? this.error,
       imageFile: imageFile ?? this.imageFile,
       location: location ?? this.location,

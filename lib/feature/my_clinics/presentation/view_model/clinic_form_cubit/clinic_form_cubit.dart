@@ -8,13 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
-part 'add_clinic_state.dart';
+part 'clinic_form_state.dart';
 
-class AddClinicCubit extends Cubit<AddClinicState> {
-  AddClinicCubit(this._repo, {ClinicModel? clinic})
+class ClinicFormCubit extends Cubit<ClinicFormState> {
+  ClinicFormCubit(this._repo, {ClinicModel? clinic})
     : _clinic = clinic,
       mode = clinic == null ? Request.add : Request.edit,
-      super(AddClinicState()) {
+      super(ClinicFormState()) {
     _preFill();
   }
 
