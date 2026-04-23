@@ -12,7 +12,7 @@ class MyClinicRepoImpl implements MyClinicRepo {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _auth;
   MyClinicRepoImpl(this._firestore, this._auth);
-  
+
   @override
   Future<Either<Failure, void>> addClinic({
     required String name,
@@ -46,6 +46,7 @@ class MyClinicRepoImpl implements MyClinicRepo {
         'booking': booking,
         'price': price,
         'degree': degree,
+        "imageUrl": null,
         "createdAt": FieldValue.serverTimestamp(),
       };
       if (imageUrl != null) {
@@ -86,6 +87,48 @@ class MyClinicRepoImpl implements MyClinicRepo {
   Future<Either<Failure, void>> deleteMyClinic(ClinicModel clinic) async {
     try {
       await _firestore.collection("clinics").doc(clinic.id).delete();
+      return const Right(null);
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure.fromFirebase(e));
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> editMyClinic({
+    required String name,
+    required String category,
+    required String phone,
+    required String address,
+    required String hours,
+    required String breakTime,
+    required String booking,
+    required String price,
+    required String degree,
+    String? oldImageUrl,
+    File? imageUrl,
+    required String id,
+  }) async {
+    try {
+      final data = <String, dynamic>{
+        'name': name,
+        'category': category,
+        'phone': phone,
+        'address': address,
+        'hours': hours,
+        'breakTime': breakTime,
+        'booking': booking,
+        'price': price,
+        'degree': degree,
+      };
+      if (imageUrl != null) {
+        final uploadedUrl = await CloudinaryService.uploadImage(imageUrl);
+        data["imageUrl"] = uploadedUrl;
+      } else if (oldImageUrl != null) {
+        data["imageUrl"] = oldImageUrl;
+      }
+      await _firestore.collection("clinics").doc(id).update(data);
       return const Right(null);
     } on FirebaseException catch (e) {
       return Left(FirestoreFailure.fromFirebase(e));

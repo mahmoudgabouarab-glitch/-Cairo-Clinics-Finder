@@ -6,12 +6,14 @@ class AddClinicState extends Equatable {
   final LatLng? location;
   final bool isUserSelection;
   final bool isLoading;
+  final bool isSuccess;
   const AddClinicState({
     this.error,
     this.imageFile,
     this.location,
     this.isUserSelection = false,
     this.isLoading = false,
+    this.isSuccess = false,
   });
 
   AddClinicState copyWith({
@@ -20,6 +22,7 @@ class AddClinicState extends Equatable {
     LatLng? location,
     bool? isUserSelection,
     bool? isLoading,
+    bool? isSuccess,
   }) {
     return AddClinicState(
       error: error ?? this.error,
@@ -27,6 +30,7 @@ class AddClinicState extends Equatable {
       location: location ?? this.location,
       isUserSelection: isUserSelection ?? this.isUserSelection,
       isLoading: isLoading ?? this.isLoading,
+      isSuccess: isSuccess ?? this.isSuccess,
     );
   }
 
@@ -37,36 +41,6 @@ class AddClinicState extends Equatable {
     location,
     isUserSelection,
     isLoading,
+    isSuccess
   ];
 }
-
-// class AddClinicInitial extends AddClinicState {}
-
-// class AddClinicLoading extends AddClinicState {}
-
-// class AddClinicSuccess extends AddClinicState {}
-
-// class AddClinicPickImage extends AddClinicState {
-//   final File image;
-//   AddClinicPickImage(this.image);
-
-//   @override
-//   List<Object?> get props => [image];
-// }
-
-// class AddClinicFailure extends AddClinicState {
-//   final String message;
-//   AddClinicFailure(this.message);
-
-//   @override
-//   List<Object?> get props => [message];
-// }
-
-// class AddClinicLocationLoaded extends AddClinicState {
-//   final LatLng location;
-//   final bool isUserSelection;
-//   AddClinicLocationLoaded(this.location, {this.isUserSelection = false});
-
-//   @override
-//   List<Object?> get props => [location, isUserSelection];
-// }

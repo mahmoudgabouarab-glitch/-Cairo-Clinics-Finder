@@ -11,7 +11,6 @@ class CustomTextFormFiled extends StatefulWidget {
   final String? Function(String?)? validator;
   final Color? fillcolor;
   final TextStyle? textstyle;
-  final Function(String)? onchange;
   final TextInputType? keybordtype;
   final bool? readOnly;
   final void Function()? onTap;
@@ -27,7 +26,6 @@ class CustomTextFormFiled extends StatefulWidget {
     this.prefixIcon,
     this.fillcolor,
     this.textstyle,
-    this.onchange,
     this.keybordtype,
     this.readOnly,
     this.onTap,
@@ -52,10 +50,8 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
       onTap: widget.onTap,
       readOnly: widget.readOnly ?? false,
       autovalidateMode: widget.autovalidateMode ?? AutovalidateMode.disabled,
-      onTapOutside: (_) =>
-          widget.onTap ?? FocusManager.instance.primaryFocus?.unfocus(),
+      onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
       keyboardType: widget.keybordtype,
-      onChanged: widget.onchange,
       validator: widget.validator,
       controller: widget.controller,
       decoration: InputDecoration(

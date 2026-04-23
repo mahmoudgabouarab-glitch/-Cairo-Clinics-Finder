@@ -27,7 +27,6 @@ class ChangePasswordFiled extends StatelessWidget {
               prefixIcon: Icons.lock,
               validator: AppValidator.passwordValidator(),
               controller: cubit.oldPasswordController,
-              keybordtype: TextInputType.phone,
             ),
             spaceH(12),
             CustomTextFormFiled(

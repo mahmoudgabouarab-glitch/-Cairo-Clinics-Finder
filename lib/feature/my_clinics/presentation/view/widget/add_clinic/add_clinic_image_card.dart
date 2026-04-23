@@ -32,16 +32,21 @@ class AddClinicImageCard extends StatelessWidget {
               color: const Color(0xFFE1F5EE),
               borderRadius: BorderRadius.circular(14.r),
               border: Border.all(
-                color: image != null
+                color: image != null || cubit.oldImageUrl != null
                     ? const Color(0xFF1D9E75)
                     : const Color(0xFF5DCAA5),
                 width: 1.5,
               ),
               image: image != null
                   ? DecorationImage(image: FileImage(image), fit: BoxFit.cover)
+                  : cubit.oldImageUrl != null
+                  ? DecorationImage(
+                      image: NetworkImage(cubit.oldImageUrl!),
+                      fit: BoxFit.cover,
+                    )
                   : null,
             ),
-            child: image == null
+            child: image == null && cubit.oldImageUrl == null
                 ? Stack(
                     children: [
                       Center(

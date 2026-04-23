@@ -124,7 +124,8 @@ class OneItemOfMyClinic extends StatelessWidget {
                 iconColor: AppColor.primary,
                 bgColor: const Color(0xFFE1F5EE),
                 labelColor: AppColor.primary,
-                onTap: () {},
+                onTap: () =>
+                    context.push(GoTo.addClinic, extra: {'clinic': clinic}),
                 showDivider: true,
               ),
               MyClinicCustomBtnAction(

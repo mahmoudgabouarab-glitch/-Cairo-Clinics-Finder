@@ -18,6 +18,7 @@ class AddClinicBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<AddClinicCubit>();
+    final isEdit = cubit.mode == Request.edit;
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       child: Form(
@@ -31,10 +32,12 @@ class AddClinicBody extends StatelessWidget {
             spaceH(12),
             const BasicInfoCard(),
             spaceH(16),
-            const _SectionTitle('Location'),
-            spaceH(12),
-            const LocationCard(),
-            spaceH(16),
+            if (!isEdit) ...[
+              const _SectionTitle('Location'),
+              spaceH(12),
+              const LocationCard(),
+              spaceH(16),
+            ],
             const _SectionTitle('Working Hours'),
             spaceH(12),
             const WorkingHoursCard(),
@@ -46,10 +49,10 @@ class AddClinicBody extends StatelessWidget {
             Btn(
               onPressed: () {
                 if (cubit.formKey.currentState!.validate()) {
-                  cubit.addClinic();
+                  cubit.submit();
                 }
               },
-              text: "Submit for review",
+              text: isEdit ? "Update Clinic" : "Submit for review",
             ),
             spaceH(24),
             const AddClinicListener(),
@@ -69,4 +72,3 @@ class _SectionTitle extends StatelessWidget {
     return Text(title, style: AppTextStyles.f14SemiBoldBlack);
   }
 }
-

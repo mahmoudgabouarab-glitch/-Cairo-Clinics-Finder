@@ -117,16 +117,21 @@ abstract class AppRouting {
       // AddClinic Route
       GoRoute(
         path: GoTo.addClinic,
-        builder: (context, state) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) =>
-                  AddClinicCubit(getIt<MyClinicRepo>())..loadUserLocation(),
-            ),
-            BlocProvider.value(value: state.extra as MyClinicCubit),
-          ],
-          child: const AddClinicView(),
-        ),
+        builder: (context, state) {
+          final data = state.extra as Map;
+          final clinic = data['clinic'];
+
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    AddClinicCubit(getIt<MyClinicRepo>(), clinic: clinic)
+                      ..loadUserLocation(),
+              ),
+            ],
+            child: const AddClinicView(),
+          );
+        },
       ),
       // Fav Route
       GoRoute(path: GoTo.fav, builder: (context, state) => const FavView()),

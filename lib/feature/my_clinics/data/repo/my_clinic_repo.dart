@@ -23,4 +23,18 @@ abstract class MyClinicRepo {
   });
   Future<Either<Failure, List<ClinicModel>>> getMyClinics();
   Future<Either<Failure, void>> deleteMyClinic(ClinicModel clinic);
+  Future<Either<Failure, void>> editMyClinic({
+    required String name,
+    required String category,
+    required String phone,
+    required String address,
+    required String hours,
+    required String breakTime,
+    required String booking,
+    required String price,
+    required String degree,
+    String? oldImageUrl,
+    File? imageUrl,
+    required String id,
+  });
 }
