@@ -15,7 +15,7 @@ class AboutCard extends StatelessWidget {
           Text('About the app', style: AppTextStyles.f14SemiBoldBlack),
           spaceH(12),
           Text(
-            'Cairo Clinics Finder helps you find nearby clinics, pharmacies, and medical specialists in Cairo. Browse by category, view details, and get directions — all in one place.',
+            'Clinics Finder helps you find nearby clinics, pharmacies, and medical specialists in Cairo. Browse by category, view details, and get directions — all in one place.',
             style: AppTextStyles.f13Grey.copyWith(height: 1.6),
           ),
         ],
