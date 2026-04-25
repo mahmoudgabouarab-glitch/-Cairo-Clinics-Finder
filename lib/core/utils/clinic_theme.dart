@@ -34,11 +34,11 @@ class ClinicTheme {
       case 'dentist':
         return FontAwesomeIcons.tooth;
       case 'dermatology':
-        return FontAwesomeIcons.handSparkles;
+        return FontAwesomeIcons.handDots;
       case 'ophthalmology':
         return FontAwesomeIcons.eye;
       case 'pediatrics':
-        return FontAwesomeIcons.child;
+        return FontAwesomeIcons.baby;
       case 'cardiology':
         return FontAwesomeIcons.heartPulse;
       case 'orthopedics':
@@ -48,7 +48,7 @@ class ClinicTheme {
       case 'gynecology':
         return FontAwesomeIcons.venus;
       case 'urology':
-        return FontAwesomeIcons.droplet;
+        return FontAwesomeIcons.flaskVial;
       case 'ent':
         return FontAwesomeIcons.earListen;
       default:

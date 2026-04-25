@@ -92,7 +92,7 @@ class MapCubit extends Cubit<MapState> {
 
   // this fun to #go to my location
   void goToMyLocation() {
-    controller.move(state.userLocation!, 14);
+    controller.move(state.userLocation!, 18);
   }
 
   @override

@@ -162,7 +162,6 @@ Future<void> showWorkingDaysDialog(
           ),
           TextButton(
             onPressed: () {
-              // رتبهم بترتيب الأيام مش ترتيب الاختيار
               final sorted = days.where((d) => selected.contains(d)).toList();
               cubit.breakTimeController.text = sorted.join(', ');
               Navigator.pop(ctx);

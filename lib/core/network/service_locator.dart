@@ -32,7 +32,7 @@ void setUpServiceLocator() {
     () => ProfileRepoImpl(getIt<FirebaseFirestore>(), getIt<FirebaseAuth>()),
   );
   getIt.registerLazySingleton<FavRepo>(
-    () => FavRepoImpl(FirebaseFirestore.instance, FirebaseAuth.instance),
+    () => FavRepoImpl(getIt<FirebaseFirestore>(), getIt<FirebaseAuth>()),
   );
   getIt.registerLazySingleton<MyClinicRepo>(
     () => MyClinicRepoImpl(getIt<FirebaseFirestore>(), getIt<FirebaseAuth>()),
