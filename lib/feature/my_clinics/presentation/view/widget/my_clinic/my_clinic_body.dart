@@ -1,7 +1,9 @@
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
+import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_loading.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_title_icon.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/my_clinic/one_item_of_my_clinic.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/my_clinic_cubit/my_clinic_cubit.dart';
 import 'package:flutter/material.dart';
@@ -24,15 +26,32 @@ class MyClinicBody extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return state is MyClinicSuccess
-            ? ListView.separated(
-                padding: EdgeInsets.all(16.r),
-                itemCount: state.clinics.length,
-                separatorBuilder: (_, _) => spaceH(12),
-                itemBuilder: (_, index) =>
-                    OneItemOfMyClinic(clinic: state.clinics[index]),
-              )
-            : CustomLoading.cupertinoLoading(color: AppColor.primary);
+        if (state is MyClinicSuccess) {
+          if (state.clinics.isEmpty) {
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CustomTitleIcon(icon: Icons.medical_services_outlined),
+                  spaceH(16),
+                  Text(
+                    "You don't have any clinics yet",
+                    style: AppTextStyles.f14MediumBlack,
+                  ),
+                ],
+              ),
+            );
+          } else {
+            return ListView.separated(
+              padding: EdgeInsets.all(16.r),
+              itemCount: state.clinics.length,
+              separatorBuilder: (_, _) => spaceH(12),
+              itemBuilder: (_, index) =>
+                  OneItemOfMyClinic(clinic: state.clinics[index]),
+            );
+          }
+        }
+        return CustomLoading.cupertinoLoading(color: AppColor.primary);
       },
     );
   }
