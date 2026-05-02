@@ -36,21 +36,21 @@ A Flutter app that helps users discover and book nearby clinics, view doctor pro
 ## 📦 Key Dependencies
 
 ```yaml
-flutter_bloc: ^9.1.1        # State management
-go_router: ^17.2.0          # Navigation
-get_it: ^9.2.1              # Dependency injection
-dartz: ^0.10.1              # Functional programming (Either)
-equatable: ^2.0.8           # Value equality
-firebase_auth: 4.16.0       # Authentication
-cloud_firestore: 4.15.4     # Database
-flutter_map: ^8.2.2         # OpenStreetMap
-geolocator: 10.1.0          # GPS location
-dio: ^5.9.2                 # HTTP client / Cloudinary upload
-image_picker: ^1.2.1        # Profile & clinic image selection
-cached_network_image: ^3.4.1 # Image caching
-flutter_rating_bar: ^4.0.1  # Rating UI
-font_awesome_flutter: ^11.0.0 # Map marker icons
-lottie: ^3.3.2              # Animations
+flutter_bloc: ^9.1.1           # State management
+go_router: ^17.2.0             # Navigation
+get_it: ^9.2.1                 # Dependency injection
+dartz: ^0.10.1                 # Functional programming (Either)
+equatable: ^2.0.8              # Value equality
+firebase_auth: 6.4.0           # Authentication
+cloud_firestore: 6.3.0         # Database
+flutter_map: ^8.2.2            # OpenStreetMap
+geolocator: 14.0.2             # GPS location
+dio: ^5.9.2                    # HTTP client / Cloudinary upload
+image_picker: ^1.2.1           # Profile & clinic image selection
+cached_network_image: ^3.4.1   # Image caching
+flutter_rating_bar: ^4.0.1     # Rating UI
+font_awesome_flutter: ^11.0.0  # Map marker icons
+lottie: ^3.3.2                 # Animations
 ```
 
 ---
