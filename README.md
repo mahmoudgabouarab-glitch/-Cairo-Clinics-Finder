@@ -74,54 +74,104 @@ lib/
     ├── profile/        
     └── splash/         
 ```
-# Auth screen 
+## 📸 Screenshots
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/f9872e76-31bd-41e0-89b1-3b86d7930780" />
+### 🔐 Auth Screens
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/35d9bd69-b86f-4220-b304-7832f8796194" />
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/f9872e76-31bd-41e0-89b1-3b86d7930780" width="200"/></td>
+    <td><img src="https://github.com/user-attachments/assets/35d9bd69-b86f-4220-b304-7832f8796194" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/01d49794-9c12-448b-b6e6-0bcf4d8f55ad" width="200"/></td>
+    <td><img src="https://github.com/user-attachments/assets/eb5e503f-70ff-4ca3-a1b8-cd66837289b8" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/f9e9fdbf-8c20-463b-b1a5-a9dfd7e8fe1a" width="200"/></td>
+    <td><img src="https://github.com/user-attachments/assets/10454b38-f0a3-4e90-9002-c3bd327a34ab" width="200"/></td>
+  </tr>
+</table>
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/01d49794-9c12-448b-b6e6-0bcf4d8f55ad" />
+---
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/eb5e503f-70ff-4ca3-a1b8-cd66837289b8" />
+### 🏠 Home Screens
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/f9e9fdbf-8c20-463b-b1a5-a9dfd7e8fe1a" />
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/4a03efde-1c16-4f39-87d6-b961343c3d07" width="200"/></td>
+    <td><img src="https://github.com/user-attachments/assets/1ede7cc2-3617-492e-9b21-3dff59d47ed1" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/642f1a79-07b7-4b7f-90cd-7de4b06d6f2c" width="200"/></td>
+    <td><img src="https://github.com/user-attachments/assets/58a6102b-d109-43a0-8965-9482c72070fe" width="200"/></td>
+  </tr>
+</table>
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/10454b38-f0a3-4e90-9002-c3bd327a34ab" />
+---
 
-# Home Screen 
+### 👤 Profile Screens
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/4a03efde-1c16-4f39-87d6-b961343c3d07" />
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/92edc96b-86d9-4a35-921b-5ceed1e99c78" width="200"/></td>
+    <td><img src="https://github.com/user-attachments/assets/6b8e8ae9-cd7d-4132-a5d8-5fca0e0561a8" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/1eb52f3f-b2d9-407b-b77f-f1a88a9a77f7" width="200"/></td>
+    <td></td>
+  </tr>
+</table>
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/1ede7cc2-3617-492e-9b21-3dff59d47ed1" />
+---
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/642f1a79-07b7-4b7f-90cd-7de4b06d6f2c" />
+### 🏥 My Clinic Screens
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/58a6102b-d109-43a0-8965-9482c72070fe" />
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/10cb2a20-cadf-49d8-9ccf-3c7f4c3d3b66" width="200"/></td>
+    <td><img src="https://github.com/user-attachments/assets/bc2edaff-0659-42da-b87f-0e0317000b35" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/464bd98d-4e36-410e-8caa-11ac50efb970" width="200"/></td>
+    <td></td>
+  </tr>
+</table>
 
-# profile Screen 
+---
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/92edc96b-86d9-4a35-921b-5ceed1e99c78" />
+### 📋 Details Screen
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/6b8e8ae9-cd7d-4132-a5d8-5fca0e0561a8" />
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/a50497e5-c743-4390-bb4c-21e3e0576970" width="200"/></td>
+    <td></td>
+  </tr>
+</table>
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/1eb52f3f-b2d9-407b-b77f-f1a88a9a77f7" />
+---
 
-# My clinic Screen 
+### ❤️ Favorites Screen
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/10cb2a20-cadf-49d8-9ccf-3c7f4c3d3b66" />
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/85d059d4-5252-4533-961f-4a3407bf50ba" width="200"/></td>
+    <td></td>
+  </tr>
+</table>
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/bc2edaff-0659-42da-b87f-0e0317000b35" />
+---
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/464bd98d-4e36-410e-8caa-11ac50efb970" />
+### ℹ️ About Screen
 
-# Details Screen 
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/08c3226d-12cd-47d3-80ed-ce39af66a25e" width="200"/></td>
+    <td></td>
+  </tr>
+</table>
 
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/a50497e5-c743-4390-bb4c-21e3e0576970" />
+---
 
-# Favorites Screen 
-
-<img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/85d059d4-5252-4533-961f-4a3407bf50ba" />
-
-# About Screen 
 
 <img width="1290" height="2796" alt="Image" src="https://github.com/user-attachments/assets/08c3226d-12cd-47d3-80ed-ce39af66a25e" />
