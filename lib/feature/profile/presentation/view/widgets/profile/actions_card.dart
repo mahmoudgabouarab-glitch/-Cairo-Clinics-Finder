@@ -7,6 +7,8 @@ import 'package:cairo_clinics_finder/feature/auth/data/model/user_model.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/profile/sign_out_listener.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/signout/sign_out_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,11 +24,14 @@ class ActionsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Account', style: AppTextStyles.f14SemiBoldBlack),
+          Text(
+            LocaleKeys.profile_account.tr(),
+            style: AppTextStyles.f14SemiBoldBlack,
+          ),
           spaceH(8),
           _ActionRow(
             icon: Icons.edit_outlined,
-            title: 'Edit Profile',
+            title: LocaleKeys.profile_edit_profile.tr(),
             onTap: () => context.push(
               GoTo.editProfile,
               extra: {
@@ -37,12 +42,12 @@ class ActionsCard extends StatelessWidget {
           ),
           _ActionRow(
             icon: Icons.lock_outline,
-            title: 'Change Password',
+            title: LocaleKeys.profile_change_password.tr(),
             onTap: () => context.push(GoTo.changePassword),
           ),
           _ActionRow(
             icon: Icons.logout,
-            title: 'Logout',
+            title: LocaleKeys.profile_logout.tr(),
             isDestructive: true,
             onTap: () => context.read<SignOutCubit>().signOut(),
           ),

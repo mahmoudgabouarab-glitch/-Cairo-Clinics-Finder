@@ -4,6 +4,8 @@ import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
 import 'package:cairo_clinics_finder/feature/auth/data/model/user_model.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/edit_profile/edit_profile_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,30 +37,33 @@ class _EditProfileFiledState extends State<EditProfileFiled> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _sectionTitle('Personal Info', isSuperTitle: true),
+            _sectionTitle(
+              LocaleKeys.edit_profile_personal_info.tr(),
+              isSuperTitle: true,
+            ),
             spaceH(16),
-            _sectionTitle("Name"),
+            _sectionTitle(LocaleKeys.edit_profile_name.tr()),
             spaceH(4),
             CustomTextFormFiled(
-              hint: "Name",
+              hint: LocaleKeys.edit_profile_name.tr(),
               prefixIcon: Icons.person,
               controller: cubit.nameController,
               validator: AppValidator.nameValidator(),
             ),
             spaceH(12),
-            _sectionTitle("Email"),
+            _sectionTitle(LocaleKeys.edit_profile_email.tr()),
             spaceH(4),
             CustomTextFormFiled(
-              hint: "Email",
+              hint: LocaleKeys.edit_profile_email.tr(),
               prefixIcon: Icons.email_outlined,
               readOnly: true,
               controller: cubit.emailController,
             ),
             spaceH(12),
-            _sectionTitle("phone"),
+            _sectionTitle(LocaleKeys.edit_profile_phone.tr()),
             spaceH(4),
             CustomTextFormFiled(
-              hint: "phone",
+              hint: LocaleKeys.edit_profile_phone.tr(),
               prefixIcon: Icons.phone,
               controller: cubit.phoneController,
               validator: AppValidator.phoneValidator(),

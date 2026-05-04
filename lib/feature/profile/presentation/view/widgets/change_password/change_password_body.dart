@@ -4,6 +4,8 @@ import 'package:cairo_clinics_finder/core/widgets/custom_title_icon.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/change_password/change_password_filed.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/change_password/change_password_listener.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/change_password/change_password_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +30,7 @@ class ChangePasswordBody extends StatelessWidget {
                 cubit.changePassword();
               }
             },
-            text: "Update Password",
+            text: LocaleKeys.change_password_update.tr(),
           ),
           const ChangePasswordListener(),
         ],

@@ -5,6 +5,8 @@ import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/e
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/edit_profile/edit_profile_filed.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view/widgets/edit_profile/edit_profile_listener.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/edit_profile/edit_profile_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +32,7 @@ class EditProfileBody extends StatelessWidget {
                 cubit.editProfile();
               }
             },
-            text: "Save changes",
+            text: LocaleKeys.edit_profile_save_changes.tr(),
           ),
           const EditProfileListener(),
         ],

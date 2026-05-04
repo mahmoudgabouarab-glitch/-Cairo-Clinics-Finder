@@ -23,7 +23,7 @@ class ClinicFormCubit extends Cubit<ClinicFormState> {
   final Request mode;
   final MapController mapController = MapController();
   final TextEditingController doctorNameController = TextEditingController();
-  final TextEditingController selectedCategory = TextEditingController();
+  final TextEditingController categoryController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
   final TextEditingController openingController = TextEditingController();
@@ -33,6 +33,10 @@ class ClinicFormCubit extends Cubit<ClinicFormState> {
   final TextEditingController priceController = TextEditingController();
   final TextEditingController degreeController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  String selectedCategoryValue = "";
+  String selectedDegreeValue = "";
+  String selectedBookingValue = "";
+  String selectedBreakTimeValue = "";
   String? oldImageUrl;
   LatLng? selectedLocation;
   File? imageFile;
@@ -41,7 +45,7 @@ class ClinicFormCubit extends Cubit<ClinicFormState> {
   void _preFill() {
     if (mode == Request.add || _clinic == null) return;
     doctorNameController.text = _clinic.name;
-    selectedCategory.text = _clinic.category;
+    categoryController.text = _clinic.category;
     phoneController.text = _clinic.phone;
     addressController.text = _clinic.address;
     final hours = _clinic.hours.split(' - ');
@@ -96,16 +100,16 @@ class ClinicFormCubit extends Cubit<ClinicFormState> {
             name: doctorNameController.text,
             phone: phoneController.text,
             address: addressController.text,
-            category: selectedCategory.text,
+            category: selectedCategoryValue,
             lat: selectedLocation!.latitude,
             lng: selectedLocation!.longitude,
             rating: 0,
             reviewCount: 0,
             hours: '${openingController.text} - ${closingController.text}',
-            breakTime: breakTimeController.text,
-            booking: bookingController.text,
+            breakTime: selectedBreakTimeValue,
+            booking: selectedBookingValue,
             price: priceController.text,
-            degree: degreeController.text,
+            degree: selectedDegreeValue,
             imageUrl: imageFile,
           )
         : await _repo.editMyClinic(
@@ -113,12 +117,12 @@ class ClinicFormCubit extends Cubit<ClinicFormState> {
             name: doctorNameController.text,
             phone: phoneController.text,
             address: addressController.text,
-            category: selectedCategory.text,
+            category: selectedCategoryValue,
             hours: '${openingController.text} - ${closingController.text}',
-            breakTime: breakTimeController.text,
-            booking: bookingController.text,
+            breakTime: selectedBreakTimeValue,
+            booking: selectedBookingValue,
             price: priceController.text,
-            degree: degreeController.text,
+            degree: selectedDegreeValue,
             imageUrl: imageFile,
             oldImageUrl: oldImageUrl,
           );
@@ -133,7 +137,7 @@ class ClinicFormCubit extends Cubit<ClinicFormState> {
   @override
   Future<void> close() {
     doctorNameController.dispose();
-    selectedCategory.dispose();
+    categoryController.dispose();
     phoneController.dispose();
     addressController.dispose();
     openingController.dispose();

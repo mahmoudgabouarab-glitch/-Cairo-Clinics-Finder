@@ -2,6 +2,8 @@ import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -33,8 +35,8 @@ class ClinicFormListener extends StatelessWidget {
           CustomSnackBar.show(
             context,
             message: isEdit
-                ? 'Clinic updated successfully'
-                : 'Clinic added successfully',
+                ? LocaleKeys.clinic_form_clinic_updated_successfully.tr()
+                : LocaleKeys.clinic_form_clinic_added_successfully.tr(),
             type: SnackBarType.success,
           );
         }

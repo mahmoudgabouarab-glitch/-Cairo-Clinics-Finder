@@ -2,6 +2,8 @@ import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/verified/verified_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -33,7 +35,7 @@ class VerifiedLisenter extends StatelessWidget {
             context.pop();
             CustomSnackBar.show(
               context,
-              message: state.message,
+              message: LocaleKeys.verification_resend_success.tr(),
               type: SnackBarType.success,
             );
             break;
@@ -41,7 +43,7 @@ class VerifiedLisenter extends StatelessWidget {
             context.pop();
             CustomSnackBar.show(
               context,
-              message: state.message,
+              message: LocaleKeys.verification_not_verified.tr(),
               type: SnackBarType.error,
             );
             break;

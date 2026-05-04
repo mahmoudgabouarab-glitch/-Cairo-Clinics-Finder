@@ -8,6 +8,8 @@ import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/location_card.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/working_hours_card.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,21 +30,21 @@ class ClinicFormBody extends StatelessWidget {
           children: [
             const ClinicFormImageCard(),
             spaceH(12),
-            const _SectionTitle('Basic Info'),
+            _SectionTitle(LocaleKeys.clinic_form_basic_info.tr()),
             spaceH(12),
             const BasicInfoCard(),
             spaceH(16),
             if (!isEdit) ...[
-              const _SectionTitle('Location'),
+              _SectionTitle(LocaleKeys.clinic_form_location.tr()),
               spaceH(12),
               const LocationCard(),
               spaceH(16),
             ],
-            const _SectionTitle('Working Hours'),
+            _SectionTitle(LocaleKeys.clinic_form_working_hours.tr()),
             spaceH(12),
             const WorkingHoursCard(),
             spaceH(16),
-            _SectionTitle("Booking Info"),
+            _SectionTitle(LocaleKeys.clinic_form_booking_info.tr()),
             spaceH(12),
             const BookongInfoCard(),
             spaceH(24),
@@ -52,7 +54,9 @@ class ClinicFormBody extends StatelessWidget {
                   cubit.submit();
                 }
               },
-              text: isEdit ? "Update Clinic" : "Submit for review",
+              text: isEdit
+                  ? LocaleKeys.clinic_form_update.tr()
+                  : LocaleKeys.clinic_form_submit.tr(),
             ),
             spaceH(24),
             const ClinicFormListener(),

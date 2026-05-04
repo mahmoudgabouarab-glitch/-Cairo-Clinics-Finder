@@ -6,6 +6,8 @@ import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_drawer_item.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_loading.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/profile/profile_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,23 +25,31 @@ class AppDrawer extends StatelessWidget {
           _DrawerHeader(),
           DrawerItem(
             icon: Icons.person_outline,
-            title: 'My Profile',
+            title: LocaleKeys.drawer_my_profile.tr(),
             onTap: () =>
                 context.push(GoTo.profile, extra: context.read<ProfileCubit>()),
           ),
           DrawerItem(
             icon: Icons.medical_services_outlined,
-            title: 'My Clinics',
+            title: LocaleKeys.drawer_my_clinics.tr(),
             onTap: () => context.push(GoTo.myClinics),
           ),
           DrawerItem(
             icon: Icons.favorite_outline,
-            title: 'Favorites',
+            title: LocaleKeys.drawer_favorites.tr(),
             onTap: () => context.push(GoTo.fav),
           ),
           DrawerItem(
+            icon: Icons.language,
+            title: LocaleKeys.drawer_language.tr(),
+            subtitle: Text(
+              context.locale.languageCode == 'en' ? 'English' : 'العربية',
+            ),
+            onTap: () => _showLanguageBottomSheet(context),
+          ),
+          DrawerItem(
             icon: Icons.info_outline,
-            title: 'About',
+            title: LocaleKeys.drawer_about.tr(),
             onTap: () => context.push(GoTo.about),
           ),
         ],
@@ -91,4 +101,37 @@ class _DrawerHeader extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showLanguageBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    builder: (_) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
+            title: Text('English'),
+            trailing: context.locale.languageCode == 'en'
+                ? Icon(Icons.check, color: Colors.green)
+                : null,
+            onTap: () async {
+              await context.setLocale(const Locale('en'));
+              if (context.mounted) Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text('العربية'),
+            trailing: context.locale.languageCode == 'ar'
+                ? Icon(Icons.check, color: Colors.green)
+                : null,
+            onTap: () async {
+              await context.setLocale(const Locale('ar'));
+              if (context.mounted) Navigator.pop(context);
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

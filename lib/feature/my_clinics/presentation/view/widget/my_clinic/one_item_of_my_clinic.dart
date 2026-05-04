@@ -8,6 +8,8 @@ import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/my_clinic/my_clinic_custom_btn_action.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/my_clinic_cubit/my_clinic_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,34 +29,7 @@ class OneItemOfMyClinic extends StatelessWidget {
             padding: EdgeInsets.all(12.r),
             child: Row(
               children: [
-                clinic.imageUrl != null
-                    ? Container(
-                        width: 54.r,
-                        height: 54.r,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFe0f2f1),
-                          borderRadius: BorderRadius.circular(12.r),
-                          image: DecorationImage(
-                            image: CachedNetworkImageProvider(clinic.imageUrl!),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      )
-                    : Container(
-                        width: 54.r,
-                        height: 54.r,
-                        decoration: BoxDecoration(
-                          gradient: AppColor.detailsAppBar,
-                          borderRadius: BorderRadius.circular(12.r),
-                        ),
-                        child: Center(
-                          child: FaIcon(
-                            ClinicTheme.markerIcon(clinic.category),
-                            size: 24.sp,
-                            color: Colors.white24,
-                          ),
-                        ),
-                      ),
+                _buildImage(clinic),
                 spaceW(12),
                 Expanded(
                   child: Column(
@@ -72,7 +47,7 @@ class OneItemOfMyClinic extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.r),
                         ),
                         child: Text(
-                          clinic.category,
+                          'clinic_form.${clinic.category}'.tr(),
                           style: AppTextStyles.f10Black.copyWith(
                             color: const Color(0xFF085041),
                             fontWeight: FontWeight.w500,
@@ -110,17 +85,17 @@ class OneItemOfMyClinic extends StatelessWidget {
             children: [
               MyClinicCustomBtnAction(
                 icon: Icons.visibility_outlined,
-                label: 'View',
+                label: LocaleKeys.my_clinics_view.tr(),
                 iconColor: AppColor.primary,
                 bgColor: const Color(0xFFE1F5EE),
                 labelColor: AppColor.primary,
                 onTap: () =>
                     context.push(GoTo.details, extra: {'clinic': clinic}),
-                showDivider: true,
+                showDivider: isArabic(context) ? false : true,
               ),
               MyClinicCustomBtnAction(
                 icon: Icons.edit_outlined,
-                label: 'Edit',
+                label: LocaleKeys.my_clinics_edit.tr(),
                 iconColor: AppColor.primary,
                 bgColor: const Color(0xFFE1F5EE),
                 labelColor: AppColor.primary,
@@ -130,13 +105,13 @@ class OneItemOfMyClinic extends StatelessWidget {
               ),
               MyClinicCustomBtnAction(
                 icon: Icons.delete_outline,
-                label: 'Delete',
+                label: LocaleKeys.my_clinics_delete.tr(),
                 iconColor: const Color(0xFFA32D2D),
                 bgColor: const Color(0xFFFCEBEB),
                 labelColor: const Color(0xFF791F1F),
                 onTap: () =>
                     context.read<MyClinicCubit>().deleteMyClinic(clinic),
-                showDivider: false,
+                showDivider: isArabic(context) ? true : false,
               ),
             ],
           ),
@@ -145,3 +120,38 @@ class OneItemOfMyClinic extends StatelessWidget {
     );
   }
 }
+
+Widget _buildImage(ClinicModel clinic) {
+  if (clinic.imageUrl != null) {
+    return Container(
+      width: 54.r,
+      height: 54.r,
+      decoration: BoxDecoration(
+        color: const Color(0xFFe0f2f1),
+        borderRadius: BorderRadius.circular(12.r),
+        image: DecorationImage(
+          image: CachedNetworkImageProvider(clinic.imageUrl!),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  } else {
+    return Container(
+      width: 54.r,
+      height: 54.r,
+      decoration: BoxDecoration(
+        gradient: AppColor.detailsAppBar,
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      child: Center(
+        child: FaIcon(
+          ClinicTheme.markerIcon(clinic.category),
+          size: 24.sp,
+          color: Colors.white24,
+        ),
+      ),
+    );
+  }
+}
+
+bool isArabic(BuildContext context) => context.locale.languageCode == 'ar';

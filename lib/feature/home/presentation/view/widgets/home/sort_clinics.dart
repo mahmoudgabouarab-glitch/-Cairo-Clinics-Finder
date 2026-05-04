@@ -2,6 +2,8 @@ import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/feature/home/presentation/view_model/map_cubit/map_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +20,7 @@ class SortClinics extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Text(
-                'Clinics ${state.filteredClinics.length}',
+                '${LocaleKeys.home_clinics_count.tr()} ${state.filteredClinics.length}',
                 style: AppTextStyles.f14SemiBoldBlack,
               ),
             ),
@@ -74,14 +76,30 @@ class SortItem {
   const SortItem(this.value, this.label, this.icon);
 }
 
-const List<SortItem> sortItems = [
-  SortItem(SortBy.normal, 'Default', Icons.sort),
-  SortItem(SortBy.nearest, 'Nearest', Icons.location_on_outlined),
-  SortItem(SortBy.price, 'Price', Icons.attach_money_outlined),
-  SortItem(SortBy.isOpen, 'Open Now', Icons.access_time),
-  SortItem(SortBy.rating, 'Rating', Icons.star_outline),
-  SortItem(SortBy.reviewCount, 'Reviews', Icons.rate_review_outlined),
-  SortItem(SortBy.name, 'Name', Icons.sort_by_alpha),
+final List<SortItem> sortItems = [
+  SortItem(SortBy.normal, LocaleKeys.home_sort_default.tr(), Icons.sort),
+  SortItem(
+    SortBy.nearest,
+    LocaleKeys.home_sort_nearest.tr(),
+    Icons.location_on_outlined,
+  ),
+  SortItem(
+    SortBy.price,
+    LocaleKeys.home_sort_price.tr(),
+    Icons.attach_money_outlined,
+  ),
+  SortItem(
+    SortBy.isOpen,
+    LocaleKeys.home_sort_open_now.tr(),
+    Icons.access_time,
+  ),
+  SortItem(SortBy.rating, LocaleKeys.home_sort_rating.tr(), Icons.star_outline),
+  SortItem(
+    SortBy.reviewCount,
+    LocaleKeys.home_sort_reviews.tr(),
+    Icons.rate_review_outlined,
+  ),
+  SortItem(SortBy.name, LocaleKeys.home_sort_name.tr(), Icons.sort_by_alpha),
 ];
 
 class _SortDropdownItem extends StatelessWidget {

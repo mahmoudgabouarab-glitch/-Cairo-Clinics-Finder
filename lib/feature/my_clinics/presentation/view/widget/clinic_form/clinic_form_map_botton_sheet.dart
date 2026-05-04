@@ -3,6 +3,8 @@ import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -21,7 +23,10 @@ class ClinicFormMapBottonSheet extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text("Choose Location", style: AppTextStyles.f16MediumBlack),
+              Text(
+                LocaleKeys.clinic_form_choose_title.tr(),
+                style: AppTextStyles.f16MediumBlack,
+              ),
               const Spacer(),
               GestureDetector(
                 onTap: () => context.pop(),
@@ -34,7 +39,7 @@ class ClinicFormMapBottonSheet extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  "Click Map To Select",
+                  LocaleKeys.clinic_form_click_map.tr(),
                   style: AppTextStyles.f12MediumBlack.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
@@ -53,7 +58,7 @@ class ClinicFormMapBottonSheet extends StatelessWidget {
                       color: AppColor.primary,
                     ),
                     Text(
-                      "Your Current Location",
+                      LocaleKeys.clinic_form_your_location.tr(),
                       style: AppTextStyles.f12Black,
                     ),
                   ],
@@ -84,7 +89,10 @@ Widget _buildBtn() {
       if (state.location == null || !state.isUserSelection) {
         return const SizedBox.shrink();
       }
-      return Btn(onPressed: () => context.pop(), text: "Confirm");
+      return Btn(
+        onPressed: () => context.pop(),
+        text: LocaleKeys.clinic_form_confirm.tr(),
+      );
     },
   );
 }

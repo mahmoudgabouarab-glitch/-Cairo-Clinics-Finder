@@ -6,6 +6,8 @@ import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_title_icon.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/my_clinic/one_item_of_my_clinic.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/my_clinic_cubit/my_clinic_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +22,7 @@ class MyClinicBody extends StatelessWidget {
         if (state is MyClinicDeleteSuccess) {
           return CustomSnackBar.show(
             context,
-            message: 'Clinic deleted successfully',
+            message: LocaleKeys.my_clinics_deleted_success.tr(),
             type: SnackBarType.success,
           );
         }
@@ -35,7 +37,7 @@ class MyClinicBody extends StatelessWidget {
                   CustomTitleIcon(icon: Icons.medical_services_outlined),
                   spaceH(16),
                   Text(
-                    "You don't have any clinics yet",
+                    LocaleKeys.my_clinics_empty.tr(),
                     style: AppTextStyles.f14MediumBlack,
                   ),
                 ],

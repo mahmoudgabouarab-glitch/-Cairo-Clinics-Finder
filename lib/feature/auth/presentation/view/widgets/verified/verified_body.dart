@@ -6,6 +6,8 @@ import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/veri
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/verified_subtitle.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shared/auth_title.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/verified/verified_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +27,7 @@ class VerifiedBody extends StatelessWidget {
             const Spacer(),
             const CustomTitleIcon(icon: Icons.mark_email_unread_outlined),
             spaceH(32),
-            const AuthTitle(title: "Check your email"),
+            AuthTitle(title: LocaleKeys.verification_title.tr()),
             spaceH(12),
             VerifiedSubtitle(email: email),
             const Spacer(),
@@ -33,10 +35,10 @@ class VerifiedBody extends StatelessWidget {
               onPressed: () {
                 context.read<VerifiedCubit>().checkVerification();
               },
-              text: "I've verified, continue",
+              text: LocaleKeys.verification_continue.tr(),
             ),
             spaceH(12),
-            ResendButton(onPressed: () {}),
+            const ResendButton(),
             spaceH(32),
             const VerifiedLisenter(),
           ],

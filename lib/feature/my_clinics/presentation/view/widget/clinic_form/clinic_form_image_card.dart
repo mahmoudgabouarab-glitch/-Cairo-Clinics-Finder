@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -64,14 +66,14 @@ class ClinicFormImageCard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Add clinic photo',
+                                  LocaleKeys.clinic_form_add_clinic_photo.tr(),
                                   style: AppTextStyles.f13BoldPrimary.copyWith(
                                     color: const Color(0xFF0F6E56),
                                   ),
                                 ),
                                 spaceH(4),
                                 Text(
-                                  'Tap to choose from gallery',
+                                  LocaleKeys.clinic_form_tap_to_choose.tr(),
                                   style: TextStyle(
                                     fontSize: 11.sp,
                                     color: const Color(0xFF5DCAA5),
@@ -99,7 +101,7 @@ class ClinicFormImageCard extends StatelessWidget {
                             ),
                           ),
                           child: Text(
-                            'Optional',
+                            LocaleKeys.clinic_form_optional.tr(),
                             style: TextStyle(
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w500,

@@ -6,6 +6,8 @@ import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +22,7 @@ class WorkingHoursCard extends StatelessWidget {
       child: Column(
         children: [
           CustomTextFormFiled(
-            hint: "Opening Time",
+            hint: LocaleKeys.clinic_form_opening_time.tr(),
             readOnly: true,
             prefixIcon: Icons.wb_sunny_outlined,
             controller: cubit.openingController,
@@ -35,14 +37,14 @@ class WorkingHoursCard extends StatelessWidget {
             },
             validator: (val) {
               if (val == null || val.isEmpty) {
-                return 'Please enter your opening time';
+                return LocaleKeys.clinic_form_opening_time_required.tr();
               }
               return null;
             },
           ),
           spaceH(12),
           CustomTextFormFiled(
-            hint: "Closing Time",
+            hint: LocaleKeys.clinic_form_closing_time.tr(),
             readOnly: true,
             prefixIcon: Icons.nights_stay_outlined,
             controller: cubit.closingController,
@@ -57,14 +59,14 @@ class WorkingHoursCard extends StatelessWidget {
             },
             validator: (val) {
               if (val == null || val.isEmpty) {
-                return 'Please enter your closing time';
+                return LocaleKeys.clinic_form_closing_time_required.tr();
               }
               return null;
             },
           ),
           spaceH(12),
           CustomTextFormFiled(
-            hint: "Break Time",
+            hint: LocaleKeys.clinic_form_break_time.tr(),
             readOnly: true,
             prefixIcon: Icons.calendar_today_outlined,
             controller: cubit.breakTimeController,
@@ -73,7 +75,7 @@ class WorkingHoursCard extends StatelessWidget {
             },
             validator: (val) {
               if (val == null || val.isEmpty) {
-                return 'Please select your break time';
+                return LocaleKeys.clinic_form_break_time_required.tr();
               }
               return null;
             },
@@ -106,16 +108,16 @@ Future<void> showWorkingDaysDialog(
   BuildContext context,
   ClinicFormCubit cubit,
 ) async {
-  const days = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+  const days = ["sat", "sun", "mon", "tue", "wed", "thu", "fri"];
   final selected = <String>{};
-  if (cubit.breakTimeController.text.isNotEmpty) {
-    selected.addAll(cubit.breakTimeController.text.split(', '));
-  }
   await showDialog(
     context: context,
     builder: (ctx) => StatefulBuilder(
       builder: (ctx, setState) => AlertDialog(
-        title: Text('Select Break Time', style: AppTextStyles.f14SemiBoldBlack),
+        title: Text(
+          LocaleKeys.clinic_form_select_break_time.tr(),
+          style: AppTextStyles.f14SemiBoldBlack,
+        ),
         content: SizedBox(
           width: double.maxFinite,
           child: GridView.count(
@@ -143,7 +145,7 @@ Future<void> showWorkingDaysDialog(
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    day,
+                    "clinic_form.$day".tr(),
                     style: TextStyle(
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w600,
@@ -158,16 +160,25 @@ Future<void> showWorkingDaysDialog(
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel', style: TextStyle(color: Colors.red)),
+            child: Text(
+              LocaleKeys.clinic_form_cancel.tr(),
+              style: TextStyle(color: Colors.red),
+            ),
           ),
           TextButton(
             onPressed: () {
               final sorted = days.where((d) => selected.contains(d)).toList();
-              cubit.breakTimeController.text = sorted.join(', ');
+              cubit.selectedBreakTimeValue = sorted.join(', ');
+              cubit.breakTimeController.text = sorted
+                  .map((d) => 'clinic_form.$d'.tr())
+                  .join(', ');
               Navigator.pop(ctx);
-              log(cubit.breakTimeController.text);
+              log(cubit.selectedBreakTimeValue);
             },
-            child: Text('Confirm', style: TextStyle(color: AppColor.primary)),
+            child: Text(
+              LocaleKeys.clinic_form_confirm.tr(),
+              style: TextStyle(color: AppColor.primary),
+            ),
           ),
         ],
       ),

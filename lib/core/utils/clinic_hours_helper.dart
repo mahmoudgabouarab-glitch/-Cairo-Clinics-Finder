@@ -50,7 +50,7 @@ class ClinicHoursHelper {
   }
 
   static String _getTodayName() {
-    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const days = ['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri'];
     return days[DateTime.now().weekday - 1];
   }
 }

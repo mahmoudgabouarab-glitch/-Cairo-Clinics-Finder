@@ -5,6 +5,8 @@ import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/clinic_form_map_botton_sheet.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +21,7 @@ class LocationCard extends StatelessWidget {
       child: Column(
         children: [
           CustomTextFormFiled(
-            hint: "Address",
+            hint: LocaleKeys.clinic_form_address.tr(),
             prefixIcon: Icons.location_on_outlined,
             controller: cubit.addressController,
             validator: AppValidator.nameValidator(),
@@ -56,7 +58,7 @@ class LocationCard extends StatelessWidget {
                   Icon(Icons.map_outlined, color: Colors.teal, size: 20.r),
                   spaceW(8),
                   Text(
-                    'Pick location from map',
+                    LocaleKeys.clinic_form_pick_map.tr(),
                     style: AppTextStyles.f13BoldPrimary,
                   ),
                 ],

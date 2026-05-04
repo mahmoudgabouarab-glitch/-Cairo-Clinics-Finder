@@ -14,7 +14,7 @@ class VerifiedCubit extends Cubit<VerifiedState> {
     if (isVerified) {
       emit(VerifiedSuccess());
     } else {
-      emit(const VerifiedFailure('Please verify your email'));
+      emit(VerifiedFailure());
     }
   }
 
@@ -22,9 +22,8 @@ class VerifiedCubit extends Cubit<VerifiedState> {
     emit(VerifiedLoading());
     final result = await _repo.resendVerificationEmail();
     result.fold(
-      (faliure) => emit(VerifiedFailure(faliure.message)),
-      (success) =>
-          emit(const ResendVerifiedSuccess("Verification email has been sent")),
+      (_) => emit(VerifiedFailure()),
+      (_) => emit(ResendVerifiedSuccess()),
     );
   }
 }

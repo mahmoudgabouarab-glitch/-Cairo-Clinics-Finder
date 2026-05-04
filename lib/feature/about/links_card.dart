@@ -2,6 +2,8 @@ import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,7 +17,7 @@ class LinksCard extends StatelessWidget {
   static const _instagram = 'https://instagram.com';
   static const _twitter = 'https://twitter.com';
   static const _facebook = 'https://facebook.com';
-  
+
   void _launch(String url) async {
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) launchUrl(uri);
@@ -27,31 +29,34 @@ class LinksCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Contact Us', style: AppTextStyles.f14SemiBoldBlack),
+          Text(
+            LocaleKeys.about_contact_title.tr(),
+            style: AppTextStyles.f14SemiBoldBlack,
+          ),
           spaceH(12),
           _LinkRow(
             icon: FontAwesomeIcons.envelope,
-            title: 'Email',
+            title: LocaleKeys.about_email.tr(),
             onTap: () => _launch(_email),
           ),
           _LinkRow(
             icon: FontAwesomeIcons.facebookF,
-            title: 'Facebook',
+            title: LocaleKeys.about_facebook.tr(),
             onTap: () => _launch(_facebook),
           ),
           _LinkRow(
             icon: FontAwesomeIcons.whatsapp,
-            title: 'WhatsApp',
+            title: LocaleKeys.about_whatsapp.tr(),
             onTap: () => _launch(_whatsapp),
           ),
           _LinkRow(
             icon: FontAwesomeIcons.instagram,
-            title: 'Instagram',
+            title: LocaleKeys.about_instagram.tr(),
             onTap: () => _launch(_instagram),
           ),
           _LinkRow(
             icon: FontAwesomeIcons.xTwitter,
-            title: 'Twitter',
+            title: LocaleKeys.about_twitter.tr(),
             onTap: () => _launch(_twitter),
           ),
         ],

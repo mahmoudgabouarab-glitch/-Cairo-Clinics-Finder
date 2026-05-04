@@ -5,6 +5,8 @@ import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_in_filed.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_up_listener.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_up_prompt.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,9 +19,9 @@ class SignInBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const HeaderAuth(
-            title: "Welcome back",
-            subtitle: "Sign in to continue",
+          HeaderAuth(
+            title: LocaleKeys.signin_header_title.tr(),
+            subtitle: LocaleKeys.signin_header_subtitle.tr(),
           ),
           Padding(
             padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 24.h),

@@ -1,65 +1,63 @@
 import 'package:cairo_clinics_finder/core/utils/app_regex.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class AppValidator {
-  static String? Function(String?)? passwordValidator() {
+  static String? Function(String?) passwordValidator() {
     return (value) {
       if (value == null || value.isEmpty) {
-        return 'Please enter your password';
+        return LocaleKeys.validation_password_required.tr();
       }
       if (!AppRegex.hasLowerCase(value)) {
-        return 'Password must contain at least one lowercase letter';
+        return LocaleKeys.validation_password_lowercase.tr();
       }
       if (!AppRegex.hasUpperCase(value)) {
-        return 'Password must contain at least one uppercase letter';
+        return LocaleKeys.validation_password_uppercase.tr();
       }
       if (!AppRegex.hasNumber(value)) {
-        return 'Password must contain at least one number';
+        return LocaleKeys.validation_password_number.tr();
       }
       if (!AppRegex.hasSpecialCharacter(value)) {
-        return 'Password must contain at least one special character';
+        return LocaleKeys.validation_password_special.tr();
       }
       if (!AppRegex.hasMinLength(value)) {
-        return 'Password must be at least 8 characters long';
+        return LocaleKeys.validation_password_length.tr();
       }
       return null;
     };
   }
 
-  static String? Function(String?)? emailValidator() {
+  static String? Function(String?) emailValidator() {
     return (value) {
       if (value == null || value.isEmpty) {
-        return 'Please enter your email';
+        return LocaleKeys.validation_email_required.tr();
       }
-
       if (!AppRegex.isEmailValid(value)) {
-        return 'Invalid email address';
+        return LocaleKeys.validation_email_invalid.tr();
       }
-
       return null;
     };
   }
 
-  static String? Function(String?)? phoneValidator() {
+  static String? Function(String?) phoneValidator() {
     return (value) {
       if (value == null || value.isEmpty) {
-        return 'Please enter your phone';
+        return LocaleKeys.validation_phone_required.tr();
       }
-
       if (!AppRegex.isPhoneNumberValid(value)) {
-        return 'Invalid phone number';
+        return LocaleKeys.validation_phone_invalid.tr();
       }
-
       return null;
     };
   }
 
-  static String? Function(String?)? nameValidator() {
+  static String? Function(String?) nameValidator() {
     return (value) {
       if (value == null || value.isEmpty) {
-        return 'Please enter your name';
+        return LocaleKeys.validation_name_required.tr();
       }
       if (value.length < 3) {
-        return 'Name must be at least 3 characters long';
+        return LocaleKeys.validation_name_length.tr();
       }
       return null;
     };

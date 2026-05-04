@@ -3,6 +3,8 @@ import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,7 +24,10 @@ class StatusCard extends StatelessWidget {
             style: AppTextStyles.f14MediumBlack,
           ),
           spaceW(4),
-          Text('(${clinic.reviewCount} reviews)', style: AppTextStyles.f12Grey),
+          Text(
+            '(${clinic.reviewCount} ${LocaleKeys.details_reviews.tr()})',
+            style: AppTextStyles.f12Grey,
+          ),
           const Spacer(),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
@@ -33,7 +38,9 @@ class StatusCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20.r),
             ),
             child: Text(
-              clinic.isOpen ? 'Open' : 'Closed',
+              clinic.isOpen
+                  ? LocaleKeys.details_open.tr()
+                  : LocaleKeys.details_closed.tr(),
               style: AppTextStyles.f12BoldGreen.copyWith(
                 color: clinic.isOpen ? AppColor.openGreen : AppColor.clinicRed,
               ),

@@ -2,6 +2,8 @@ import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
+import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -17,28 +19,28 @@ class BottomSection extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Your health journey starts here',
+              LocaleKeys.onboarding_tagline.tr(),
               style: AppTextStyles.f14Grey,
             ),
             spaceH(24),
             _OnboardingCard(
               icon: Icons.login_outlined,
-              title: 'Login',
-              subtitle: 'Welcome back! Sign in to your account',
+              title: LocaleKeys.onboarding_login_title.tr(),
+              subtitle: LocaleKeys.onboarding_login_subtitle.tr(),
               filled: false,
               onTap: () => context.pushReplacement(GoTo.signIn),
             ),
             spaceH(12),
             _OnboardingCard(
               icon: Icons.person_add_outlined,
-              title: 'Create an account',
-              subtitle: 'New here? Join and find clinics near you',
+              title: LocaleKeys.onboarding_signup_title.tr(),
+              subtitle: LocaleKeys.onboarding_signup_subtitle.tr(),
               filled: true,
               onTap: () => context.pushReplacement(GoTo.signUp),
             ),
             const Spacer(),
             Text(
-              'Clinics Finder — helping you find the right care, nearby',
+              LocaleKeys.onboarding_footer.tr(),
               textAlign: TextAlign.center,
               style: AppTextStyles.f12Grey,
             ),

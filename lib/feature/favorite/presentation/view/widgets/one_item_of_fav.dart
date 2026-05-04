@@ -7,6 +7,7 @@ import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -60,7 +61,7 @@ class OneItemOfFav extends StatelessWidget {
                   Text(clinic.name, style: AppTextStyles.f14SemiBoldBlack),
                   spaceH(4),
                   Text(
-                    '${clinic.category}• ${clinic.address}',
+                    '${'clinic_form.${clinic.category}'.tr()}• ${clinic.address}',
                     style: AppTextStyles.f12Grey,
                   ),
                   spaceH(4),
