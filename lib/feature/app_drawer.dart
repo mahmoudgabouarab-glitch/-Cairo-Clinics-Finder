@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
+import 'package:cairo_clinics_finder/core/utils/app_assets.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
@@ -11,6 +12,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -107,30 +109,35 @@ void _showLanguageBottomSheet(BuildContext context) {
   showModalBottomSheet(
     context: context,
     builder: (_) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ListTile(
-            title: Text('English'),
-            trailing: context.locale.languageCode == 'en'
-                ? Icon(Icons.check, color: Colors.green)
-                : null,
-            onTap: () async {
-              await context.setLocale(const Locale('en'));
-              if (context.mounted) Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text('العربية'),
-            trailing: context.locale.languageCode == 'ar'
-                ? Icon(Icons.check, color: Colors.green)
-                : null,
-            onTap: () async {
-              await context.setLocale(const Locale('ar'));
-              if (context.mounted) Navigator.pop(context);
-            },
-          ),
-        ],
+      return Padding(
+        padding: EdgeInsets.all(16.r),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: SvgPicture.asset(AppAssets.englishflag),
+              title: Text('English'),
+              trailing: context.locale.languageCode == 'en'
+                  ? Icon(Icons.check, color: Colors.green)
+                  : null,
+              onTap: () async {
+                await context.setLocale(const Locale('en'));
+                if (context.mounted) Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: SvgPicture.asset(AppAssets.arabicflag),
+              title: Text('العربية'),
+              trailing: context.locale.languageCode == 'ar'
+                  ? Icon(Icons.check, color: Colors.green)
+                  : null,
+              onTap: () async {
+                await context.setLocale(const Locale('ar'));
+                if (context.mounted) Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       );
     },
   );

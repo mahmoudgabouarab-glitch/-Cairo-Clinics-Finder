@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cairo_clinics_finder/feature/auth/data/model/user_model.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/edit_profile/edit_profile_cubit.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class EditProfileAvatar extends StatelessWidget {
                 radius: 48.r,
                 backgroundColor: const Color(0xFFe0f2f1),
                 backgroundImage: cubit.imageFile == null
-                    ? NetworkImage(userModel.imageUrl)
+                    ? CachedNetworkImageProvider(userModel.imageUrl)
                     : FileImage(cubit.imageFile!),
               ),
               Container(

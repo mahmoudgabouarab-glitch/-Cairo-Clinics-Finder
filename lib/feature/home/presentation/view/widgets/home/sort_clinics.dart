@@ -13,6 +13,40 @@ class SortClinics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<SortItem> sortItems = [
+      SortItem(SortBy.normal, LocaleKeys.home_sort_default.tr(), Icons.sort),
+      SortItem(
+        SortBy.nearest,
+        LocaleKeys.home_sort_nearest.tr(),
+        Icons.location_on_outlined,
+      ),
+      SortItem(
+        SortBy.price,
+        LocaleKeys.home_sort_price.tr(),
+        Icons.attach_money_outlined,
+      ),
+      SortItem(
+        SortBy.isOpen,
+        LocaleKeys.home_sort_open_now.tr(),
+        Icons.access_time,
+      ),
+      SortItem(
+        SortBy.rating,
+        LocaleKeys.home_sort_rating.tr(),
+        Icons.star_outline,
+      ),
+      SortItem(
+        SortBy.reviewCount,
+        LocaleKeys.home_sort_reviews.tr(),
+        Icons.rate_review_outlined,
+      ),
+      SortItem(
+        SortBy.name,
+        LocaleKeys.home_sort_name.tr(),
+        Icons.sort_by_alpha,
+      ),
+    ];
+
     return BlocBuilder<MapCubit, MapState>(
       builder: (context, state) {
         return Row(
@@ -67,7 +101,6 @@ OutlineInputBorder _border() {
     borderSide: BorderSide(color: Colors.grey.shade200, width: 2),
   );
 }
-
 class SortItem {
   final SortBy value;
   final String label;
@@ -75,32 +108,6 @@ class SortItem {
 
   const SortItem(this.value, this.label, this.icon);
 }
-
-final List<SortItem> sortItems = [
-  SortItem(SortBy.normal, LocaleKeys.home_sort_default.tr(), Icons.sort),
-  SortItem(
-    SortBy.nearest,
-    LocaleKeys.home_sort_nearest.tr(),
-    Icons.location_on_outlined,
-  ),
-  SortItem(
-    SortBy.price,
-    LocaleKeys.home_sort_price.tr(),
-    Icons.attach_money_outlined,
-  ),
-  SortItem(
-    SortBy.isOpen,
-    LocaleKeys.home_sort_open_now.tr(),
-    Icons.access_time,
-  ),
-  SortItem(SortBy.rating, LocaleKeys.home_sort_rating.tr(), Icons.star_outline),
-  SortItem(
-    SortBy.reviewCount,
-    LocaleKeys.home_sort_reviews.tr(),
-    Icons.rate_review_outlined,
-  ),
-  SortItem(SortBy.name, LocaleKeys.home_sort_name.tr(), Icons.sort_by_alpha),
-];
 
 class _SortDropdownItem extends StatelessWidget {
   final SortItem item;

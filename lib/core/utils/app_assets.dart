@@ -4,4 +4,6 @@ class AppAssets {
   static const String defaultAvatar =
       'https://res.cloudinary.com/dneegahiy/image/upload/v1776666686/Screen_Shot_2026-04-20_at_8.31.19_AM_ve2m9q.png';
   static const String translationsPath = 'assets/translations';
+  static const String arabicflag = "assets/arabicflag.svg";
+  static const String englishflag = "assets/englishflag.svg";
 }

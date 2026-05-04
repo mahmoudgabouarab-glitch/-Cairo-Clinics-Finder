@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/feature/auth/data/model/user_model.dart';
@@ -31,7 +32,7 @@ class ProfileAppBar extends StatelessWidget {
             child: CircleAvatar(
               radius: 48.r,
               backgroundColor: Colors.white24,
-              backgroundImage: NetworkImage(state.imageUrl),
+              backgroundImage: CachedNetworkImageProvider(state.imageUrl),
             ),
           ),
         ),
