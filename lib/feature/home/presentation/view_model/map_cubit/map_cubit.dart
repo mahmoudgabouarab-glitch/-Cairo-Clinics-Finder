@@ -6,6 +6,7 @@ import 'package:cairo_clinics_finder/feature/home/data/repo/clinics_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 part 'map_state.dart';
 
@@ -14,11 +15,14 @@ class MapCubit extends Cubit<MapState> {
   final ClinicsRepo _repo;
   final MapController controller = MapController();
   StreamSubscription? _subscription;
+  StreamSubscription<Position>? _locationSubscription;
+
   // this fun to #get clinics
   Future<void> getMap() async {
     if (state.clinics.isNotEmpty) return;
     emit(state.copyWith(isLoading: true));
     final userLocation = await LocationHelper.getUserLocation();
+    _startLocationTracking();
     _subscription = _repo.getClinics().listen((result) {
       result.fold(
         (failure) =>
@@ -32,6 +36,23 @@ class MapCubit extends Cubit<MapState> {
         ),
       );
     });
+  }
+
+  // this fun to #start location tracking
+  void _startLocationTracking() {
+    _locationSubscription =
+        Geolocator.getPositionStream(
+          locationSettings: const LocationSettings(
+            accuracy: LocationAccuracy.high,
+            distanceFilter: 2,
+          ),
+        ).listen((position) {
+          emit(
+            state.copyWith(
+              userLocation: LatLng(position.latitude, position.longitude),
+            ),
+          );
+        });
   }
 
   // this fun to #sort clinics
@@ -98,6 +119,7 @@ class MapCubit extends Cubit<MapState> {
   @override
   Future<void> close() {
     _subscription?.cancel();
+    _locationSubscription?.cancel();
     controller.dispose();
     return super.close();
   }
