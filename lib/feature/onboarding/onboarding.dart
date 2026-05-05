@@ -1,5 +1,5 @@
-import 'package:cairo_clinics_finder/feature/onbording/bottom_section.dart';
-import 'package:cairo_clinics_finder/feature/onbording/top_section.dart';
+import 'package:cairo_clinics_finder/feature/onboarding/bottom_section.dart';
+import 'package:cairo_clinics_finder/feature/onboarding/top_section.dart';
 import 'package:flutter/material.dart';
 
 class Onboarding extends StatelessWidget {

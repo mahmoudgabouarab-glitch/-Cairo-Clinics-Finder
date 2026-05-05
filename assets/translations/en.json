@@ -211,6 +211,7 @@
         "wed": "Wed",
         "thu": "Thu",
         "fri": "Fri",
+        "non": "Non",
         "speciality_required": "Please choose your speciality",
         "degree_required": "Please choose your degree",
         "booking_required": "Please choose your booking type",

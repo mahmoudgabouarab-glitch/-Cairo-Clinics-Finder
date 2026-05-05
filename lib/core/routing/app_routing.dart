@@ -8,7 +8,7 @@ abstract class AppRouting {
       GoRoute(path: '/', builder: (context, state) => const Splash()),
       // Onboarding Route
       GoRoute(
-        path: GoTo.onBording,
+        path: GoTo.onBoarding,
         pageBuilder: (context, state) => CustomTransitionPage(
           child: const Onboarding(),
           transitionsBuilder: (context, animation, _, child) =>

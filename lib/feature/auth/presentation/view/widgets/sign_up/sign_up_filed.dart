@@ -1,6 +1,6 @@
 import 'package:cairo_clinics_finder/core/utils/app_validator.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
-import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_text_field.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/signup/sign_up_cubit.dart';
 import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -18,14 +18,14 @@ class SignUpFiled extends StatelessWidget {
       child: Column(
         children: [
           spaceH(16),
-          CustomTextFormFiled(
+          CustomTextFormField(
             hint: LocaleKeys.signup_name_hint.tr(),
             prefixIcon: Icons.person,
             controller: cubit.nameController,
             validator: AppValidator.nameValidator(),
           ),
           spaceH(16),
-          CustomTextFormFiled(
+          CustomTextFormField(
             hint: LocaleKeys.signup_phone_hint.tr(),
             prefixIcon: Icons.phone,
             controller: cubit.phoneController,
@@ -33,14 +33,14 @@ class SignUpFiled extends StatelessWidget {
             keybordtype: TextInputType.phone,
           ),
           spaceH(16),
-          CustomTextFormFiled(
+          CustomTextFormField(
             hint: LocaleKeys.signup_email_hint.tr(),
             prefixIcon: Icons.email_outlined,
             controller: cubit.emailController,
             validator: AppValidator.emailValidator(),
           ),
           spaceH(16),
-          CustomTextFormFiled(
+          CustomTextFormField(
             hint: LocaleKeys.signup_password_hint.tr(),
             prefixIcon: Icons.lock_outline_rounded,
             obscureText: true,
@@ -49,7 +49,7 @@ class SignUpFiled extends StatelessWidget {
             autovalidateMode: AutovalidateMode.onUserInteraction,
           ),
           spaceH(16),
-          CustomTextFormFiled(
+          CustomTextFormField(
             hint: LocaleKeys.signup_confirm_password_hint.tr(),
             prefixIcon: Icons.lock_outline_rounded,
             obscureText: true,

@@ -12,8 +12,6 @@ abstract class MyClinicRepo {
     required double lng,
     required String phone,
     required String address,
-    required double rating,
-    required int reviewCount,
     required String hours,
     required String breakTime,
     required String booking,

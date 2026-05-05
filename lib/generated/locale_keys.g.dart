@@ -197,6 +197,7 @@ abstract class  LocaleKeys {
   static const clinic_form_wed = 'clinic_form.wed';
   static const clinic_form_thu = 'clinic_form.thu';
   static const clinic_form_fri = 'clinic_form.fri';
+  static const clinic_form_non = 'clinic_form.non';
   static const clinic_form_speciality_required = 'clinic_form.speciality_required';
   static const clinic_form_degree_required = 'clinic_form.degree_required';
   static const clinic_form_booking_required = 'clinic_form.booking_required';

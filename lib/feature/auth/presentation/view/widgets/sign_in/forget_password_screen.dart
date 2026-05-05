@@ -4,7 +4,7 @@ import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_snack_bar.dart';
-import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_text_field.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shared/Auth_title.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_title_icon.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/forget_password/forget_password_cubit.dart';
@@ -66,7 +66,7 @@ class ForgetPasswordView extends StatelessWidget {
                 spaceH(12),
                 _subtitle(),
                 spaceH(40),
-                CustomTextFormFiled(
+                CustomTextFormField(
                   hint: "Email",
                   prefixIcon: Icons.email_outlined,
                   validator: (value) {

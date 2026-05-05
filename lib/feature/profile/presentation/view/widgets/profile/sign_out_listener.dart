@@ -27,7 +27,7 @@ class SignOutListener extends StatelessWidget {
             break;
           case SignOutSuccess():
             context.pop();
-            context.go(GoTo.onBording);
+            context.go(GoTo.onBoarding);
             break;
           case SignOutFailure():
             context.pop();

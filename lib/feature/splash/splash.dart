@@ -39,7 +39,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
     if (!mounted) return;
     isSignedIn
         ? context.pushReplacement(GoTo.home)
-        : context.pushReplacement(GoTo.onBording);
+        : context.pushReplacement(GoTo.onBoarding);
   }
 
   @override

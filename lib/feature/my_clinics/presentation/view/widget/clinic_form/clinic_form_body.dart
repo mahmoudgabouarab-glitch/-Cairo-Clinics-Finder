@@ -4,7 +4,7 @@ import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/clinic_form_image_card.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/clinic_form_listener.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/basic_info_card.dart';
-import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/bookong_info_card.dart';
+import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/booking_info_card.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/location_card.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view/widget/clinic_form/working_hours_card.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
@@ -46,7 +46,7 @@ class ClinicFormBody extends StatelessWidget {
             spaceH(16),
             _SectionTitle(LocaleKeys.clinic_form_booking_info.tr()),
             spaceH(12),
-            const BookongInfoCard(),
+            const BookingInfoCard(),
             spaceH(24),
             Btn(
               onPressed: () {

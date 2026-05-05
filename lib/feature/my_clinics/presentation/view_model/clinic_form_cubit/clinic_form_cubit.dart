@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cairo_clinics_finder/core/network/location_helper.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/data/repo/my_clinic_repo.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,17 +46,24 @@ class ClinicFormCubit extends Cubit<ClinicFormState> {
   void _preFill() {
     if (mode == Request.add || _clinic == null) return;
     doctorNameController.text = _clinic.name;
-    categoryController.text = _clinic.category;
+    categoryController.text = "clinic_form.${_clinic.category}".tr();
     phoneController.text = _clinic.phone;
     addressController.text = _clinic.address;
     final hours = _clinic.hours.split(' - ');
     openingController.text = hours.first;
     closingController.text = hours.last;
-    breakTimeController.text = _clinic.breakTime;
-    bookingController.text = _clinic.booking;
+    breakTimeController.text = _clinic.breakTime
+        .split(', ')
+        .map((d) => 'clinic_form.$d'.tr())
+        .join(', ');
+    bookingController.text = "clinic_form.${_clinic.booking}".tr();
     priceController.text = _clinic.price;
-    degreeController.text = _clinic.degree;
+    degreeController.text = "clinic_form.${_clinic.degree}".tr();
     oldImageUrl = _clinic.imageUrl;
+    selectedCategoryValue = _clinic.category;
+    selectedDegreeValue = _clinic.degree;
+    selectedBookingValue = _clinic.booking;
+    selectedBreakTimeValue = _clinic.breakTime;
   }
 
   // ================= IMAGE =================
@@ -103,8 +111,6 @@ class ClinicFormCubit extends Cubit<ClinicFormState> {
             category: selectedCategoryValue,
             lat: selectedLocation!.latitude,
             lng: selectedLocation!.longitude,
-            rating: 0,
-            reviewCount: 0,
             hours: '${openingController.text} - ${closingController.text}',
             breakTime: selectedBreakTimeValue,
             booking: selectedBookingValue,

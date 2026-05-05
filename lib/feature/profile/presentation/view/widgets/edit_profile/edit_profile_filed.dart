@@ -1,7 +1,7 @@
 import 'package:cairo_clinics_finder/core/utils/app_validator.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
-import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_text_field.dart';
 import 'package:cairo_clinics_finder/feature/auth/data/model/user_model.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/edit_profile/edit_profile_cubit.dart';
 import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
@@ -44,7 +44,7 @@ class _EditProfileFiledState extends State<EditProfileFiled> {
             spaceH(16),
             _sectionTitle(LocaleKeys.edit_profile_name.tr()),
             spaceH(4),
-            CustomTextFormFiled(
+            CustomTextFormField(
               hint: LocaleKeys.edit_profile_name.tr(),
               prefixIcon: Icons.person,
               controller: cubit.nameController,
@@ -53,7 +53,7 @@ class _EditProfileFiledState extends State<EditProfileFiled> {
             spaceH(12),
             _sectionTitle(LocaleKeys.edit_profile_email.tr()),
             spaceH(4),
-            CustomTextFormFiled(
+            CustomTextFormField(
               hint: LocaleKeys.edit_profile_email.tr(),
               prefixIcon: Icons.email_outlined,
               readOnly: true,
@@ -62,7 +62,7 @@ class _EditProfileFiledState extends State<EditProfileFiled> {
             spaceH(12),
             _sectionTitle(LocaleKeys.edit_profile_phone.tr()),
             spaceH(4),
-            CustomTextFormFiled(
+            CustomTextFormField(
               hint: LocaleKeys.edit_profile_phone.tr(),
               prefixIcon: Icons.phone,
               controller: cubit.phoneController,

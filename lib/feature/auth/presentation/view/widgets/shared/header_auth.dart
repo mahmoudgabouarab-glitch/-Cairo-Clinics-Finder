@@ -14,12 +14,12 @@ class HeaderAuth extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(gradient: AppColor.onBordingBar),
+      decoration: const BoxDecoration(gradient: AppColor.onBoardingBar),
       padding: EdgeInsets.symmetric(vertical: 48.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(AppAssets.onBording, height: 80.h, color: Colors.white54),
+          Image.asset(AppAssets.onBoarding, height: 80.h, color: Colors.white54),
           spaceH(16),
           Text(
             title,

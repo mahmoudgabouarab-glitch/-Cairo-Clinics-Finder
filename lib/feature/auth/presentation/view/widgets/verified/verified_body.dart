@@ -2,7 +2,7 @@ import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/btn.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/resend_button.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_title_icon.dart';
-import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/verified_lisenter.dart';
+import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/verified_listener.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/verified/verified_subtitle.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shared/auth_title.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view_model/verified/verified_cubit.dart';
@@ -40,7 +40,7 @@ class VerifiedBody extends StatelessWidget {
             spaceH(12),
             const ResendButton(),
             spaceH(32),
-            const VerifiedLisenter(),
+            const VerifiedListener(),
           ],
         ),
       ),

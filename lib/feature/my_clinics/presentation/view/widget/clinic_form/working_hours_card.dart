@@ -4,7 +4,7 @@ import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
-import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_text_field.dart';
 import 'package:cairo_clinics_finder/feature/my_clinics/presentation/view_model/clinic_form_cubit/clinic_form_cubit.dart';
 import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -21,7 +21,7 @@ class WorkingHoursCard extends StatelessWidget {
     return CustomCard(
       child: Column(
         children: [
-          CustomTextFormFiled(
+          CustomTextFormField(
             hint: LocaleKeys.clinic_form_opening_time.tr(),
             readOnly: true,
             prefixIcon: Icons.wb_sunny_outlined,
@@ -43,7 +43,7 @@ class WorkingHoursCard extends StatelessWidget {
             },
           ),
           spaceH(12),
-          CustomTextFormFiled(
+          CustomTextFormField(
             hint: LocaleKeys.clinic_form_closing_time.tr(),
             readOnly: true,
             prefixIcon: Icons.nights_stay_outlined,
@@ -65,7 +65,7 @@ class WorkingHoursCard extends StatelessWidget {
             },
           ),
           spaceH(12),
-          CustomTextFormFiled(
+          CustomTextFormField(
             hint: LocaleKeys.clinic_form_break_time.tr(),
             readOnly: true,
             prefixIcon: Icons.calendar_today_outlined,
@@ -108,7 +108,7 @@ Future<void> showWorkingDaysDialog(
   BuildContext context,
   ClinicFormCubit cubit,
 ) async {
-  const days = ["sat", "sun", "mon", "tue", "wed", "thu", "fri"];
+  const days = ["sat", "sun", "mon", "tue", "wed", "thu", "fri", "non"];
   final selected = <String>{};
   await showDialog(
     context: context,

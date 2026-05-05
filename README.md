@@ -70,7 +70,7 @@ lib/
     ├── Favorite/            
     ├── Home/  
     ├── my_clinics/      
-    ├── onbording/
+    ├── onboarding/
     ├── profile/        
     └── splash/         
 ```

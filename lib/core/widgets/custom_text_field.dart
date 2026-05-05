@@ -2,7 +2,7 @@ import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomTextFormFiled extends StatefulWidget {
+class CustomTextFormField extends StatefulWidget {
   final String? hint;
   final Widget? suffix;
   final IconData? prefixIcon;
@@ -16,7 +16,7 @@ class CustomTextFormFiled extends StatefulWidget {
   final void Function()? onTap;
   final AutovalidateMode? autovalidateMode;
 
-  const CustomTextFormFiled({
+  const CustomTextFormField({
     super.key,
     this.hint,
     this.suffix,
@@ -33,10 +33,10 @@ class CustomTextFormFiled extends StatefulWidget {
   });
 
   @override
-  State<CustomTextFormFiled> createState() => _CustomTextFormFiledState();
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
 
-class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
   late bool _obscure;
   @override
   void initState() {

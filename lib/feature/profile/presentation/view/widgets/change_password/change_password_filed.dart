@@ -2,7 +2,7 @@ import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/app_validator.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_card.dart';
-import 'package:cairo_clinics_finder/core/widgets/custom_text_filed.dart';
+import 'package:cairo_clinics_finder/core/widgets/custom_text_field.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/change_password/change_password_cubit.dart';
 import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -23,7 +23,7 @@ class ChangePasswordFiled extends StatelessWidget {
           children: [
             _title(),
             spaceH(16),
-            CustomTextFormFiled(
+            CustomTextFormField(
               hint: LocaleKeys.change_password_current_password.tr(),
               obscureText: true,
               prefixIcon: Icons.lock,
@@ -31,7 +31,7 @@ class ChangePasswordFiled extends StatelessWidget {
               controller: cubit.oldPasswordController,
             ),
             spaceH(12),
-            CustomTextFormFiled(
+            CustomTextFormField(
               hint: LocaleKeys.change_password_new_password.tr(),
               obscureText: true,
               prefixIcon: Icons.lock,
@@ -40,7 +40,7 @@ class ChangePasswordFiled extends StatelessWidget {
               autovalidateMode: AutovalidateMode.onUserInteraction,
             ),
             spaceH(12),
-            CustomTextFormFiled(
+            CustomTextFormField(
               hint: LocaleKeys.change_password_confirm_password.tr(),
               obscureText: true,
               prefixIcon: Icons.lock,
