@@ -64,7 +64,8 @@ class CustomInfoRow extends StatelessWidget {
                   ),
                   child: Text(
                     LocaleKeys.details_call.tr(),
-                    style: AppTextStyles.f12BoldGreen,
+                    style: AppTextStyles.f12BoldBlack
+                        .copyWith(color: AppColor.openGreen),
                   ),
                 ),
               ]

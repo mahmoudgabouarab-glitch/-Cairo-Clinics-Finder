@@ -41,7 +41,7 @@ class StatusCard extends StatelessWidget {
               clinic.isOpen
                   ? LocaleKeys.details_open.tr()
                   : LocaleKeys.details_closed.tr(),
-              style: AppTextStyles.f12BoldGreen.copyWith(
+              style: AppTextStyles.f12BoldBlack.copyWith(
                 color: clinic.isOpen ? AppColor.openGreen : AppColor.clinicRed,
               ),
             ),

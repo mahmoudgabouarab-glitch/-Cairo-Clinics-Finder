@@ -25,6 +25,15 @@ class SignInCubit extends Cubit<SignInState> {
     );
   }
 
+  Future<void> signInWithGoogle() async {
+    emit(SignInLoading());
+    final result = await _repo.signInWithGoogle();
+    result.fold(
+      (faliure) => emit(SignInFailure(faliure.message)),
+      (success) => emit(SignInSuccess(success)),
+    );
+  }
+
   @override
   Future<void> close() {
     emailController.dispose();

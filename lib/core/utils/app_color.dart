@@ -6,7 +6,10 @@ class AppColor {
   static const clinicRed = Color(0xFFE53935);
   static const background = Color(0xFFE8F5E9);
   static const cardBg = Color(0xFFF9F9F9);
+  static const textPrimary = Colors.black87;
   static const textSecondary = Color(0xFF888888);
+  static const textOnPrimary = Color(0xFFFFFFFF);
+  static const textAccent = primary;
   static const openGreen = Color(0xFF2E7D32);
   static const detailsAppBar = LinearGradient(
     colors: [Colors.teal, Color(0xFF00796B)],

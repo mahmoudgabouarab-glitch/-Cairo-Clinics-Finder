@@ -3,6 +3,7 @@ import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/shar
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_in_action.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/forget_password_btn.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_in_filed.dart';
+import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_in_with_google.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_up_listener.dart';
 import 'package:cairo_clinics_finder/feature/auth/presentation/view/widgets/sign_in/sign_up_prompt.dart';
 import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
@@ -31,6 +32,8 @@ class SignInBody extends StatelessWidget {
                 const ForgetPasswordBtn(),
                 spaceH(24),
                 const SignInAction(),
+                spaceH(10),
+                const SignInWithGoogle(),
                 spaceH(24),
                 const SignUpPrompt(),
                 const SignInListener(),

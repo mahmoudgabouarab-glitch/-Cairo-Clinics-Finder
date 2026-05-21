@@ -22,4 +22,5 @@ abstract class AuthRepo {
   Future<Either<Failure, void>> forgetPassword({required String email});
   Future<bool> isVerified();
   Future<bool> isSignedIn();
+  Future<Either<Failure, UserModel>> signInWithGoogle();
 }
