@@ -218,5 +218,12 @@ abstract class  LocaleKeys {
   static const clinic_form_break_time_required = 'clinic_form.break_time_required';
   static const clinic_form_select_break_time = 'clinic_form.select_break_time';
   static const clinic_form = 'clinic_form';
+  static const drawer_messages = 'drawer.messages';
+  static const chat_message_clinic = 'chat.message_clinic';
+  static const chat_message_hint = 'chat.message_hint';
+  static const chat_empty = 'chat.empty';
+  static const chat_inbox_title = 'chat.inbox_title';
+  static const chat_inbox_empty = 'chat.inbox_empty';
+  static const chat = 'chat';
 
 }

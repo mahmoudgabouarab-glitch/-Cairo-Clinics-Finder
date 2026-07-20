@@ -108,6 +108,7 @@
         "my_profile": "My Profile",
         "my_clinics": "My Clinics",
         "favorites": "Favorites",
+        "messages": "Messages",
         "language": "Language",
         "about": "About"
     },
@@ -231,5 +232,12 @@
         "closing_time_required": "Please enter your closing time",
         "break_time_required": "Please select your break time",
         "select_break_time": "Select break time"
+    },
+    "chat": {
+        "message_clinic": "Message Clinic",
+        "message_hint": "Type your message...",
+        "empty": "Start the conversation with the clinic",
+        "inbox_title": "Messages",
+        "inbox_empty": "No messages yet"
     }
 }

@@ -145,6 +145,30 @@ abstract class AppRouting {
           child: const MyClinicsView(),
         ),
       ),
+      // Messages (Inbox) Route
+      GoRoute(
+        path: GoTo.messages,
+        builder: (context, state) => BlocProvider(
+          create: (context) =>
+              ConversationsCubit(getIt<ChatRepo>())..getConversations(),
+          child: const ConversationsView(),
+        ),
+      ),
+      // Chat Route
+      GoRoute(
+        path: GoTo.chat,
+        builder: (context, state) {
+          final data = state.extra as Map;
+          return BlocProvider(
+            create: (context) => ChatCubit(
+              getIt<ChatRepo>(),
+              clinic: data['clinic'],
+              conversation: data['conversation'],
+            )..init(),
+            child: const ChatView(),
+          );
+        },
+      ),
     ],
   );
 }

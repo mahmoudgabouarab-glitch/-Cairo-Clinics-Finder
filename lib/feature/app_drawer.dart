@@ -42,6 +42,11 @@ class AppDrawer extends StatelessWidget {
             onTap: () => context.push(GoTo.fav),
           ),
           DrawerItem(
+            icon: Icons.chat_bubble_outline,
+            title: LocaleKeys.drawer_messages.tr(),
+            onTap: () => context.push(GoTo.messages),
+          ),
+          DrawerItem(
             icon: Icons.language,
             title: LocaleKeys.drawer_language.tr(),
             subtitle: Text(

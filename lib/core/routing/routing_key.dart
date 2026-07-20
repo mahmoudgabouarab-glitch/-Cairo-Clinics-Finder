@@ -13,4 +13,6 @@ class GoTo {
   static const String fav = '/fav';
   static const String about = '/about';
   static const String myClinics = '/myClinics';
+  static const String chat = '/chat';
+  static const String messages = '/messages';
 }

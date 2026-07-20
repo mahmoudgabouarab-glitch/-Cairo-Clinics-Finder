@@ -5,6 +5,7 @@ import 'package:latlong2/latlong.dart';
 
 class ClinicModel extends Equatable {
   final String id;
+  final String ownerId;
   final String name;
   final String category;
   final double lat;
@@ -21,6 +22,7 @@ class ClinicModel extends Equatable {
 
   const ClinicModel({
     required this.id,
+    required this.ownerId,
     required this.name,
     required this.category,
     required this.lat,
@@ -44,6 +46,7 @@ class ClinicModel extends Equatable {
   factory ClinicModel.fromJson(Map<String, dynamic> map, String id) {
     return ClinicModel(
       id: id,
+      ownerId: map['uid'] as String? ?? '',
       name: map['name'] as String? ?? '',
       category: map['category'] as String? ?? 'clinic',
       lat: (map['lat'] as num?)?.toDouble() ?? 0.0,
@@ -63,6 +66,7 @@ class ClinicModel extends Equatable {
   }
 
   Map<String, dynamic> toMap() => {
+    'uid': ownerId,
     'name': name,
     'category': category,
     'lat': lat,
@@ -81,6 +85,7 @@ class ClinicModel extends Equatable {
   @override
   List<Object?> get props => [
     id,
+    ownerId,
     name,
     category,
     lat,

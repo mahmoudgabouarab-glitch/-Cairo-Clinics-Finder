@@ -108,6 +108,7 @@
         "my_profile": "ملفي الشخصي",
         "my_clinics": "عياداتي",
         "favorites": "المفضلة",
+        "messages": "الرسايل",
         "language": "اللغة",
         "about": "حول التطبيق"
     },
@@ -231,5 +232,12 @@
         "closing_time_required": "من فضلك أدخل وقت انتهاء العمل",
         "break_time_required": "من فضلك اختر وقت الاستراحة",
         "select_break_time": "اختر وقت الاستراحة"
+    },
+    "chat": {
+        "message_clinic": "راسل العيادة",
+        "message_hint": "اكتب رسالتك...",
+        "empty": "ابدأ المحادثة مع العيادة",
+        "inbox_title": "الرسايل",
+        "inbox_empty": "لا توجد رسائل بعد"
     }
 }
