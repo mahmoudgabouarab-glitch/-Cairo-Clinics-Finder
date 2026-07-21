@@ -13,7 +13,7 @@ class GoToMyLocationBtn extends StatelessWidget {
       bottom: 170.h,
       right: 16.w,
       child: FloatingActionButton(
-        backgroundColor: AppColor.cardBg,
+        backgroundColor: AppColor.surface(context),
         onPressed: () => context.read<MapCubit>().goToMyLocation(),
         child: Icon(Icons.my_location, color: AppColor.primary, size: 24.sp),
       ),

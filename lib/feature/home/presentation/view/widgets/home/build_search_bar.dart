@@ -24,7 +24,7 @@ class BuildSearchBar extends StatelessWidget {
             width: 35.w,
             height: 35.h,
             decoration: BoxDecoration(
-              color: AppColor.cardBg.withOpacity(0.8),
+              color: AppColor.surface(context),
               shape: BoxShape.circle,
             ),
             child: Center(
@@ -50,7 +50,7 @@ class BuildSearchBar extends StatelessWidget {
                 size: 20.sp,
               ),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: AppColor.surface(context),
               contentPadding: const EdgeInsets.symmetric(vertical: 0),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(14.r),

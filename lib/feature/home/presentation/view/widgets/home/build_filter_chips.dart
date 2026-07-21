@@ -11,6 +11,10 @@ class BuildFilterChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Read theme colors here so this widget depends on the Theme and rebuilds
+    // immediately when the app switches between light/dark.
+    final chipColor = AppColor.surface(context);
+    final labelColor = Theme.of(context).colorScheme.onSurface;
     final category = {
       'all': LocaleKeys.home_filters_all.tr(),
       'dentist': LocaleKeys.home_filters_dentist.tr(),
@@ -52,7 +56,7 @@ class BuildFilterChips extends StatelessWidget {
                     vertical: 7.h,
                   ),
                   decoration: BoxDecoration(
-                    color: isSelected ? AppColor.primary : Colors.white,
+                    color: isSelected ? AppColor.primary : chipColor,
                     borderRadius: BorderRadius.circular(20.r),
                     boxShadow: [
                       BoxShadow(
@@ -68,7 +72,7 @@ class BuildFilterChips extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w500,
-                        color: isSelected ? Colors.white : Colors.black87,
+                        color: isSelected ? Colors.white : labelColor,
                       ),
                     ),
                   ),

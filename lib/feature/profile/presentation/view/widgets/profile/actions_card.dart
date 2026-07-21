@@ -73,7 +73,9 @@ class _ActionRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isDestructive ? AppColor.clinicRed : Colors.black87;
+    final color = isDestructive
+        ? AppColor.clinicRed
+        : Theme.of(context).colorScheme.onSurface;
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Icon(icon, color: color, size: 20.r),

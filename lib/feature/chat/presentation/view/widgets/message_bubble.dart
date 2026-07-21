@@ -20,7 +20,7 @@ class MessageBubble extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
         constraints: BoxConstraints(maxWidth: 0.75.sw),
         decoration: BoxDecoration(
-          color: isMine ? AppColor.primary : AppColor.cardBg,
+          color: isMine ? AppColor.primary : AppColor.fieldFill(context),
           borderRadius: BorderRadius.only(
             topLeft: radius,
             topRight: radius,

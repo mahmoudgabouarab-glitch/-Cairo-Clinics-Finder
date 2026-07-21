@@ -63,12 +63,12 @@ class SortClinics extends StatelessWidget {
               child: DropdownButtonFormField<SortBy>(
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: AppColor.cardBg,
+                  fillColor: AppColor.fieldFill(context),
                   focusedBorder: _border(),
                   border: _border(),
                   enabledBorder: _border(),
                 ),
-                dropdownColor: AppColor.cardBg,
+                dropdownColor: AppColor.fieldFill(context),
                 borderRadius: BorderRadius.circular(14.r),
                 icon: const Icon(Icons.keyboard_arrow_down),
                 menuMaxHeight: 200.h,

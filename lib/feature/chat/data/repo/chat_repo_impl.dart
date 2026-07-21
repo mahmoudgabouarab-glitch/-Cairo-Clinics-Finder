@@ -102,6 +102,7 @@ class ChatRepoImpl implements ChatRepo {
   Future<Either<Failure, void>> sendMessage({
     required String conversationId,
     required String text,
+    required String recipientId,
   }) async {
     try {
       final docRef = _conversations.doc(conversationId);
@@ -116,7 +117,22 @@ class ChatRepoImpl implements ChatRepo {
       await docRef.update({
         'lastMessage': text,
         'lastMessageTime': FieldValue.serverTimestamp(),
+        // Bump only the recipient's unread counter.
+        if (recipientId.isNotEmpty)
+          'unread.$recipientId': FieldValue.increment(1),
       });
+      return const Right(null);
+    } on FirebaseException catch (e) {
+      return Left(FirestoreFailure.fromFirebase(e));
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> markAsRead(String conversationId) async {
+    try {
+      await _conversations.doc(conversationId).update({'unread.$_uid': 0});
       return const Right(null);
     } on FirebaseException catch (e) {
       return Left(FirestoreFailure.fromFirebase(e));

@@ -1,14 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cairo_clinics_finder/core/network/service_locator.dart';
 import 'package:cairo_clinics_finder/core/routing/routing_key.dart';
 import 'package:cairo_clinics_finder/core/utils/app_assets.dart';
 import 'package:cairo_clinics_finder/core/utils/app_color.dart';
 import 'package:cairo_clinics_finder/core/utils/app_text_styles.dart';
 import 'package:cairo_clinics_finder/core/utils/spacing.dart';
+import 'package:cairo_clinics_finder/core/utils/theme_cubit/theme_cubit.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_drawer_item.dart';
 import 'package:cairo_clinics_finder/core/widgets/custom_loading.dart';
+import 'package:cairo_clinics_finder/feature/chat/presentation/view/widgets/unread_badge.dart';
+import 'package:cairo_clinics_finder/feature/chat/presentation/view_model/conversations_cubit/conversations_cubit.dart';
 import 'package:cairo_clinics_finder/feature/profile/presentation/view_model/profile/profile_cubit.dart';
 import 'package:cairo_clinics_finder/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +26,6 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color(0xFFF0F4F8),
       child: Column(
         children: [
           _DrawerHeader(),
@@ -44,6 +48,7 @@ class AppDrawer extends StatelessWidget {
           DrawerItem(
             icon: Icons.chat_bubble_outline,
             title: LocaleKeys.drawer_messages.tr(),
+            trailing: const _MessagesBadge(),
             onTap: () => context.push(GoTo.messages),
           ),
           DrawerItem(
@@ -53,6 +58,30 @@ class AppDrawer extends StatelessWidget {
               context.locale.languageCode == 'en' ? 'English' : 'العربية',
             ),
             onTap: () => _showLanguageBottomSheet(context),
+          ),
+          BlocBuilder<ThemeCubit, ThemeMode>(
+            builder: (context, mode) {
+              final isDark =
+                  mode == ThemeMode.dark ||
+                  (mode == ThemeMode.system &&
+                      MediaQuery.platformBrightnessOf(context) ==
+                          Brightness.dark);
+              return DrawerItem(
+                icon: isDark ? Icons.dark_mode : Icons.light_mode,
+                title: LocaleKeys.drawer_theme.tr(),
+                subtitle: Text(
+                  isDark
+                      ? LocaleKeys.drawer_theme_dark.tr()
+                      : LocaleKeys.drawer_theme_light.tr(),
+                ),
+                trailing: Switch(
+                  value: isDark,
+                  activeThumbColor: AppColor.primary,
+                  onChanged: (_) => context.read<ThemeCubit>().toggle(context),
+                ),
+                onTap: () => context.read<ThemeCubit>().toggle(context),
+              );
+            },
           ),
           DrawerItem(
             icon: Icons.info_outline,
@@ -65,11 +94,40 @@ class AppDrawer extends StatelessWidget {
   }
 }
 
+class _MessagesBadge extends StatelessWidget {
+  const _MessagesBadge();
+
+  @override
+  Widget build(BuildContext context) {
+    final myId = getIt<FirebaseAuth>().currentUser?.uid;
+    return BlocBuilder<ConversationsCubit, ConversationsState>(
+      builder: (context, state) {
+        if (state is! ConversationsSuccess) return const SizedBox.shrink();
+        final total = state.conversations.fold<int>(
+          0,
+          (sum, c) => sum + c.unreadFor(myId),
+        );
+        return UnreadBadge(count: total);
+      },
+    );
+  }
+}
+
 class _DrawerHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      decoration: BoxDecoration(gradient: AppColor.drawer.withOpacity(0.75)),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Colors.teal,
+            isDark ? AppColor.darkBackground : const Color(0xFFF0F4F8),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
       width: double.infinity,
       padding: EdgeInsets.only(top: 60.h, left: 16.w, right: 16.w),
       child: BlocBuilder<ProfileCubit, ProfileState>(

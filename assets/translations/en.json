@@ -110,6 +110,9 @@
         "favorites": "Favorites",
         "messages": "Messages",
         "language": "Language",
+        "theme": "Theme",
+        "theme_light": "Light",
+        "theme_dark": "Dark",
         "about": "About"
     },
     "home": {

@@ -219,6 +219,9 @@ abstract class  LocaleKeys {
   static const clinic_form_select_break_time = 'clinic_form.select_break_time';
   static const clinic_form = 'clinic_form';
   static const drawer_messages = 'drawer.messages';
+  static const drawer_theme = 'drawer.theme';
+  static const drawer_theme_light = 'drawer.theme_light';
+  static const drawer_theme_dark = 'drawer.theme_dark';
   static const chat_message_clinic = 'chat.message_clinic';
   static const chat_message_hint = 'chat.message_hint';
   static const chat_empty = 'chat.empty';

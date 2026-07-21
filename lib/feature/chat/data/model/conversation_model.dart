@@ -14,6 +14,9 @@ class ConversationModel extends Equatable {
   final String lastMessage;
   final DateTime? lastMessageTime;
 
+  /// Unread message count per participant uid.
+  final Map<String, int> unread;
+
   const ConversationModel({
     required this.id,
     required this.clinicId,
@@ -26,7 +29,10 @@ class ConversationModel extends Equatable {
     required this.participants,
     required this.lastMessage,
     required this.lastMessageTime,
+    this.unread = const {},
   });
+
+  int unreadFor(String? uid) => uid == null ? 0 : (unread[uid] ?? 0);
 
   factory ConversationModel.fromJson(Map<String, dynamic> map, String id) {
     return ConversationModel(
@@ -43,6 +49,10 @@ class ConversationModel extends Equatable {
           const [],
       lastMessage: map['lastMessage'] as String? ?? '',
       lastMessageTime: (map['lastMessageTime'] as Timestamp?)?.toDate(),
+      unread: (map['unread'] as Map?)?.map(
+            (key, value) => MapEntry(key.toString(), (value as num?)?.toInt() ?? 0),
+          ) ??
+          const {},
     );
   }
 
@@ -57,6 +67,7 @@ class ConversationModel extends Equatable {
     'participants': participants,
     'lastMessage': lastMessage,
     'lastMessageTime': FieldValue.serverTimestamp(),
+    'unread': {for (final p in participants) p: 0},
   };
 
   @override
@@ -72,5 +83,6 @@ class ConversationModel extends Equatable {
     participants,
     lastMessage,
     lastMessageTime,
+    unread,
   ];
 }

@@ -60,6 +60,11 @@ abstract class AppRouting {
               lazy: false,
               create: (_) => ProfileCubit(getIt<ProfileRepo>())..getProfile(),
             ),
+            BlocProvider(
+              lazy: false,
+              create: (_) =>
+                  ConversationsCubit(getIt<ChatRepo>())..getConversations(),
+            ),
           ],
           child: const HomeView(),
         ),

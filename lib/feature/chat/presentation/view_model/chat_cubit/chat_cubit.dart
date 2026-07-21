@@ -22,11 +22,20 @@ class ChatCubit extends Cubit<ChatState> {
     : assert(clinic != null || conversation != null),
       super(ChatInitial());
 
+  String? get _myId => getIt<FirebaseAuth>().currentUser?.uid;
+
+  String get _recipientId {
+    final convo = conversation;
+    if (convo != null) {
+      return _myId == convo.patientId ? convo.ownerId : convo.patientId;
+    }
+    return clinic?.ownerId ?? '';
+  }
+
   String get title {
     final convo = conversation;
     if (convo == null) return clinic?.name ?? '';
-    final myId = getIt<FirebaseAuth>().currentUser?.uid;
-    final isPatient = myId == convo.patientId;
+    final isPatient = _myId == convo.patientId;
     if (!isPatient && convo.patientName.isNotEmpty) return convo.patientName;
     return convo.clinicName;
   }
@@ -36,6 +45,7 @@ class ChatCubit extends Cubit<ChatState> {
 
     if (conversation != null) {
       _conversationId = conversation!.id;
+      _repo.markAsRead(conversation!.id);
       _listenToMessages(conversation!.id);
       return;
     }
@@ -43,6 +53,7 @@ class ChatCubit extends Cubit<ChatState> {
     final result = await _repo.openConversation(clinic!);
     result.fold((failure) => emit(ChatFailure(failure.message)), (id) {
       _conversationId = id;
+      _repo.markAsRead(id);
       _listenToMessages(id);
     });
   }
@@ -50,10 +61,12 @@ class ChatCubit extends Cubit<ChatState> {
   void _listenToMessages(String conversationId) {
     _subscription?.cancel();
     _subscription = _repo.getMessages(conversationId).listen((result) {
-      result.fold(
-        (failure) => emit(ChatFailure(failure.message)),
-        (messages) => emit(ChatSuccess(messages)),
-      );
+      result.fold((failure) => emit(ChatFailure(failure.message)), (messages) {
+        emit(ChatSuccess(messages));
+        if (messages.isNotEmpty && messages.last.senderId != _myId) {
+          _repo.markAsRead(conversationId);
+        }
+      });
     });
   }
 
@@ -61,7 +74,11 @@ class ChatCubit extends Cubit<ChatState> {
     final trimmed = text.trim();
     final id = _conversationId;
     if (trimmed.isEmpty || id == null) return;
-    await _repo.sendMessage(conversationId: id, text: trimmed);
+    await _repo.sendMessage(
+      conversationId: id,
+      text: trimmed,
+      recipientId: _recipientId,
+    );
   }
 
   @override

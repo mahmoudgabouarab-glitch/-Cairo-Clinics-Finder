@@ -82,7 +82,7 @@ Widget _sectionTitle(String title, {bool isSuperTitle = false}) {
     style: TextStyle(
       fontSize: isSuperTitle ? 14.sp : 12.sp,
       fontWeight: isSuperTitle ? FontWeight.w600 : FontWeight.w500,
-      color: isSuperTitle ? Colors.black87 : Colors.grey[700],
+      color: isSuperTitle ? null : Colors.grey[700],
     ),
   );
 }

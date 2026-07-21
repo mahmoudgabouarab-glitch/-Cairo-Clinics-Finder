@@ -33,7 +33,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-      color: Colors.white,
+      color: Theme.of(context).cardColor,
       child: Row(
         children: [
           Expanded(
@@ -49,7 +49,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
                 hintText: LocaleKeys.chat_message_hint.tr(),
                 hintStyle: const TextStyle(color: Colors.grey),
                 filled: true,
-                fillColor: AppColor.cardBg,
+                fillColor: AppColor.fieldFill(context),
                 contentPadding: EdgeInsets.symmetric(
                   horizontal: 16.w,
                   vertical: 10.h,

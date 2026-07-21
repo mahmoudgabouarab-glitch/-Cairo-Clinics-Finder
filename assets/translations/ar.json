@@ -110,6 +110,9 @@
         "favorites": "المفضلة",
         "messages": "الرسايل",
         "language": "اللغة",
+        "theme": "المظهر",
+        "theme_light": "فاتح",
+        "theme_dark": "غامق",
         "about": "حول التطبيق"
     },
     "home": {

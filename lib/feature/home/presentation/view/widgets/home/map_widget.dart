@@ -10,11 +10,27 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart' show Lottie;
 
+/// Inverts tile luminance so the light OSM basemap reads as a dark map
+/// (land becomes dark, roads/labels become light).
+Widget _darkTileBuilder(BuildContext context, Widget tileWidget, TileImage tile) {
+  return ColorFiltered(
+    colorFilter: const ColorFilter.matrix(<double>[
+      -0.2126, -0.7152, -0.0722, 0, 255, //
+      -0.2126, -0.7152, -0.0722, 0, 255, //
+      -0.2126, -0.7152, -0.0722, 0, 255, //
+      0, 0, 0, 1, 0, //
+    ]),
+    child: tileWidget,
+  );
+}
+
 class MapWidget extends StatelessWidget {
   const MapWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Read here so the map (tiles + markers) rebuilds instantly on theme change.
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return BlocBuilder<MapCubit, MapState>(
       buildWhen: (previous, current) {
         return previous.userLocation != current.userLocation ||
@@ -42,6 +58,8 @@ class MapWidget extends StatelessWidget {
             TileLayer(
               urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
               userAgentPackageName: 'com.example.cairo_clinics_finder',
+              // OSM tiles are always light; invert their luminance in dark mode.
+              tileBuilder: isDark ? _darkTileBuilder : null,
             ),
             MarkerLayer(
               markers: [
@@ -52,7 +70,7 @@ class MapWidget extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: AppColor.primary.withOpacity(0.15),
+                      color: AppColor.primary.withOpacity(isDark ? 0.28 : 0.15),
                     ),
                     child: Center(
                       child: Container(
@@ -60,8 +78,11 @@ class MapWidget extends StatelessWidget {
                         height: 18.h,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppColor.primary,
-                          border: Border.all(color: Colors.white, width: 2.5.w),
+                          color: isDark ? AppColor.darkPrimary : AppColor.primary,
+                          border: Border.all(
+                            color: isDark ? AppColor.darkBackground : Colors.white,
+                            width: 2.5.w,
+                          ),
                         ),
                       ),
                     ),
@@ -78,11 +99,18 @@ class MapWidget extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.white,
+                          color: isDark ? AppColor.darkSurface : Colors.white,
                           border: Border.all(
                             color: ClinicTheme.markerColor(clinic.category),
-                            width: 1.5.w,
+                            width: (isDark ? 2 : 1.5).w,
                           ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(isDark ? 0.5 : 0.2),
+                              blurRadius: 4,
+                              offset: const Offset(0, 1),
+                            ),
+                          ],
                         ),
                         child: Center(
                           child: FaIcon(

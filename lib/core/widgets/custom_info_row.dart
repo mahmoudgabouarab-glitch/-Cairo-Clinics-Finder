@@ -28,7 +28,7 @@ class CustomInfoRow extends StatelessWidget {
           width: 36.r,
           height: 36.r,
           decoration: BoxDecoration(
-            color: AppColor.iconBg,
+            color: AppColor.chipBg(context),
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Icon(icon, color: AppColor.primary, size: 18.r),

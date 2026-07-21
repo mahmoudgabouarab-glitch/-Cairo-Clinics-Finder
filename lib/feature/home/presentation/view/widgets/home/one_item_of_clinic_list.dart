@@ -23,9 +23,9 @@ class OneItemOfClinicList extends StatelessWidget {
         margin: EdgeInsets.only(bottom: 8.h),
         padding: EdgeInsets.all(10.r),
         decoration: BoxDecoration(
-          color: AppColor.cardBg,
+          color: AppColor.fieldFill(context),
           borderRadius: BorderRadius.circular(14.r),
-          border: Border.all(color: Colors.grey.shade200),
+          border: Border.all(color: Theme.of(context).dividerColor),
         ),
         child: Row(
           children: [
@@ -33,7 +33,7 @@ class OneItemOfClinicList extends StatelessWidget {
               width: 40.w,
               height: 40.h,
               decoration: BoxDecoration(
-                color: AppColor.background,
+                color: AppColor.softTile(context),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               child: Center(
@@ -74,7 +74,7 @@ class OneItemOfClinicList extends StatelessWidget {
                     Text(
                       clinic.rating.toString(),
                       style: AppTextStyles.f11Grey.copyWith(
-                        color: Colors.black87,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                   ],

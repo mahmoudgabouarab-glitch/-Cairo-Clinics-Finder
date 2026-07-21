@@ -71,15 +71,17 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 onPressed: () => setState(() => _obscure = !_obscure),
               )
             : widget.suffix,
-        fillColor: widget.fillcolor ?? AppColor.cardBg,
+        fillColor: widget.fillcolor ?? AppColor.fieldFill(context),
         filled: true,
         focusedBorder: _border(AppColor.primary),
-        enabledBorder: _border(const Color(0xffEDEDED)),
+        enabledBorder: _border(Theme.of(context).dividerColor),
         errorBorder: _border(AppColor.clinicRed),
         focusedErrorBorder: _border(AppColor.clinicRed),
       ),
       obscureText: _obscure,
-      style: widget.textstyle ?? const TextStyle(color: Colors.black),
+      style:
+          widget.textstyle ??
+          TextStyle(color: Theme.of(context).colorScheme.onSurface),
     );
   }
 }
