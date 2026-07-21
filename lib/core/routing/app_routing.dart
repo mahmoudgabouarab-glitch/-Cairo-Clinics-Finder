@@ -1,7 +1,10 @@
 part of "routing_import.dart";
 
 abstract class AppRouting {
+  static final navigatorKey = GlobalKey<NavigatorState>();
+
   static final router = GoRouter(
+    navigatorKey: navigatorKey,
     initialLocation: '/',
     routes: [
       // Splash Route
@@ -59,11 +62,6 @@ abstract class AppRouting {
             BlocProvider(
               lazy: false,
               create: (_) => ProfileCubit(getIt<ProfileRepo>())..getProfile(),
-            ),
-            BlocProvider(
-              lazy: false,
-              create: (_) =>
-                  ConversationsCubit(getIt<ChatRepo>())..getConversations(),
             ),
           ],
           child: const HomeView(),
@@ -150,14 +148,10 @@ abstract class AppRouting {
           child: const MyClinicsView(),
         ),
       ),
-      // Messages (Inbox) Route
+      // Messages (Inbox) Route — uses the app-level ConversationsCubit.
       GoRoute(
         path: GoTo.messages,
-        builder: (context, state) => BlocProvider(
-          create: (context) =>
-              ConversationsCubit(getIt<ChatRepo>())..getConversations(),
-          child: const ConversationsView(),
-        ),
+        builder: (context, state) => const ConversationsView(),
       ),
       // Chat Route
       GoRoute(

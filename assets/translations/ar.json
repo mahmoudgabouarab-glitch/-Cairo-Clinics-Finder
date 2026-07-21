@@ -241,6 +241,7 @@
         "message_hint": "اكتب رسالتك...",
         "empty": "ابدأ المحادثة مع العيادة",
         "inbox_title": "الرسايل",
-        "inbox_empty": "لا توجد رسائل بعد"
+        "inbox_empty": "لا توجد رسائل بعد",
+        "notification_open": "فتح"
     }
 }

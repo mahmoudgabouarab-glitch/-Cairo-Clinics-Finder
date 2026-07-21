@@ -227,6 +227,7 @@ abstract class  LocaleKeys {
   static const chat_empty = 'chat.empty';
   static const chat_inbox_title = 'chat.inbox_title';
   static const chat_inbox_empty = 'chat.inbox_empty';
+  static const chat_notification_open = 'chat.notification_open';
   static const chat = 'chat';
 
 }

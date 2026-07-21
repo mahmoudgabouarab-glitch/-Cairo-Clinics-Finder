@@ -241,6 +241,7 @@
         "message_hint": "Type your message...",
         "empty": "Start the conversation with the clinic",
         "inbox_title": "Messages",
-        "inbox_empty": "No messages yet"
+        "inbox_empty": "No messages yet",
+        "notification_open": "Open"
     }
 }

@@ -17,7 +17,6 @@ import 'package:cairo_clinics_finder/feature/chat/data/repo/chat_repo.dart';
 import 'package:cairo_clinics_finder/feature/chat/presentation/view/chat_view.dart';
 import 'package:cairo_clinics_finder/feature/chat/presentation/view/conversations_view.dart';
 import 'package:cairo_clinics_finder/feature/chat/presentation/view_model/chat_cubit/chat_cubit.dart';
-import 'package:cairo_clinics_finder/feature/chat/presentation/view_model/conversations_cubit/conversations_cubit.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view/fav_view.dart';
 import 'package:cairo_clinics_finder/feature/home/data/model/clinic_model.dart';
 import 'package:cairo_clinics_finder/feature/home/data/repo/clinics_repo.dart';

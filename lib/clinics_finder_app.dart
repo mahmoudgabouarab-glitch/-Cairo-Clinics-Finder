@@ -2,6 +2,9 @@ import 'package:cairo_clinics_finder/core/network/service_locator.dart';
 import 'package:cairo_clinics_finder/core/routing/routing_import.dart';
 import 'package:cairo_clinics_finder/core/utils/app_theme.dart';
 import 'package:cairo_clinics_finder/core/utils/theme_cubit/theme_cubit.dart';
+import 'package:cairo_clinics_finder/feature/chat/data/repo/chat_repo.dart';
+import 'package:cairo_clinics_finder/feature/chat/presentation/view/widgets/in_app_message_notifier.dart';
+import 'package:cairo_clinics_finder/feature/chat/presentation/view_model/conversations_cubit/conversations_cubit.dart';
 import 'package:cairo_clinics_finder/feature/favorite/data/repo/fav_repo.dart';
 import 'package:cairo_clinics_finder/feature/favorite/presentation/view_model/fav_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -20,6 +23,7 @@ class ClinicsFinderApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (_) => FavCubit(getIt<FavRepo>())..getFav()),
           BlocProvider(create: (_) => ThemeCubit()),
+          BlocProvider(create: (_) => ConversationsCubit(getIt<ChatRepo>())),
         ],
         child: BlocBuilder<ThemeCubit, ThemeMode>(
           builder: (context, themeMode) {
@@ -33,6 +37,8 @@ class ClinicsFinderApp extends StatelessWidget {
               key: ValueKey(context.locale),
               debugShowCheckedModeBanner: false,
               routerConfig: AppRouting.router,
+              builder: (context, child) =>
+                  InAppMessageNotifier(child: child ?? const SizedBox.shrink()),
             );
           },
         ),
